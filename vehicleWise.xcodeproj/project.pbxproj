@@ -16,6 +16,7 @@
 		3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */; };
 		3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */; };
 		3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */; };
+		3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListViewController.swift; sourceTree = "<group>"; };
 		3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */,
 				3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */,
 				3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */,
+				3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */,
 			);
 			path = vehicleWise;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
 				3F3B76DC2BCFE43500746745 /* AppDelegate.swift in Sources */,
 				3F3B76F22BCFEC1000746745 /* VehicleDetails.swift in Sources */,
+				3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */,
 				3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */,
 				3F3B76DE2BCFE43500746745 /* SceneDelegate.swift in Sources */,
 			);
@@ -304,6 +308,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2B4QLP2UQ6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vehicleWise/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -331,6 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2B4QLP2UQ6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vehicleWise/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
