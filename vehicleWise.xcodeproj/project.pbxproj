@@ -12,7 +12,6 @@
 		3F3B76E32BCFE43500746745 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3F3B76E22BCFE43500746745 /* Base */; };
 		3F3B76E52BCFE43600746745 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F3B76E42BCFE43600746745 /* Assets.xcassets */; };
 		3F3B76E82BCFE43600746745 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3F3B76E72BCFE43600746745 /* Base */; };
-		3F3B76F22BCFEC1000746745 /* VehicleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F12BCFEC1000746745 /* VehicleDetails.swift */; };
 		3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */; };
 		3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */; };
 		3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */; };
@@ -27,7 +26,6 @@
 		3F3B76E42BCFE43600746745 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F3B76E72BCFE43600746745 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F3B76E92BCFE43600746745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F3B76F12BCFEC1000746745 /* VehicleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetails.swift; sourceTree = "<group>"; };
 		3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListViewController.swift; sourceTree = "<group>"; };
 		3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +43,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F124B232BD8B9C000325297 /* DriversInterface */ = {
+			isa = PBXGroup;
+			children = (
+				3F124B292BD8BA7000325297 /* ViewControllers */,
+			);
+			path = DriversInterface;
+			sourceTree = "<group>";
+		};
+		3F124B242BD8B9DC00325297 /* LogisticInterface */ = {
+			isa = PBXGroup;
+			children = (
+				3F124B282BD8BA4B00325297 /* ViewControllers */,
+			);
+			path = LogisticInterface;
+			sourceTree = "<group>";
+		};
+		3F124B262BD8BA0700325297 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		3F124B282BD8BA4B00325297 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */,
+				3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */,
+				3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3F124B292BD8BA7000325297 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		3F3B76CF2BCFE43500746745 = {
 			isa = PBXGroup;
 			children = (
@@ -64,17 +103,15 @@
 		3F3B76DA2BCFE43500746745 /* vehicleWise */ = {
 			isa = PBXGroup;
 			children = (
+				3F124B262BD8BA0700325297 /* DataModel */,
+				3F124B242BD8B9DC00325297 /* LogisticInterface */,
+				3F124B232BD8B9C000325297 /* DriversInterface */,
 				3F3B76DB2BCFE43500746745 /* AppDelegate.swift */,
 				3F3B76DD2BCFE43500746745 /* SceneDelegate.swift */,
-				3F3B76F12BCFEC1000746745 /* VehicleDetails.swift */,
 				3F3B76E12BCFE43500746745 /* Main.storyboard */,
 				3F3B76E42BCFE43600746745 /* Assets.xcassets */,
 				3F3B76E62BCFE43600746745 /* LaunchScreen.storyboard */,
 				3F3B76E92BCFE43600746745 /* Info.plist */,
-				3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */,
-				3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */,
-				3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */,
-				3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */,
 			);
 			path = vehicleWise;
 			sourceTree = "<group>";
@@ -153,7 +190,6 @@
 				3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
 				3F3B76DC2BCFE43500746745 /* AppDelegate.swift in Sources */,
-				3F3B76F22BCFEC1000746745 /* VehicleDetails.swift in Sources */,
 				3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */,
 				3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */,
 				3F3B76DE2BCFE43500746745 /* SceneDelegate.swift in Sources */,
