@@ -16,6 +16,9 @@
 		3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */; };
 		3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */; };
 		3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */; };
+		3FD505F02BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505EF2BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift */; };
+		3FD505F72BDAFAC4001A4C35 /* MyDriversListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505F62BDAFAC4001A4C35 /* MyDriversListViewController.swift */; };
+		3FD505F92BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505F82BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListViewController.swift; sourceTree = "<group>"; };
 		3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		3FD505EF2BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleNumberDisplayCell.swift; sourceTree = "<group>"; };
+		3FD505F62BDAFAC4001A4C35 /* MyDriversListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDriversListViewController.swift; sourceTree = "<group>"; };
+		3FD505F82BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDriversDisplayTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 		3F124B242BD8B9DC00325297 /* LogisticInterface */ = {
 			isa = PBXGroup;
 			children = (
+				3FD505EE2BDADD91001A4C35 /* View */,
 				3F124B282BD8BA4B00325297 /* ViewControllers */,
 			);
 			path = LogisticInterface;
@@ -73,6 +80,7 @@
 				3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */,
 				3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */,
 				3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */,
+				3FD505F62BDAFAC4001A4C35 /* MyDriversListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -114,6 +122,15 @@
 				3F3B76E92BCFE43600746745 /* Info.plist */,
 			);
 			path = vehicleWise;
+			sourceTree = "<group>";
+		};
+		3FD505EE2BDADD91001A4C35 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3FD505EF2BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift */,
+				3FD505F82BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,8 +207,11 @@
 				3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
 				3F3B76DC2BCFE43500746745 /* AppDelegate.swift in Sources */,
+				3FD505F02BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift in Sources */,
+				3FD505F72BDAFAC4001A4C35 /* MyDriversListViewController.swift in Sources */,
 				3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */,
 				3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */,
+				3FD505F92BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift in Sources */,
 				3F3B76DE2BCFE43500746745 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

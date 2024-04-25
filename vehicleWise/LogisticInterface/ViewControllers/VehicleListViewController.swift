@@ -6,13 +6,38 @@
 //
 
 import UIKit
+import Foundation
 
-class VehicleListViewController: UIViewController {
+class VehicleListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate{
+    
+    
 
+    @IBOutlet weak var vehicleNumberList : UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        vehicleNumberList.dataSource = self
+        vehicleNumberList.delegate = self
+        vehicleNumberList.register(vehicleNumberDisplayCell.self, forCellReuseIdentifier: "vehicleWiseDisplayCell")
+
+        
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataModel.getVehicleList().count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "vehicleWiseDisplayCell", for: indexPath) /*as? vehicleNumberDisplayCell {*/
+                let vehicle = dataModel.getVehicleList()[indexPath.row]
+                // Configure the cell with the vehicle data
+                //cell.updateImageVehiclePlate()
+        cell.textLabel?.text = vehicle.vehicleNumber
+        cell.imageView?.image = vehicle.imageNumberPlate
+                return cell
+            
+           // return UITableViewCell()
     }
     
 

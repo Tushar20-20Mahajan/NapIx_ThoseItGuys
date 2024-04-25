@@ -28,16 +28,18 @@ struct DriversList : Equatable , Comparable{
     
     static func <(lhs: DriversList, rhs: DriversList) -> Bool {
         return lhs.name < rhs.name
+        
     }
 }
 
-struct VehicleWiseList : Equatable , Comparable{
+struct VehicleWiseList : Equatable,Comparable{
     var vehicleNumber : String
+    var imageNumberPlate : UIImage
     // Implementing Equatable protocol
         static func ==(lhs: VehicleWiseList, rhs: VehicleWiseList) -> Bool {
             return lhs.vehicleNumber == rhs.vehicleNumber
         }
-        
+//        
         // Implementing Comparable protocol for sorting
         static func <(lhs: VehicleWiseList, rhs: VehicleWiseList) -> Bool {
             return lhs.vehicleNumber < rhs.vehicleNumber
@@ -99,47 +101,77 @@ struct DriverNameSelection: Equatable {
 
 
 
-
-
-class DataModel{
+class DataModel {
+    private var vehicleList: [VehicleWiseList] = []
     
-    private var vehicleList : [VehicleWiseList] = [
-        VehicleWiseList(vehicleNumber: "NYC 7777"),
-        VehicleWiseList(vehicleNumber: "GJZ 0196"),
-        VehicleWiseList(vehicleNumber: "NYC 8910"),
-        VehicleWiseList(vehicleNumber: "CAl 8910"),
-        VehicleWiseList(vehicleNumber: "WAS 8910"),
-        VehicleWiseList(vehicleNumber: "AZM 8910"),
-        VehicleWiseList(vehicleNumber: "SAM 8910")
-    ]
+    init() {
+        initializeVehicleList()
+    }
     
+    private func initializeVehicleList() {
+        vehicleList = [
+            VehicleWiseList(vehicleNumber: "NYC 7777", imageNumberPlate: makeModifiedImage(for: "numbersign")),
+            VehicleWiseList(vehicleNumber: "GJZ 0196", imageNumberPlate: makeModifiedImage(for: "numbersign")),
+            VehicleWiseList(vehicleNumber: "NYC 8910", imageNumberPlate: makeModifiedImage(for: "numbersign")),
+            VehicleWiseList(vehicleNumber: "CAl 5910", imageNumberPlate: makeModifiedImage(for: "numbersign")),
+            VehicleWiseList(vehicleNumber: "WAS 3019", imageNumberPlate: makeModifiedImage(for: "numbersign")),
+            VehicleWiseList(vehicleNumber: "AZM 1718", imageNumberPlate: makeModifiedImage(for: "numbersign")),
+            VehicleWiseList(vehicleNumber: "SAM 6919", imageNumberPlate: makeModifiedImage(for: "numbersign"))
+        ]
+    }
+
     func getVehicleList() -> [VehicleWiseList] {
         return vehicleList.sorted()
     }
-    func addVehicleToVehicleList(newVehicle : VehicleWiseList){
+    
+    func addVehicleToVehicleList(newVehicle: VehicleWiseList) {
         vehicleList.insert(newVehicle, at: 0)
-        vehicleList.sort()
     }
     
-    private var driverDetailList : [DriversList] = [
-        DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290"),
-        DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290"),
-        DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290"),
-        DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290")
-    ]
-    
-    func getDriverList() -> [DriversList] {
-        return driverDetailList.sorted()
-    }
-    func addDriversToList(newDriver : DriversList){
-        driverDetailList.insert(newDriver, at: 0)
-        driverDetailList.sort()
+    private func makeModifiedImage(for systemName: String) -> UIImage {
+        let originalImage = UIImage(systemName: systemName)!
+        let tintedImage = originalImage.withTintColor(.black)
+        let resizedImage = tintedImage.resizedTo(width: 27, height: 22)
+        let lightGrayBackground = resizedImage.addLightGrayBackground()
+        return lightGrayBackground
     }
     
+    private var driverDetailList: [DriversList] = [
+            DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290"),
+            DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290"),
+            DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290"),
+            DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290")
+        ]
+        
+        func getDriverList() -> [DriversList] {
+            return driverDetailList.sorted()
+        }
+        
+        func addDriversToList(newDriver: DriversList) {
+            driverDetailList.insert(newDriver, at: 0)
+        }
+}
+
+extension UIImage {
+    func addLightGrayBackground() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(UIColor.lightGray.cgColor)
+        context.fill(CGRect(origin: CGPoint.zero, size: self.size))
+        self.draw(at: CGPoint.zero, blendMode: .normal, alpha: 1.0)
+        let result = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return result
+    }
     
-    
-    
-    
+    func resizedTo(width: CGFloat, height: CGFloat) -> UIImage {
+        let newSize = CGSize(width: width, height: height)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, UIScreen.main.scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 }
 
 var dataModel = DataModel()
