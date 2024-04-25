@@ -21,6 +21,7 @@ struct Users{
 struct DriversList : Equatable , Comparable{
     var name: String
     var mobileNumber: String
+    var imageDriver : UIImage
     static func ==(lhs: DriversList, rhs: DriversList) -> Bool {
         return lhs.name == rhs.name
     }
@@ -103,9 +104,12 @@ struct DriverNameSelection: Equatable {
 
 class DataModel {
     private var vehicleList: [VehicleWiseList] = []
+    private var driverDetailList: [DriversList] = []
     
     init() {
         initializeVehicleList()
+        initializeDriverDetailList()
+
     }
     
     private func initializeVehicleList() {
@@ -135,13 +139,23 @@ class DataModel {
         let lightGrayBackground = resizedImage.addLightGrayBackground()
         return lightGrayBackground
     }
+    private func makeModifiedImageDriver(for systemName: String) -> UIImage {
+        let originalImage = UIImage(systemName: systemName)!
+        let tintedImage = originalImage.withTintColor(.black)
+        let resizedImage = tintedImage.resizedTo(width: 32, height: 27)
+        let lightGrayBackground = resizedImage.addLightGrayBackground()
+        return lightGrayBackground
+    }
     
-    private var driverDetailList: [DriversList] = [
-            DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290"),
-            DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290"),
-            DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290"),
-            DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290")
-        ]
+    private func initializeDriverDetailList() {
+            driverDetailList = [
+                DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
+                DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
+                DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
+                DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt"))
+            ]
+        }
+
         
         func getDriverList() -> [DriversList] {
             return driverDetailList.sorted()
