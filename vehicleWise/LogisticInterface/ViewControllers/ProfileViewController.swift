@@ -13,9 +13,7 @@ class ProfileViewController: UIViewController {
      
        
         
-@IBOutlet weak var tableViewOfAccountDisplayingInformation: UITableView!
-        
-        
+
     override func viewDidLoad() {
         super.viewDidLoad()
             
