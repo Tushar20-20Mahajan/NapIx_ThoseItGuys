@@ -13,7 +13,7 @@ import UIKit
 struct Users{
     var Logistics: String
     var name: String
-    var email: String?
+    var email: String? 
     var mobileNumber: String?
 }
 
