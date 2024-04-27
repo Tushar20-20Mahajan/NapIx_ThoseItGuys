@@ -25,7 +25,7 @@ class showVehicleListViewController: UIViewController , UITableViewDataSource , 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "showVehicleListDisplayCell", for: indexPath) /*as? vehicleNumberDisplayCell {*/
+        let cell = tableView.dequeueReusableCell(withIdentifier: "showVehicleListDisplayCell", for: indexPath)
                 let vehicle = dataModel.getVehicleList()[indexPath.row]
                 // Configure the cell with the vehicle data
                 //cell.updateImageVehiclePlate()
