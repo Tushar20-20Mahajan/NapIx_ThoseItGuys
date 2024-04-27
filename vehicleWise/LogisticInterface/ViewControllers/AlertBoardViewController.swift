@@ -8,6 +8,10 @@
 import UIKit
 
 class AlertBoardViewController: UIViewController {
+    
+    @IBOutlet weak var activeAlerts: UIView!
+    @IBOutlet weak var drivingSafely: UIView!
+    @IBOutlet weak var scheduled: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,15 +19,23 @@ class AlertBoardViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func switchViewsofAlertBoard(_ sender: UISegmentedControl){
+        if sender.selectedSegmentIndex == 0 {
+            activeAlerts.alpha = 1
+            drivingSafely.alpha = 0
+            scheduled.alpha = 0
+        }else if (sender.selectedSegmentIndex == 1){
+            activeAlerts.alpha = 0
+            drivingSafely.alpha = 1
+            scheduled.alpha = 0
+        }else if (sender.selectedSegmentIndex == 2){
+            activeAlerts.alpha = 0
+            drivingSafely.alpha = 0
+            scheduled.alpha = 1
+        }
     }
-    */
+    
+
+   
 
 }
