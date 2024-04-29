@@ -100,16 +100,19 @@ struct DriverNameSelection: Equatable {
     }
 }
 
-
-
 class DataModel {
     private var vehicleList: [VehicleWiseList] = []
     private var driverDetailList: [DriversList] = []
+    private var activeAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
+    private var drivingSafelyAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
+    private var scheduledAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
     
     init() {
         initializeVehicleList()
         initializeDriverDetailList()
-
+        initializeActiveAlertOnAlertBoard()
+        initializeDrivingSafelyAlertOnAlertBoard()
+        initializeScheduledAlertOnAlertBoard()
     }
     
     private func initializeVehicleList() {
@@ -139,6 +142,7 @@ class DataModel {
         let lightGrayBackground = resizedImage.addLightGrayBackground()
         return lightGrayBackground
     }
+    
     private func makeModifiedImageDriver(for systemName: String) -> UIImage {
         let originalImage = UIImage(systemName: systemName)!
         let tintedImage = originalImage.withTintColor(.black)
@@ -148,22 +152,56 @@ class DataModel {
     }
     
     private func initializeDriverDetailList() {
-            driverDetailList = [
-                DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
-                DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
-                DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
-                DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt"))
-            ]
-        }
-
+        driverDetailList = [
+            DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
+            DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
+            DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
+            DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt"))
+        ]
+    }
         
-        func getDriverList() -> [DriversList] {
-            return driverDetailList.sorted()
-        }
+    func getDriverList() -> [DriversList] {
+        return driverDetailList.sorted()
+    }
         
-        func addDriversToList(newDriver: DriversList) {
-            driverDetailList.insert(newDriver, at: 0)
-        }
+    func addDriversToDriverList(newDriver: DriversList) {
+        driverDetailList.insert(newDriver, at: 0)
+    }
+    
+    // Alert Board
+    private func initializeActiveAlertOnAlertBoard() {
+        activeAlertOnAlertBoard = [
+            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.png", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: "Ritik Pandey"),
+            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.png", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: "Arman Kumar")
+        ]
+    }
+    func getActiveAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
+        return activeAlertOnAlertBoard
+    }
+    
+    private func  initializeDrivingSafelyAlertOnAlertBoard() {
+        drivingSafelyAlertOnAlertBoard = [
+            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.png", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
+            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.png", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
+        ]
+    }
+    func getDrivingSafelyAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
+        return drivingSafelyAlertOnAlertBoard
+    }
+    
+    private func  initializeScheduledAlertOnAlertBoard() {
+        scheduledAlertOnAlertBoard = [
+            AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.png", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
+            AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.png", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
+        ]
+    }
+    func getScheduledAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
+        return scheduledAlertOnAlertBoard
+    }
+    
+    func addScheduledAlertOnAlertBoard(newScheduledAlert: AlertBoardDataDisplayInformation) {
+        scheduledAlertOnAlertBoard.insert(newScheduledAlert, at: 0)
+    }
 }
 
 extension UIImage {
@@ -187,5 +225,6 @@ extension UIImage {
         return newImage
     }
 }
+
 
 var dataModel = DataModel()
