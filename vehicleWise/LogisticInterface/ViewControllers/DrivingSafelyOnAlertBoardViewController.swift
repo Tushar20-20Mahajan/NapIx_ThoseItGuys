@@ -7,23 +7,33 @@
 
 import UIKit
 
-class DrivingSafelyOnAlertBoardViewController: UIViewController {
+class DrivingSafelyOnAlertBoardViewController: UIViewController  ,UITableViewDelegate, UITableViewDataSource
+{
+    
+    @IBOutlet weak var showSafelyDrivingList : UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+       showSafelyDrivingList.dataSource = self
+        showSafelyDrivingList.delegate = self
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataModel.getDrivingSafelyAlertOnAlertBoard().count
     }
-    */
+   
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "drivingSafelyAlertBoard") as? DrivingSafelyTableViewCell{
+            let alerts = dataModel.getDrivingSafelyAlertOnAlertBoard()[indexPath.row]
+            
+            cell.updateViewOfScheduledAlertBoard(alerts: alerts)
+            
+            return cell
+        }
+        return ScheduledAlertsTableViewCell()
+    }
 
 }

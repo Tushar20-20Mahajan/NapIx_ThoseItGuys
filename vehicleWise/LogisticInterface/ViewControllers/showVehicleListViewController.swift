@@ -17,7 +17,7 @@ class showVehicleListViewController: UIViewController , UITableViewDataSource , 
         // Do any additional setup after loading the view.
         showVehicleList.dataSource = self
         showVehicleList.delegate = self
-        showVehicleList.register(vehicleNumberDisplayCell.self, forCellReuseIdentifier: "showVehicleListDisplayCell")
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,15 +25,16 @@ class showVehicleListViewController: UIViewController , UITableViewDataSource , 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "showVehicleListDisplayCell", for: indexPath)
-                let vehicle = dataModel.getVehicleList()[indexPath.row]
-                // Configure the cell with the vehicle data
-                //cell.updateImageVehiclePlate()
-        cell.textLabel?.text = vehicle.vehicleNumber
-        cell.imageView?.image = vehicle.imageNumberPlate
-                return cell
-            
-           // return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "showVehicleListDisplayCell") as? showVehiclesListTableViewCell else {
+            return UITableViewCell()
+        }
+
+        let vehicle = dataModel.getVehicleList()[indexPath.row]
+        // Configure the cell with the vehicle data
+        cell.updateViewOfVehicleWise(vehicleNumber: vehicle)
+
+        return cell
+                
     }
 
     /*

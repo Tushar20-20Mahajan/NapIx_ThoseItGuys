@@ -18,7 +18,7 @@ class ScheduledOnAlertBoardViewController: UIViewController , UITableViewDataSou
         // Do any additional setup after loading the view.
         showScheduledList.dataSource = self
         showScheduledList.delegate = self
-//        showScheduledList.register(vehicleNumberDisplayCell.self, forCellReuseIdentifier: "scheduledAlertBoard")
+
     }
     
 

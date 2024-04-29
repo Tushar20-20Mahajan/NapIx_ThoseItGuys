@@ -35,7 +35,7 @@ struct DriversList : Equatable , Comparable{
 
 struct VehicleWiseList : Equatable,Comparable{
     var vehicleNumber : String
-    var imageNumberPlate : UIImage
+    var imageNumberPlate : String
     // Implementing Equatable protocol
         static func ==(lhs: VehicleWiseList, rhs: VehicleWiseList) -> Bool {
             return lhs.vehicleNumber == rhs.vehicleNumber
@@ -117,13 +117,13 @@ class DataModel {
     
     private func initializeVehicleList() {
         vehicleList = [
-            VehicleWiseList(vehicleNumber: "NYC 7777", imageNumberPlate: makeModifiedImage(for: "numbersign")),
-            VehicleWiseList(vehicleNumber: "GJZ 0196", imageNumberPlate: makeModifiedImage(for: "numbersign")),
-            VehicleWiseList(vehicleNumber: "NYC 8910", imageNumberPlate: makeModifiedImage(for: "numbersign")),
-            VehicleWiseList(vehicleNumber: "CAl 5910", imageNumberPlate: makeModifiedImage(for: "numbersign")),
-            VehicleWiseList(vehicleNumber: "WAS 3019", imageNumberPlate: makeModifiedImage(for: "numbersign")),
-            VehicleWiseList(vehicleNumber: "AZM 1718", imageNumberPlate: makeModifiedImage(for: "numbersign")),
-            VehicleWiseList(vehicleNumber: "SAM 6919", imageNumberPlate: makeModifiedImage(for: "numbersign"))
+            VehicleWiseList(vehicleNumber: "NYC 7777", imageNumberPlate: "numbersign"),
+            VehicleWiseList(vehicleNumber: "GJZ 0196", imageNumberPlate: "numbersign"),
+            VehicleWiseList(vehicleNumber: "NYC 8910", imageNumberPlate:"numbersign"),
+            VehicleWiseList(vehicleNumber: "CAl 5910", imageNumberPlate:"numbersign"),
+            VehicleWiseList(vehicleNumber: "WAS 3019", imageNumberPlate:"numbersign"),
+            VehicleWiseList(vehicleNumber: "AZM 1718", imageNumberPlate:"numbersign"),
+            VehicleWiseList(vehicleNumber: "SAM 6919", imageNumberPlate: "numbersign")
         ]
     }
 
@@ -135,13 +135,13 @@ class DataModel {
         vehicleList.insert(newVehicle, at: 0)
     }
     
-    private func makeModifiedImage(for systemName: String) -> UIImage {
-        let originalImage = UIImage(systemName: systemName)!
-        let tintedImage = originalImage.withTintColor(.black)
-        let resizedImage = tintedImage.resizedTo(width: 27, height: 22)
-        let lightGrayBackground = resizedImage.addLightGrayBackground()
-        return lightGrayBackground
-    }
+//    private func makeModifiedImage(for systemName: String) -> UIImage {
+//        let originalImage = UIImage(systemName: systemName)!
+//        let tintedImage = originalImage.withTintColor(.black)
+//        let resizedImage = tintedImage.resizedTo(width: 27, height: 22)
+//        let lightGrayBackground = resizedImage.addLightGrayBackground()
+//        return lightGrayBackground
+//    }
     
     private func makeModifiedImageDriver(for systemName: String) -> UIImage {
         let originalImage = UIImage(systemName: systemName)!
@@ -171,8 +171,8 @@ class DataModel {
     // Alert Board
     private func initializeActiveAlertOnAlertBoard() {
         activeAlertOnAlertBoard = [
-            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.png", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: "Ritik Pandey"),
-            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.png", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: "Arman Kumar")
+            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: "Ritik Pandey"),
+            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: "Arman Kumar")
         ]
     }
     func getActiveAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
@@ -181,8 +181,8 @@ class DataModel {
     
     private func  initializeDrivingSafelyAlertOnAlertBoard() {
         drivingSafelyAlertOnAlertBoard = [
-            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.png", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
-            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.png", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
+            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
+            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
         ]
     }
     func getDrivingSafelyAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
@@ -191,8 +191,8 @@ class DataModel {
     
     private func  initializeScheduledAlertOnAlertBoard() {
         scheduledAlertOnAlertBoard = [
-            AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.png", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
-            AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.png", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
+            AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
+            AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
         ]
     }
     func getScheduledAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
