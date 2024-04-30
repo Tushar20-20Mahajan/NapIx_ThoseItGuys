@@ -42,13 +42,15 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
     
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
                 if let selectedIndexPath = tableView.indexPathForSelectedRow {
                     tableView.deselectRow(at: selectedIndexPath, animated: true)
                 }
                 
-                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+//                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
     }
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
             tableView.deselectRow(at: indexPath, animated: true)
         }
+    
 }
