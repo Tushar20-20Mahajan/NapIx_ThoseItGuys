@@ -1,13 +1,13 @@
 //
-//  MyDriversDisplayTableViewCell.swift
+//  ShowDriverListTableViewCell.swift
 //  vehicleWise
 //
-//  Created by student on 26/04/24.
+//  Created by student on 30/04/24.
 //
 
 import UIKit
 
-class MyDriversDisplayTableViewCell: UITableViewCell {
+class ShowDriverListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var driverName: UILabel!
     @IBOutlet weak var driverPhoneNumber : UILabel!
@@ -18,6 +18,5 @@ class MyDriversDisplayTableViewCell: UITableViewCell {
         driverPhoneNumber.text = driver.mobileNumber
         imkageIcon.image = UIImage(systemName: driver.imageDriver)
     }
-    
 
 }

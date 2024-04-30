@@ -21,7 +21,7 @@ struct Users{
 struct DriversList : Equatable , Comparable{
     var name: String
     var mobileNumber: String
-    var imageDriver : UIImage
+    var imageDriver : String
     static func ==(lhs: DriversList, rhs: DriversList) -> Bool {
         return lhs.name == rhs.name
     }
@@ -57,9 +57,8 @@ struct AlertBoardDataDisplayInformation {
 }
 
 struct AlertTimming {
-    var iconImage : UIImage?
-    var timeAlert : Date?
-    var dateAlert : Date?
+    var iconImage : String
+    var timeAlert : String
 }
 
 
@@ -106,6 +105,7 @@ class DataModel {
     private var activeAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
     private var drivingSafelyAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
     private var scheduledAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
+    private var activeAlertTimmingsOnAlertBoard : [AlertTimming] = []
     
     init() {
         initializeVehicleList()
@@ -113,6 +113,7 @@ class DataModel {
         initializeActiveAlertOnAlertBoard()
         initializeDrivingSafelyAlertOnAlertBoard()
         initializeScheduledAlertOnAlertBoard()
+        initializeActiveAlertTimmingsOnAlertBoard()
     }
     
     private func initializeVehicleList() {
@@ -135,28 +136,14 @@ class DataModel {
         vehicleList.insert(newVehicle, at: 0)
     }
     
-//    private func makeModifiedImage(for systemName: String) -> UIImage {
-//        let originalImage = UIImage(systemName: systemName)!
-//        let tintedImage = originalImage.withTintColor(.black)
-//        let resizedImage = tintedImage.resizedTo(width: 27, height: 22)
-//        let lightGrayBackground = resizedImage.addLightGrayBackground()
-//        return lightGrayBackground
-//    }
-    
-    private func makeModifiedImageDriver(for systemName: String) -> UIImage {
-        let originalImage = UIImage(systemName: systemName)!
-        let tintedImage = originalImage.withTintColor(.black)
-        let resizedImage = tintedImage.resizedTo(width: 32, height: 27)
-        let lightGrayBackground = resizedImage.addLightGrayBackground()
-        return lightGrayBackground
-    }
+
     
     private func initializeDriverDetailList() {
         driverDetailList = [
-            DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
-            DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
-            DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt")),
-            DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290", imageDriver: makeModifiedImageDriver(for: "figure.seated.seatbelt"))
+            DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290", imageDriver:"figure.seated.seatbelt"),
+            DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"),
+            DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290", imageDriver:"figure.seated.seatbelt"),
+            DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt")
         ]
     }
         
@@ -202,27 +189,24 @@ class DataModel {
     func addScheduledAlertOnAlertBoard(newScheduledAlert: AlertBoardDataDisplayInformation) {
         scheduledAlertOnAlertBoard.insert(newScheduledAlert, at: 0)
     }
-}
-
-extension UIImage {
-    func addLightGrayBackground() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-        let context = UIGraphicsGetCurrentContext()!
-        context.setFillColor(UIColor.lightGray.cgColor)
-        context.fill(CGRect(origin: CGPoint.zero, size: self.size))
-        self.draw(at: CGPoint.zero, blendMode: .normal, alpha: 1.0)
-        let result = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return result
+    
+    // AlertTimmings
+    private func  initializeActiveAlertTimmingsOnAlertBoard() {
+        activeAlertTimmingsOnAlertBoard = [
+        
+            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:20 AM"),
+            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:18 AM"),
+            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:15 AM"),
+            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:12 AM")
+        ]
+        
     }
     
-    func resizedTo(width: CGFloat, height: CGFloat) -> UIImage {
-        let newSize = CGSize(width: width, height: height)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, UIScreen.main.scale)
-        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
+    func getAlertTimmingsOnAlertBoard() -> [AlertTimming] {
+        return activeAlertTimmingsOnAlertBoard
+    }
+    func addNewAlertonAlertBoard(newAlert : AlertTimming){
+        activeAlertTimmingsOnAlertBoard.insert(newAlert, at: 0)
     }
 }
 

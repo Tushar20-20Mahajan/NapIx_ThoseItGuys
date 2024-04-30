@@ -23,6 +23,9 @@
 		3F8091CE2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */; };
 		3F8091D02BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CF2BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift */; };
 		3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */; };
+		3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCC1AB2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift */; };
+		3FCCC1AE2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCC1AD2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift */; };
+		3FCCC1B62BE0E249002C4A60 /* ShowDriverListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCC1B52BE0E249002C4A60 /* ShowDriverListTableViewCell.swift */; };
 		3FD505F02BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505EF2BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift */; };
 		3FD505F72BDAFAC4001A4C35 /* MyDriversListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505F62BDAFAC4001A4C35 /* MyDriversListViewController.swift */; };
 		3FD505F92BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505F82BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift */; };
@@ -49,6 +52,9 @@
 		3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingSafelyTableViewCell.swift; sourceTree = "<group>"; };
 		3F8091CF2BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAlertTableViewCell.swift; sourceTree = "<group>"; };
 		3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		3FCCC1AB2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTimmingsViewController.swift; sourceTree = "<group>"; };
+		3FCCC1AD2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTimmingsTableViewCell.swift; sourceTree = "<group>"; };
+		3FCCC1B52BE0E249002C4A60 /* ShowDriverListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDriverListTableViewCell.swift; sourceTree = "<group>"; };
 		3FD505EF2BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleNumberDisplayCell.swift; sourceTree = "<group>"; };
 		3FD505F62BDAFAC4001A4C35 /* MyDriversListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDriversListViewController.swift; sourceTree = "<group>"; };
 		3FD505F82BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDriversDisplayTableViewCell.swift; sourceTree = "<group>"; };
@@ -104,6 +110,7 @@
 				3F0F24DC2BDDA5FA0033F5D5 /* ActiveAlertOnAlertBoardViewController.swift */,
 				3F0F24DE2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift */,
 				3F0F24E02BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift */,
+				3FCCC1AB2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -154,8 +161,10 @@
 				3FD505F82BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift */,
 				3F8091C92BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift */,
 				3F8091CB2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift */,
+				3FCCC1B52BE0E249002C4A60 /* ShowDriverListTableViewCell.swift */,
 				3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */,
 				3F8091CF2BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift */,
+				3FCCC1AD2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,15 +245,18 @@
 				3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */,
 				3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
+				3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */,
 				3FE391D22BDB651200D002EC /* showVehicleListViewController.swift in Sources */,
 				3F3B76DC2BCFE43500746745 /* AppDelegate.swift in Sources */,
 				3F8091CE2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift in Sources */,
+				3FCCC1AE2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift in Sources */,
 				3FD505F02BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift in Sources */,
 				3F0F24DD2BDDA5FA0033F5D5 /* ActiveAlertOnAlertBoardViewController.swift in Sources */,
 				3FD505F72BDAFAC4001A4C35 /* MyDriversListViewController.swift in Sources */,
 				3F8091CC2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift in Sources */,
 				3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */,
 				3F0F24E12BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift in Sources */,
+				3FCCC1B62BE0E249002C4A60 /* ShowDriverListTableViewCell.swift in Sources */,
 				3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */,
 				3F0F24DF2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift in Sources */,
 				3FD505F92BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift in Sources */,
@@ -413,7 +425,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Tusharcom.example.vehicleWise;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tushar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -441,7 +453,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Tusharcom.example.vehicleWise;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tushar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

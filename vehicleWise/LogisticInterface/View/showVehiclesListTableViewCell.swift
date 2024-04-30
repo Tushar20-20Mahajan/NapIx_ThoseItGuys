@@ -13,12 +13,9 @@ class showVehiclesListTableViewCell: UITableViewCell {
     @IBOutlet weak var vehicleNumberPlate: UIImageView!
 
     func updateViewOfVehicleWise(vehicleNumber : VehicleWiseList){
-        //        if let label = vehicleNumberLable {
-        //            label.text = vehicleNumber.vehicleNumber
-        //        }
         
         vehicleNumberLable.text = vehicleNumber.vehicleNumber
-        vehicleNumberPlate.image = UIImage(named: vehicleNumber.imageNumberPlate)
+        vehicleNumberPlate.image = UIImage(systemName:  vehicleNumber.imageNumberPlate)
     }
     
 

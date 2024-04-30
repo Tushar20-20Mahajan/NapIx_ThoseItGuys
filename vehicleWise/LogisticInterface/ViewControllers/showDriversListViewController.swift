@@ -17,7 +17,7 @@ class showDriversListViewController: UIViewController , UITableViewDelegate, UIT
         // Do any additional setup after loading the view.
         showDriverList.dataSource = self
         showDriverList.delegate = self
-        showDriverList.register(vehicleNumberDisplayCell.self, forCellReuseIdentifier: "shwoDriverListDisplayCell")
+        
     }
     
     
@@ -26,16 +26,13 @@ class showDriversListViewController: UIViewController , UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "shwoDriverListDisplayCell", for: indexPath) /*as? vehicleNumberDisplayCell {*/
-                let driver = dataModel.getDriverList()[indexPath.row]
-                // Configure the cell with the vehicle data
-                //cell.updateImageVehiclePlate()
-        cell.textLabel?.text = driver.name
-        cell.detailTextLabel?.text = driver.mobileNumber
-        cell.imageView?.image = driver.imageDriver
-                return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "showDriverListDisplayCell") as? ShowDriverListTableViewCell{
+            let driver = dataModel.getDriverList()[indexPath.row]
+            cell.updateDriversView(driver: driver)
+            return cell
             
-           // return UITableViewCell()
+        }
+                return ShowDriverListTableViewCell()
     }
     
 
