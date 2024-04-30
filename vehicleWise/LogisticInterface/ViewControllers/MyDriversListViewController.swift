@@ -56,6 +56,7 @@ class MyDriversListViewController: UIViewController , UITableViewDataSource , UI
 
     @IBAction func addDriversBtnWasPressed(_ sender: Any) {
         print("Btn was Pressed")
+        self.performSegue(withIdentifier: "dataPassingFromDriverInformationToMyDrivers", sender: self)
     }
     
     

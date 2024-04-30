@@ -8,7 +8,11 @@
 import UIKit
 
 class AddDriversDataTableViewController: UITableViewController {
-
+    @IBOutlet weak var driverNameTextFeild: UITextField!
+    
+    @IBOutlet weak var driverMobileNumberTextFeild: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,4 +28,16 @@ class AddDriversDataTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func saveDataBtnWasPressed(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "dataPassingFromDriverInformationToMyDrivers", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "dataPassingFromDriverInformationToMyDrivers"{
+            if let datatoBePassed = segue.destination as? MyDriversListViewController{
+                
+            }
+        }
+    }
 }
