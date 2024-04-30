@@ -12,9 +12,18 @@ class AlertTimmingsTableViewCell: UITableViewCell {
     @IBOutlet weak var alertTimmingsLabel : UILabel!
     @IBOutlet weak var alertImage : UIImageView!
     
-    func updateViewOfAlertTimmings(alertTimming : AlertTimming){
-        alertTimmingsLabel.text = alertTimming.timeAlert
-        alertImage.image = UIImage(systemName: alertTimming.iconImage)
-    }
+    let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "h:mm a"
+            return formatter
+        }()
+        
+        func updateViewOfAlertTimmings(alertTimming: AlertTimming) {
+            // Format the date as string for display
+            let timeString = dateFormatter.string(from: alertTimming.timeAlert)
+            
+            alertTimmingsLabel.text = timeString
+            alertImage.image = UIImage(systemName: alertTimming.iconImage)
+        }
 
 }

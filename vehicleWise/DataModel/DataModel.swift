@@ -58,7 +58,7 @@ struct AlertBoardDataDisplayInformation {
 
 struct AlertTimming {
     var iconImage : String
-    var timeAlert : String
+    var timeAlert : Date
 }
 
 
@@ -191,16 +191,34 @@ class DataModel {
     }
     
     // AlertTimmings
-    private func  initializeActiveAlertTimmingsOnAlertBoard() {
-        activeAlertTimmingsOnAlertBoard = [
+//    private func  initializeActiveAlertTimmingsOnAlertBoard() {
+//        activeAlertTimmingsOnAlertBoard = [
+//        
+//            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:20 AM"),
+//            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:18 AM"),
+//            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:15 AM"),
+//            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:12 AM")
+//        ]
+//        
+//    }
+    
+    private func initializeActiveAlertTimmingsOnAlertBoard() {
+        // Define the time strings
+        let timeStrings = ["9:20 AM", "9:18 AM", "9:15 AM", "9:12 AM"]
         
-            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:20 AM"),
-            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:18 AM"),
-            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:15 AM"),
-            AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "9:12 AM")
-        ]
+        // Create a DateFormatter to parse the time strings
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
         
+        // Initialize the alert timings array with Date objects
+        activeAlertTimmingsOnAlertBoard = timeStrings.compactMap { timeString in
+            guard let timeDate = dateFormatter.date(from: timeString) else {
+                fatalError("Failed to parse time string: \(timeString)")
+            }
+            return AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: timeDate)
+        }
     }
+
     
     func getAlertTimmingsOnAlertBoard() -> [AlertTimming] {
         return activeAlertTimmingsOnAlertBoard
