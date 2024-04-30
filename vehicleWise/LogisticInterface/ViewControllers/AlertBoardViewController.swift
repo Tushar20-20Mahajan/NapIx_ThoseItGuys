@@ -12,6 +12,9 @@ class AlertBoardViewController: UIViewController {
     @IBOutlet weak var activeAlerts: UIView!
     @IBOutlet weak var drivingSafely: UIView!
     @IBOutlet weak var scheduled: UIView!
+    
+    @IBOutlet weak var addnewAlertBtn: UIBarButtonItem!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +35,13 @@ class AlertBoardViewController: UIViewController {
             activeAlerts.alpha = 0
             drivingSafely.alpha = 0
             scheduled.alpha = 1
+            
         }
     }
     
 
-   
+    @IBAction func addNewTruckToTheRouteWasPressed(_ sender: Any) {
+    }
+    
 
 }

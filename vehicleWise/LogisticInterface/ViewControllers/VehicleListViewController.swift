@@ -53,4 +53,6 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
             tableView.deselectRow(at: indexPath, animated: true)
         }
     
+    @IBAction func addNewVehicleBtnWasPressed(_ sender: Any) {
+    }
 }

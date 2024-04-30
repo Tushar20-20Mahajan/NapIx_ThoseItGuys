@@ -54,9 +54,10 @@ class MyDriversListViewController: UIViewController , UITableViewDataSource , UI
     
    
 
-    @IBAction func addDriversToTheDriversList(_ sender: Any) {
-        print("Drivers add")
+    @IBAction func addDriversBtnWasPressed(_ sender: Any) {
+        print("Btn was Pressed")
     }
+    
     
 
 }
