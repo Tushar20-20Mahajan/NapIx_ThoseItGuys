@@ -12,6 +12,7 @@ class AlertTimmingsViewController: UIViewController , UITableViewDelegate, UITab
     
     
     @IBOutlet weak var alertTimmingsTable : UITableView!
+    @IBOutlet weak var todayDate : UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,12 @@ class AlertTimmingsViewController: UIViewController , UITableViewDelegate, UITab
         // Do any additional setup after loading the view.
         alertTimmingsTable.dataSource = self
         alertTimmingsTable.delegate = self
+        
+        let dateFormatter = DateFormatter()
+               dateFormatter.dateFormat = "dd MMMM yyyy" // Date format: 01 January 2023
+               let currentDate = Date()
+               let dateString = dateFormatter.string(from: currentDate)
+               todayDate.text = dateString
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,6 +42,17 @@ class AlertTimmingsViewController: UIViewController , UITableViewDelegate, UITab
         }
         return AlertTimmingsTableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                    tableView.deselectRow(at: selectedIndexPath, animated: true)
+                }
+                
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     
 
    

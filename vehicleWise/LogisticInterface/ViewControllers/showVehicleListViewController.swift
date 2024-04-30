@@ -37,14 +37,15 @@ class showVehicleListViewController: UIViewController , UITableViewDataSource , 
                 
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                    tableView.deselectRow(at: selectedIndexPath, animated: true)
+                }
+                
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
     }
-    */
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
 
 }
