@@ -18,7 +18,7 @@ struct Users{
 }
 
 
-struct DriversList : Equatable , Comparable{
+struct DriversList : Equatable , Comparable , Codable{
     var name: String
     var mobileNumber: String
     var imageDriver : String
@@ -137,9 +137,11 @@ class DataModel {
     }
     
 
+    // Driver List
+
     
     private func initializeDriverDetailList() {
-        driverDetailList = [
+        driverDetailList =  DataModel.loadFromFile() ?? [
             DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290", imageDriver:"figure.seated.seatbelt"),
             DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"),
             DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290", imageDriver:"figure.seated.seatbelt"),
@@ -148,12 +150,53 @@ class DataModel {
     }
         
     func getDriverList() -> [DriversList] {
-        return driverDetailList.sorted()
-    }
-        
-    func addDriversToDriverList(newDriver: DriversList) {
-        driverDetailList.insert(newDriver, at: 0)
-    }
+            return driverDetailList.sorted()
+        }
+
+        func addDriversToDriverList(newDriver: DriversList) {
+            driverDetailList.append(newDriver)
+            DataModel.saveToFile(driverDetailList: driverDetailList)
+        }
+
+        func removeDriver(at index: Int) -> DriversList? {
+            guard index >= 0 && index < driverDetailList.count else {
+                return nil
+            }
+            let removedDriver = driverDetailList.remove(at: index)
+            DataModel.saveToFile(driverDetailList: driverDetailList)
+            return removedDriver
+        }
+
+        // MARK: - File Operations
+
+        private static let DocumentDirectoryForDriverList = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ?? FileManager.default.temporaryDirectory
+        private static let ArchiveURLForDriverList = DocumentDirectoryForDriverList.appendingPathComponent("driverDetailList").appendingPathExtension("plist")
+
+        static func saveToFile(driverDetailList: [DriversList]) {
+            let propertyListEncoder = PropertyListEncoder()
+            if let codedDrivers = try? propertyListEncoder.encode(driverDetailList) {
+                try? codedDrivers.write(to: ArchiveURLForDriverList, options: .noFileProtection)
+            }
+        }
+
+        static func loadFromFile() -> [DriversList]? {
+            guard let codedDrivers = try? Data(contentsOf: ArchiveURLForDriverList) else {
+                return nil
+            }
+            let propertyListDecoder = PropertyListDecoder()
+            return try? propertyListDecoder.decode(Array<DriversList>.self, from: codedDrivers)
+        }
+
+        static func removeFromFile() {
+            do {
+                // Attempt to remove the file containing the driver details
+                try FileManager.default.removeItem(at: ArchiveURLForDriverList)
+            } catch {
+                // Handle error if file removal fails
+                print("Error removing file:", error)
+            }
+        }
+    
     
     // Alert Board
     private func initializeActiveAlertOnAlertBoard() {

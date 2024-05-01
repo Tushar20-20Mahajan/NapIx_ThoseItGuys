@@ -7,10 +7,17 @@
 
 import UIKit
 
+protocol AddDriversDelegate: AnyObject {
+    func didAddNewDriver()
+}
+
 class AddDriversDataTableViewController: UITableViewController {
+    
+       
     @IBOutlet weak var driverNameTextFeild: UITextField!
     
     @IBOutlet weak var driverMobileNumberTextFeild: UITextField!
+    weak var delegate: AddDriversDelegate?
     
     
     override func viewDidLoad() {
@@ -30,14 +37,14 @@ class AddDriversDataTableViewController: UITableViewController {
     
     @IBAction func saveDataBtnWasPressed(_ sender: Any) {
         
-        self.performSegue(withIdentifier: "dataPassingFromDriverInformationToMyDrivers", sender: self)
+        if let name = driverNameTextFeild.text, let phone = driverMobileNumberTextFeild.text {
+                   let newDriver = DriversList(name: name, mobileNumber: phone, imageDriver: "figure.seated.seatbelt")
+                   dataModel.addDriversToDriverList(newDriver: newDriver)
+                   delegate?.didAddNewDriver()
+                   dismiss(animated: true, completion: nil)
+               }
+                
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "dataPassingFromDriverInformationToMyDrivers"{
-            if let datatoBePassed = segue.destination as? MyDriversListViewController{
-                
-            }
-        }
-    }
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyDriversListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate{
+class MyDriversListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate  , AddDriversDelegate {
    
     
     
@@ -19,8 +19,14 @@ class MyDriversListViewController: UIViewController , UITableViewDataSource , UI
         // Do any additional setup after loading the view.
         myDriversList.dataSource = self
         myDriversList.delegate = self
+        self.myDriversList.reloadData()
        
     }
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+        didAddNewDriver()
+           myDriversList.reloadData()
+       }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataModel.getDriverList().count
@@ -52,11 +58,35 @@ class MyDriversListViewController: UIViewController , UITableViewDataSource , UI
             tableView.deselectRow(at: indexPath, animated: true)
         }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Remove the driver at the specified index
+            if let deletedDriver = dataModel.removeDriver(at: indexPath.row) {
+                // Optionally, perform any additional actions related to the deleted driver
+                print("Deleted driver:", deletedDriver)
+
+                // Perform deletion from table view
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                print("Failed to delete driver at index:", indexPath.row)
+            }
+        }
+    }
+
+
+    
+    func didAddNewDriver() {
+        myDriversList.reloadData()
+        }
    
 
     @IBAction func addDriversBtnWasPressed(_ sender: Any) {
         print("Btn was Pressed")
-        self.performSegue(withIdentifier: "dataPassingFromDriverInformationToMyDrivers", sender: self)
+       
     }
     
     
