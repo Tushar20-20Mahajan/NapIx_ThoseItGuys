@@ -33,7 +33,7 @@ struct DriversList : Equatable , Comparable , Codable{
     }
 }
 
-struct VehicleWiseList : Equatable,Comparable{
+struct VehicleWiseList : Equatable,Comparable , Codable{
     var vehicleNumber : String
     var imageNumberPlate : String
     // Implementing Equatable protocol
@@ -117,36 +117,64 @@ class DataModel {
     }
     
     private func initializeVehicleList() {
-        vehicleList = [
-            VehicleWiseList(vehicleNumber: "NYC 7777", imageNumberPlate: "numbersign"),
-            VehicleWiseList(vehicleNumber: "GJZ 0196", imageNumberPlate: "numbersign"),
-            VehicleWiseList(vehicleNumber: "NYC 8910", imageNumberPlate:"numbersign"),
-            VehicleWiseList(vehicleNumber: "CAl 5910", imageNumberPlate:"numbersign"),
-            VehicleWiseList(vehicleNumber: "WAS 3019", imageNumberPlate:"numbersign"),
-            VehicleWiseList(vehicleNumber: "AZM 1718", imageNumberPlate:"numbersign"),
-            VehicleWiseList(vehicleNumber: "SAM 6919", imageNumberPlate: "numbersign")
-        ]
-    }
-
-    func getVehicleList() -> [VehicleWiseList] {
-        return vehicleList.sorted()
-    }
-    
-    func addVehicleToVehicleList(newVehicle: VehicleWiseList) {
-        vehicleList.insert(newVehicle, at: 0)
-    }
+            vehicleList = DataModel.loadFromFileVehicles() ?? [
+                VehicleWiseList(vehicleNumber: "NYC 7777", imageNumberPlate: "numbersign"),
+                VehicleWiseList(vehicleNumber: "GJZ 0196", imageNumberPlate: "numbersign"),
+                VehicleWiseList(vehicleNumber: "NYC 8910", imageNumberPlate: "numbersign"),
+                VehicleWiseList(vehicleNumber: "CAl 5910", imageNumberPlate: "numbersign"),
+                VehicleWiseList(vehicleNumber: "WAS 3019", imageNumberPlate: "numbersign"),
+                VehicleWiseList(vehicleNumber: "AZM 1718", imageNumberPlate: "numbersign"),
+                VehicleWiseList(vehicleNumber: "SAM 6919", imageNumberPlate: "numbersign")
+            ]
+        }
+        
+        func getVehicleList() -> [VehicleWiseList] {
+            return vehicleList.sorted()
+        }
+        
+        func addVehicleToVehicleList(newVehicle: VehicleWiseList) {
+            vehicleList.append(newVehicle)
+            DataModel.saveToFileVehicles(vehicleList: vehicleList)
+        }
+        
+        func removeVehicle(at index: Int) -> VehicleWiseList? {
+            guard index >= 0 && index < vehicleList.count else {
+                return nil
+            }
+            let removedVehicle = vehicleList.remove(at: index)
+            DataModel.saveToFileVehicles(vehicleList: vehicleList)
+            return removedVehicle
+        }
+        
+        private static let DocumentDirectoryForVehicleList = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ?? FileManager.default.temporaryDirectory
+        private static let ArchiveURLForVehicleList = DocumentDirectoryForVehicleList.appendingPathComponent("vehicleList").appendingPathExtension("plist")
+        
+        static func saveToFileVehicles(vehicleList: [VehicleWiseList]) {
+            let propertyListEncoder = PropertyListEncoder()
+            if let codedDrivers = try? propertyListEncoder.encode(vehicleList) {
+                try? codedDrivers.write(to: ArchiveURLForVehicleList, options: .noFileProtection)
+            }
+        }
+        
+        static func loadFromFileVehicles() -> [VehicleWiseList]? {
+            guard let codedVehicles = try? Data(contentsOf: ArchiveURLForVehicleList) else {
+                return nil
+            }
+            let propertyListDecoder = PropertyListDecoder()
+            return try? propertyListDecoder.decode(Array<VehicleWiseList>.self, from: codedVehicles)
+        }
     
 
     // Driver List
 
     
     private func initializeDriverDetailList() {
-        driverDetailList =  DataModel.loadFromFile() ?? [
-            DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290", imageDriver:"figure.seated.seatbelt"),
-            DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"),
-            DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290", imageDriver:"figure.seated.seatbelt"),
-            DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt")
-        ]
+        driverDetailList =  DataModel.loadFromFileDrivers () ?? []
+//            DriversList(name: "Tushar Mahajan", mobileNumber: "+1(654) 559-5290", imageDriver:"figure.seated.seatbelt"),
+//            DriversList(name: "Utsav Sharma", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"),
+//            DriversList(name: "Sunidhi Ratra", mobileNumber: "+1(654) 559-5290", imageDriver:"figure.seated.seatbelt"),
+//            DriversList(name: "Ritik Pandey", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt")
+//        ]
     }
         
     func getDriverList() -> [DriversList] {
@@ -155,7 +183,7 @@ class DataModel {
 
         func addDriversToDriverList(newDriver: DriversList) {
             driverDetailList.append(newDriver)
-            DataModel.saveToFile(driverDetailList: driverDetailList)
+            DataModel.saveToFileDrivers(driverDetailList: driverDetailList)
         }
 
         func removeDriver(at index: Int) -> DriversList? {
@@ -163,7 +191,7 @@ class DataModel {
                 return nil
             }
             let removedDriver = driverDetailList.remove(at: index)
-            DataModel.saveToFile(driverDetailList: driverDetailList)
+            DataModel.saveToFileDrivers(driverDetailList: driverDetailList)
             return removedDriver
         }
 
@@ -172,14 +200,14 @@ class DataModel {
         private static let DocumentDirectoryForDriverList = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ?? FileManager.default.temporaryDirectory
         private static let ArchiveURLForDriverList = DocumentDirectoryForDriverList.appendingPathComponent("driverDetailList").appendingPathExtension("plist")
 
-        static func saveToFile(driverDetailList: [DriversList]) {
+        static func saveToFileDrivers(driverDetailList: [DriversList]) {
             let propertyListEncoder = PropertyListEncoder()
             if let codedDrivers = try? propertyListEncoder.encode(driverDetailList) {
                 try? codedDrivers.write(to: ArchiveURLForDriverList, options: .noFileProtection)
             }
         }
 
-        static func loadFromFile() -> [DriversList]? {
+        static func loadFromFileDrivers() -> [DriversList]? {
             guard let codedDrivers = try? Data(contentsOf: ArchiveURLForDriverList) else {
                 return nil
             }
