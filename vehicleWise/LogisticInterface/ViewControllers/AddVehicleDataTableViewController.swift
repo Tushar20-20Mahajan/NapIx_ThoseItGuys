@@ -1,13 +1,13 @@
 //
-//  AddVehiclesDataTableViewController.swift
+//  AddVehicleDataTableViewController.swift
 //  vehicleWise
 //
-//  Created by student on 01/05/24.
+//  Created by student on 02/05/24.
 //
 
 import UIKit
 
-class AddVehiclesDataTableViewController: UITableViewController {
+class AddVehicleDataTableViewController: UITableViewController {
 
     @IBOutlet weak var vehicleNumberTextFeild: UITextField!
     override func viewDidLoad() {
@@ -21,10 +21,11 @@ class AddVehiclesDataTableViewController: UITableViewController {
     }
 
     
-    @IBAction func cancelBtnWasPressed(_ sender: Any) {
+    @IBAction func cancelBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveBtnWasPressed(_ sender: Any) {
+    @IBAction func saveBtnPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

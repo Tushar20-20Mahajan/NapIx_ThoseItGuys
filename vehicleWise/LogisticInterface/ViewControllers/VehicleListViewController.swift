@@ -21,8 +21,13 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
         vehicleNumberList.dataSource = self
         vehicleNumberList.delegate = self
         
+       // self.vehicleNumberList.reloadData()
         
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.vehicleNumberList.reloadData()
+//        self.reloadInputViews()
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataModel.getVehicleList().count
     }
@@ -73,10 +78,11 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
 
     
     @IBAction func addNewVehicleBtnWasPressed(_ sender: Any) {
+        
     }
     
     
 //    @IBAction func unwindtoVehicleList(unwindSegue : UIStoryboardSegue){
-//        
+//        vehicleNumberList.reloadData()
 //    }
 }
