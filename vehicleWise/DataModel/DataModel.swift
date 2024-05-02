@@ -149,20 +149,48 @@ class DataModel {
         private static let DocumentDirectoryForVehicleList = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ?? FileManager.default.temporaryDirectory
         private static let ArchiveURLForVehicleList = DocumentDirectoryForVehicleList.appendingPathComponent("vehicleList").appendingPathExtension("plist")
         
-        static func saveToFileVehicles(vehicleList: [VehicleWiseList]) {
-            let propertyListEncoder = PropertyListEncoder()
-            if let codedDrivers = try? propertyListEncoder.encode(vehicleList) {
-                try? codedDrivers.write(to: ArchiveURLForVehicleList, options: .noFileProtection)
+//        static func saveToFileVehicles(vehicleList: [VehicleWiseList]) {
+//            let propertyListEncoder = PropertyListEncoder()
+//            if let codedDrivers = try? propertyListEncoder.encode(vehicleList) {
+//                try? codedDrivers.write(to: ArchiveURLForVehicleList, options: .noFileProtection)
+//            }
+//        }
+//        
+//        static func loadFromFileVehicles() -> [VehicleWiseList]? {
+//            guard let codedVehicles = try? Data(contentsOf: ArchiveURLForVehicleList) else {
+//                return nil
+//            }
+//            let propertyListDecoder = PropertyListDecoder()
+//            return try? propertyListDecoder.decode(Array<VehicleWiseList>.self, from: codedVehicles)
+//        }
+    
+    static func saveToFileVehicles(vehicleList: [VehicleWiseList]) {
+        let propertyListEncoder = PropertyListEncoder()
+        if let codedVehicles = try? propertyListEncoder.encode(vehicleList) {
+            do {
+                try codedVehicles.write(to: ArchiveURLForVehicleList, options: .noFileProtection)
+                print("Vehicle list saved successfully!")
+            } catch {
+                print("Error saving vehicle list:", error)
             }
+        } else {
+            print("Error encoding vehicle list.")
         }
-        
-        static func loadFromFileVehicles() -> [VehicleWiseList]? {
-            guard let codedVehicles = try? Data(contentsOf: ArchiveURLForVehicleList) else {
-                return nil
-            }
+    }
+
+    static func loadFromFileVehicles() -> [VehicleWiseList]? {
+        do {
+            let codedVehicles = try Data(contentsOf: ArchiveURLForVehicleList)
             let propertyListDecoder = PropertyListDecoder()
-            return try? propertyListDecoder.decode(Array<VehicleWiseList>.self, from: codedVehicles)
+            let decodedVehicles = try propertyListDecoder.decode([VehicleWiseList].self, from: codedVehicles)
+            print("Vehicle list loaded successfully!")
+            return decodedVehicles
+        } catch {
+            print("Error loading vehicle list:", error)
+            return nil
         }
+    }
+
     
 
     // Driver List

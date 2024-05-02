@@ -13,6 +13,7 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
     
     
     @IBOutlet weak var vehicleNumberList : UITableView!
+    var newVehicle: VehicleWiseList?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +25,10 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
        // self.vehicleNumberList.reloadData()
         
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.vehicleNumberList.reloadData()
-//        self.reloadInputViews()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        vehicleNumberList.reloadData()
+ //       self.reloadInputViews()
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataModel.getVehicleList().count
     }
@@ -82,7 +83,11 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
     }
     
     
-//    @IBAction func unwindtoVehicleList(unwindSegue : UIStoryboardSegue){
-//        vehicleNumberList.reloadData()
-//    }
+   @IBAction func unwindtoVehicleList(unwindSegue : UIStoryboardSegue){
+       if unwindSegue.source is AddVehicleDataTableViewController {
+                   // Reload data to reflect the updated vehicle list
+                   vehicleNumberList.reloadData()
+               }
+        
+    }
 }
