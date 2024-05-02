@@ -18,6 +18,27 @@
 		3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */; };
 		3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */; };
 		3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */; };
+		3F47C3372BE3C946005B1083 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C3362BE3C946005B1083 /* FirebaseAuth */; };
+		3F47C3392BE3C946005B1083 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C3382BE3C946005B1083 /* FirebaseAuthCombine-Community */; };
+		3F47C33B2BE3C946005B1083 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C33A2BE3C946005B1083 /* FirebaseDatabase */; };
+		3F47C33D2BE3C946005B1083 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C33C2BE3C946005B1083 /* FirebaseDatabaseSwift */; };
+		3F47C33F2BE3C946005B1083 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C33E2BE3C946005B1083 /* FirebaseFirestore */; };
+		3F47C3412BE3C946005B1083 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C3402BE3C946005B1083 /* FirebaseFirestoreCombine-Community */; };
+		3F47C3432BE3C946005B1083 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C3422BE3C946005B1083 /* FirebaseFirestoreSwift */; };
+		3F7BF2F72BE3C288003973B7 /* gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF2F62BE3C288003973B7 /* gif.swift */; };
+		3F7BF2F92BE3C28E003973B7 /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BF2F82BE3C28E003973B7 /* giphy.gif */; };
+		3F7BF2FB2BE3C294003973B7 /* output-onlinegiftools.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BF2FA2BE3C294003973B7 /* output-onlinegiftools.gif */; };
+		3F7BF2FD2BE3C2C0003973B7 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF2FC2BE3C2C0003973B7 /* Users.swift */; };
+		3F7BF2FF2BE3C2CF003973B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BF2FE2BE3C2CF003973B7 /* GoogleService-Info.plist */; };
+		3F7BF3092BE3C2E7003973B7 /* EndMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3002BE3C2E7003973B7 /* EndMViewController.swift */; };
+		3F7BF30A2BE3C2E7003973B7 /* SoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3012BE3C2E7003973B7 /* SoundViewController.swift */; };
+		3F7BF30B2BE3C2E7003973B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3022BE3C2E7003973B7 /* LoginViewController.swift */; };
+		3F7BF30C2BE3C2E7003973B7 /* DriverLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3032BE3C2E7003973B7 /* DriverLoginViewController.swift */; };
+		3F7BF30D2BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3042BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift */; };
+		3F7BF30E2BE3C2E7003973B7 /* MonitorMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3052BE3C2E7003973B7 /* MonitorMeViewController.swift */; };
+		3F7BF30F2BE3C2E7003973B7 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3062BE3C2E7003973B7 /* cameraViewController.swift */; };
+		3F7BF3102BE3C2E7003973B7 /* LogisticLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3072BE3C2E7003973B7 /* LogisticLoginViewController.swift */; };
+		3F7BF3112BE3C2E7003973B7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3082BE3C2E7003973B7 /* SignUpViewController.swift */; };
 		3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091C92BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift */; };
 		3F8091CC2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CB2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift */; };
 		3F8091CE2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */; };
@@ -52,6 +73,20 @@
 		3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListViewController.swift; sourceTree = "<group>"; };
 		3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3F7BF2F62BE3C288003973B7 /* gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gif.swift; sourceTree = "<group>"; };
+		3F7BF2F82BE3C28E003973B7 /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
+		3F7BF2FA2BE3C294003973B7 /* output-onlinegiftools.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "output-onlinegiftools.gif"; sourceTree = "<group>"; };
+		3F7BF2FC2BE3C2C0003973B7 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		3F7BF2FE2BE3C2CF003973B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F7BF3002BE3C2E7003973B7 /* EndMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndMViewController.swift; sourceTree = "<group>"; };
+		3F7BF3012BE3C2E7003973B7 /* SoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundViewController.swift; sourceTree = "<group>"; };
+		3F7BF3022BE3C2E7003973B7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3F7BF3032BE3C2E7003973B7 /* DriverLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverLoginViewController.swift; sourceTree = "<group>"; };
+		3F7BF3042BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileOfDriverTableViewController.swift; sourceTree = "<group>"; };
+		3F7BF3052BE3C2E7003973B7 /* MonitorMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonitorMeViewController.swift; sourceTree = "<group>"; };
+		3F7BF3062BE3C2E7003973B7 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
+		3F7BF3072BE3C2E7003973B7 /* LogisticLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogisticLoginViewController.swift; sourceTree = "<group>"; };
+		3F7BF3082BE3C2E7003973B7 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3F8091C92BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledAlertsTableViewCell.swift; sourceTree = "<group>"; };
 		3F8091CB2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showVehiclesListTableViewCell.swift; sourceTree = "<group>"; };
 		3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingSafelyTableViewCell.swift; sourceTree = "<group>"; };
@@ -77,6 +112,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F47C33D2BE3C946005B1083 /* FirebaseDatabaseSwift in Frameworks */,
+				3F47C33B2BE3C946005B1083 /* FirebaseDatabase in Frameworks */,
+				3F47C3372BE3C946005B1083 /* FirebaseAuth in Frameworks */,
+				3F47C3432BE3C946005B1083 /* FirebaseFirestoreSwift in Frameworks */,
+				3F47C3412BE3C946005B1083 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				3F47C33F2BE3C946005B1083 /* FirebaseFirestore in Frameworks */,
+				3F47C3392BE3C946005B1083 /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +128,8 @@
 		3F124B232BD8B9C000325297 /* DriversInterface */ = {
 			isa = PBXGroup;
 			children = (
+				3F9EE2732BE3C0BC0010AB37 /* Users */,
+				3F9EE2722BE3C0A90010AB37 /* Gif */,
 				3F124B292BD8BA7000325297 /* ViewControllers */,
 			);
 			path = DriversInterface;
@@ -133,6 +177,15 @@
 		3F124B292BD8BA7000325297 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3F7BF3062BE3C2E7003973B7 /* cameraViewController.swift */,
+				3F7BF3032BE3C2E7003973B7 /* DriverLoginViewController.swift */,
+				3F7BF3042BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift */,
+				3F7BF3002BE3C2E7003973B7 /* EndMViewController.swift */,
+				3F7BF3022BE3C2E7003973B7 /* LoginViewController.swift */,
+				3F7BF3072BE3C2E7003973B7 /* LogisticLoginViewController.swift */,
+				3F7BF3052BE3C2E7003973B7 /* MonitorMeViewController.swift */,
+				3F7BF3082BE3C2E7003973B7 /* SignUpViewController.swift */,
+				3F7BF3012BE3C2E7003973B7 /* SoundViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -169,6 +222,25 @@
 			path = vehicleWise;
 			sourceTree = "<group>";
 		};
+		3F9EE2722BE3C0A90010AB37 /* Gif */ = {
+			isa = PBXGroup;
+			children = (
+				3F7BF2F62BE3C288003973B7 /* gif.swift */,
+				3F7BF2FA2BE3C294003973B7 /* output-onlinegiftools.gif */,
+				3F7BF2F82BE3C28E003973B7 /* giphy.gif */,
+			);
+			path = Gif;
+			sourceTree = "<group>";
+		};
+		3F9EE2732BE3C0BC0010AB37 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				3F7BF2FE2BE3C2CF003973B7 /* GoogleService-Info.plist */,
+				3F7BF2FC2BE3C2C0003973B7 /* Users.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		3FD505EE2BDADD91001A4C35 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +272,15 @@
 			dependencies = (
 			);
 			name = vehicleWise;
+			packageProductDependencies = (
+				3F47C3362BE3C946005B1083 /* FirebaseAuth */,
+				3F47C3382BE3C946005B1083 /* FirebaseAuthCombine-Community */,
+				3F47C33A2BE3C946005B1083 /* FirebaseDatabase */,
+				3F47C33C2BE3C946005B1083 /* FirebaseDatabaseSwift */,
+				3F47C33E2BE3C946005B1083 /* FirebaseFirestore */,
+				3F47C3402BE3C946005B1083 /* FirebaseFirestoreCombine-Community */,
+				3F47C3422BE3C946005B1083 /* FirebaseFirestoreSwift */,
+			);
 			productName = vehicleWise;
 			productReference = 3F3B76D82BCFE43500746745 /* vehicleWise.app */;
 			productType = "com.apple.product-type.application";
@@ -228,6 +309,9 @@
 				Base,
 			);
 			mainGroup = 3F3B76CF2BCFE43500746745;
+			packageReferences = (
+				3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 3F3B76D92BCFE43500746745 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -244,7 +328,10 @@
 			files = (
 				3F3B76E52BCFE43600746745 /* Assets.xcassets in Resources */,
 				3F3B76E82BCFE43600746745 /* Base in Resources */,
+				3F7BF2F92BE3C28E003973B7 /* giphy.gif in Resources */,
+				3F7BF2FB2BE3C294003973B7 /* output-onlinegiftools.gif in Resources */,
 				3F3B76E32BCFE43500746745 /* Base in Resources */,
+				3F7BF2FF2BE3C2CF003973B7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,28 +346,39 @@
 				3FE391D42BDB696800D002EC /* showDriversListViewController.swift in Sources */,
 				3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */,
 				3FACE9512BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift in Sources */,
+				3F7BF30A2BE3C2E7003973B7 /* SoundViewController.swift in Sources */,
 				3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
 				3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */,
 				3FE391D22BDB651200D002EC /* showVehicleListViewController.swift in Sources */,
 				3FE52CBB2BE1726C0085E044 /* RescheduleTheTruckOnAlertBoardTableViewController.swift in Sources */,
 				3F3B76DC2BCFE43500746745 /* AppDelegate.swift in Sources */,
+				3F7BF2F72BE3C288003973B7 /* gif.swift in Sources */,
 				3F8091CE2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift in Sources */,
+				3F7BF30B2BE3C2E7003973B7 /* LoginViewController.swift in Sources */,
 				3FCCC1AE2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift in Sources */,
 				3FD505F02BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift in Sources */,
+				3F7BF30D2BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift in Sources */,
+				3F7BF30F2BE3C2E7003973B7 /* cameraViewController.swift in Sources */,
 				3F0F24DD2BDDA5FA0033F5D5 /* ActiveAlertOnAlertBoardViewController.swift in Sources */,
 				3FD505F72BDAFAC4001A4C35 /* MyDriversListViewController.swift in Sources */,
 				3F8091CC2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift in Sources */,
 				3FE52CB92BE171D50085E044 /* NewAlertTableViewController.swift in Sources */,
 				3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */,
 				3F0F24E12BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift in Sources */,
+				3F7BF3092BE3C2E7003973B7 /* EndMViewController.swift in Sources */,
+				3F7BF2FD2BE3C2C0003973B7 /* Users.swift in Sources */,
 				3FCCC1B62BE0E249002C4A60 /* ShowDriverListTableViewCell.swift in Sources */,
 				3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */,
+				3F7BF30E2BE3C2E7003973B7 /* MonitorMeViewController.swift in Sources */,
 				3F0F24DF2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift in Sources */,
+				3F7BF3102BE3C2E7003973B7 /* LogisticLoginViewController.swift in Sources */,
 				3FD505F92BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift in Sources */,
 				3F3B76DE2BCFE43500746745 /* SceneDelegate.swift in Sources */,
 				3FACE9532BE37F5A00475536 /* AddVehicleDataTableViewController.swift in Sources */,
+				3F7BF30C2BE3C2E7003973B7 /* DriverLoginViewController.swift in Sources */,
 				3FE52CB52BE1703B0085E044 /* AddDriversDataTableViewController.swift in Sources */,
+				3F7BF3112BE3C2E7003973B7 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +601,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.25.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3F47C3362BE3C946005B1083 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		3F47C3382BE3C946005B1083 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		3F47C33A2BE3C946005B1083 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		3F47C33C2BE3C946005B1083 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		3F47C33E2BE3C946005B1083 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		3F47C3402BE3C946005B1083 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		3F47C3422BE3C946005B1083 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3F47C3352BE3C946005B1083 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3F3B76D02BCFE43500746745 /* Project object */;
 }
