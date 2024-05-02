@@ -70,4 +70,7 @@ class EndMViewController: UIViewController {
     @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
         
     }
+    @IBAction func nwindSegue(_ sender: UIStoryboardSegue){
+        
+    }
 }

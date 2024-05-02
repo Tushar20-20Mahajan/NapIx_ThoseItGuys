@@ -9,6 +9,20 @@ class MonitorMeViewController: UIViewController {
         Gifview.loadGif(name: "output-onlinegiftools")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the back button in the navigation bar
+        navigationItem.hidesBackButton = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the back button in the navigation bar when the view disappears
+        navigationItem.hidesBackButton = false
+    }
+    
     @IBAction func ButtonTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Enter Passkey", message: "Enter passkey to start monitoring", preferredStyle: .alert)
 
@@ -36,7 +50,8 @@ class MonitorMeViewController: UIViewController {
         // Present the alert
         self.present(alert, animated: true, completion: nil)
     }
-//    @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
-//       
+    
+    @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
+        // This method is empty intentionally, as it will be used for unwinding to this view controller
     }
-
+}
