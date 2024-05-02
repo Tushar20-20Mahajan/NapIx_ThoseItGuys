@@ -42,11 +42,6 @@ class AddDriversDataTableViewController: UITableViewController {
                    dataModel.addDriversToDriverList(newDriver: newDriver)
                    delegate?.didAddNewDriver()
                    dismiss(animated: true, completion: nil)
-               }
+        }
     }
-    
-    
-    
-   
-    
 }
