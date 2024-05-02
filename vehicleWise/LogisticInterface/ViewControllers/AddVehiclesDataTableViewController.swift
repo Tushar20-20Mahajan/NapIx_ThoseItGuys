@@ -9,6 +9,7 @@ import UIKit
 
 class AddVehiclesDataTableViewController: UITableViewController {
 
+    @IBOutlet weak var vehicleNumberTextFeild: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,4 +25,6 @@ class AddVehiclesDataTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func saveBtnWasPressed(_ sender: Any) {
+    }
 }

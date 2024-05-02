@@ -52,6 +52,25 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Remove the driver at the specified index
+            if let deletedDriver = dataModel.removeVehicle(at: indexPath.row) {
+                // Optionally, perform any additional actions related to the deleted driver
+                print("Deleted driver:", deletedDriver)
+
+                // Perform deletion from table view
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                print("Failed to delete driver at index:", indexPath.row)
+            }
+        }
+    }
+
     
     @IBAction func addNewVehicleBtnWasPressed(_ sender: Any) {
     }
