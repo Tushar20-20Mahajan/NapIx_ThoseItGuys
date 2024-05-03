@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class VehicleListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate{
+class VehicleListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate , AddVehicleDelegate{
     
     
     
@@ -82,12 +82,16 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
         
     }
     
-    
-   @IBAction func unwindtoVehicleList(unwindSegue : UIStoryboardSegue){
-       if unwindSegue.source is AddVehicleDataTableViewController {
-                   // Reload data to reflect the updated vehicle list
-                   vehicleNumberList.reloadData()
-               }
-        
+    func didAddNewVehicle() {
+        vehicleNumberList.reloadData()
     }
+    
+    
+//   @IBAction func unwindtoVehicleList(unwindSegue : UIStoryboardSegue){
+//       if unwindSegue.source is AddVehicleDataTableViewController {
+//                   // Reload data to reflect the updated vehicle list
+//                   vehicleNumberList.reloadData()
+//               }
+//        
+//    }
 }

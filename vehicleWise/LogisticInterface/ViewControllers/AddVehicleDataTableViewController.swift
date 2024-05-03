@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol AddVehicleDelegate: AnyObject {
+    func didAddNewVehicle()
+}
+
 class AddVehicleDataTableViewController: UITableViewController {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var vehicleNumberTextFeild: UITextField!
+    weak var delegate: AddVehicleDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,12 +40,14 @@ class AddVehicleDataTableViewController: UITableViewController {
                             
             // Add the new vehicle to the data model
             dataModel.addVehicleToVehicleList(newVehicle: newVehicle)
+            delegate?.didAddNewVehicle()
+        dismiss(animated: true, completion: nil)
                             
             // Save the updated vehicle list locally
-            DataModel.saveToFileVehicles(vehicleList: dataModel.getVehicleList())
+           // DataModel.saveToFileVehicles(vehicleList: dataModel.getVehicleList())
             
             // Perform unwind segue to return to VehicleListViewController
-            performSegue(withIdentifier: "saveUnwindVehicle", sender: self)
+           // performSegue(withIdentifier: "saveUnwindVehicle", sender: self)
     }
     func updateSaveButtonState() {
            // Enable the save button only if the text field is not empty
