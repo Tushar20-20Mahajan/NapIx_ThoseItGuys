@@ -49,7 +49,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             // Handle the prediction results as needed
             print("Output String: \(outputString)")
-            if outputString == "fatigue" {
+            if outputString == "Fatigue" {
                 DispatchQueue.main.async { [weak self] in
                     self?.playBeepSound()
                 }

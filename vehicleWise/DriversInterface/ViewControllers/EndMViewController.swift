@@ -1,4 +1,5 @@
 import UIKit
+import AVFoundation
 
 class EndMViewController: UIViewController {
 
@@ -6,6 +7,8 @@ class EndMViewController: UIViewController {
     @IBOutlet weak var endButton: UIButton!
     var isScreenBlack = false
     @IBOutlet weak var blackButton: UIBarButtonItem!
+    
+    var audioPlayer: AVAudioPlayer? // Declare AVAudioPlayer
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +19,23 @@ class EndMViewController: UIViewController {
         
         let buttonLongPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(buttonLongPress(_:)))
         endButton.addGestureRecognizer(buttonLongPressGesture)
+        
+        prepareBeepSound() // Prepare the beep sound
+    }
+    
+    func prepareBeepSound() {
+        if let soundURL = Bundle.main.url(forResource: "beep", withExtension: "mp3") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+                audioPlayer?.prepareToPlay()
+            } catch {
+                print("Error loading beep sound: \(error)")
+            }
+        }
+    }
+    
+    func playBeepSound() {
+        audioPlayer?.play()
     }
     
     @IBAction func End(_ sender: Any) {
@@ -39,6 +59,8 @@ class EndMViewController: UIViewController {
     @objc func timerAction() {
         // Perform the action when the timer fires (after 3 seconds)
         print("Long press detected for 3 seconds")
+        // Play the beep sound
+        playBeepSound()
         // Perform segue to the next screen
         let storyboard = UIStoryboard(name: "Main", bundle: nil) // Change "Main" to your storyboard name
         let destinationViewController = storyboard.instantiateViewController(withIdentifier: "Monitor Me") // Change "Monitor Me" to your destination view controller's identifier
