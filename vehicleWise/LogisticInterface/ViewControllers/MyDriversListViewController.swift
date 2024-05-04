@@ -38,7 +38,7 @@ class MyDriversListViewController: UIViewController , UITableViewDataSource , UI
         // Method to start the timer
         func startReloadTimer() {
             // Timer interval based on whether it's a manual reload or triggered by row deletion
-            let timerInterval = reloadTimer == nil ? 10 : 1
+            let timerInterval = reloadTimer == nil ? 15 : 1
             reloadTimer = Timer.scheduledTimer(timeInterval: TimeInterval(timerInterval), target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
         }
         

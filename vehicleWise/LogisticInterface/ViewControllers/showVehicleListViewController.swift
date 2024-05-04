@@ -11,6 +11,7 @@ protocol SelectVehicleNumberTableViewControllerDelegate {
 }
 
 class showVehicleListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate{
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     @IBOutlet weak var showVehicleList : UITableView!
     var vehicleName: VehicleWiseList?
@@ -21,6 +22,7 @@ class showVehicleListViewController: UIViewController , UITableViewDataSource , 
             // Do any additional setup after loading the view.
             showVehicleList.dataSource = self
             showVehicleList.delegate = self
+            doneButton.isEnabled = false // Initially disable the "Done" button
         }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,5 +52,9 @@ class showVehicleListViewController: UIViewController , UITableViewDataSource , 
             vehicleName = dataModel.getVehicleList()[indexPath.row]
             delegate?.didSelectVehicle(vehicleNumber: vehicleName!)
             tableView.reloadData()
+            doneButton.isEnabled = true // Enable the "Done" button when a row is selected
         }
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil) // Dismiss the current view controller
+    }
 }

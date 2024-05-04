@@ -12,6 +12,8 @@ protocol SelectDriverNameTableViewControllerDelegate {
 class showDriversListViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var showDriverList: UITableView!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     var driverName: DriversList?
         var delegate: SelectDriverNameTableViewControllerDelegate?
         
@@ -22,6 +24,7 @@ class showDriversListViewController: UIViewController , UITableViewDelegate, UIT
         // Do any additional setup after loading the view.
         showDriverList.dataSource = self
         showDriverList.delegate = self
+        doneButton.isEnabled = false // Initially disable the "Done" button
         
     }
     
@@ -51,8 +54,11 @@ class showDriversListViewController: UIViewController , UITableViewDelegate, UIT
         driverName = dataModel.getDriverList()[indexPath.row]
         delegate?.didSelectDriver(driverName: driverName!)
         tableView.reloadData()
+        doneButton.isEnabled = true // Enable the "Done" button when a row is selected
     }
     
-    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil) // Dismiss the current view controller
+    }
 
 }

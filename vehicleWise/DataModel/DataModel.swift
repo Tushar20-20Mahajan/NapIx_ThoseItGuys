@@ -49,7 +49,7 @@ struct VehicleWiseList : Equatable,Comparable , Codable{
 }
 
 
-struct AlertBoardDataDisplayInformation {
+struct AlertBoardDataDisplayInformation : Codable {
     var imageAlert : String
     var route: String
     var vehicleNumber : String
@@ -276,7 +276,7 @@ class DataModel {
     }
     
     private func  initializeScheduledAlertOnAlertBoard() {
-        scheduledAlertOnAlertBoard = [
+        scheduledAlertOnAlertBoard = DataModel.loadFromFileScheduledRoute() ?? [
             AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
             AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
         ]
@@ -287,7 +287,34 @@ class DataModel {
     
     func addScheduledAlertOnAlertBoard(newScheduledAlert: AlertBoardDataDisplayInformation) {
         scheduledAlertOnAlertBoard.insert(newScheduledAlert, at: 0)
+        DataModel.saveToFileScheduledRoute(scheduledRoute: scheduledAlertOnAlertBoard)
     }
+    func removeScheduledRoute(at index: Int) -> AlertBoardDataDisplayInformation? {
+        guard index >= 0 && index < scheduledAlertOnAlertBoard.count else {
+            return nil
+        }
+        let removedSchedule = scheduledAlertOnAlertBoard.remove(at: index)
+        DataModel.saveToFileScheduledRoute(scheduledRoute: scheduledAlertOnAlertBoard)
+        return removedSchedule
+    }
+    
+    private static let DocumentDirectoryForScheduledRoute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ?? FileManager.default.temporaryDirectory
+    private static let ArchiveURLForScheduledRoute = DocumentDirectoryForVehicleList.appendingPathComponent("scheduledAlertOnAlertBoard").appendingPathExtension("plist")
+    
+    static func saveToFileScheduledRoute(scheduledRoute: [AlertBoardDataDisplayInformation]) {
+        let propertyListEncoder = PropertyListEncoder()
+        if let codedScheduledRoute = try? propertyListEncoder.encode(scheduledRoute) {
+            try? codedScheduledRoute.write(to: ArchiveURLForScheduledRoute, options: .noFileProtection)
+        }
+    }
+    static func loadFromFileScheduledRoute() -> [AlertBoardDataDisplayInformation]? {
+        guard let codedScheduledRoute = try? Data(contentsOf: ArchiveURLForScheduledRoute) else {
+            return nil
+        }
+        let propertyListDecoder = PropertyListDecoder()
+        return try? propertyListDecoder.decode(Array<AlertBoardDataDisplayInformation>.self, from: codedScheduledRoute)
+    }
+
     
     // AlertTimmings
 //    private func  initializeActiveAlertTimmingsOnAlertBoard() {
