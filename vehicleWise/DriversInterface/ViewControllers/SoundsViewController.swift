@@ -1,13 +1,13 @@
 //
-//  SoundViewController.swift
-//  Driver
+//  SoundsViewController.swift
+//  vehicleWise
 //
-//  Created by Utsav  on 01/05/24.
+//  Created by student on 04/05/24.
 //
 
 import UIKit
 
-class SoundViewController: UIViewController {
+class SoundsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

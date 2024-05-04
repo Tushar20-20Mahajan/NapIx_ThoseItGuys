@@ -72,32 +72,32 @@ struct ScheduleRoute{
     var departureDetails : Date?
 }
 
-struct VehicleNumberSelection: Equatable {
-    static func ==(lhs: VehicleNumberSelection, rhs: VehicleNumberSelection) -> Bool {
-        return lhs.vehicleNumber == rhs.vehicleNumber
-    }
-    
-    var vehicleNumber: String
-    private static let dataModel = DataModel()  // Instance of DataModel
-    
-    static var all: [VehicleWiseList] {
-        return dataModel.getVehicleList()  // Fetch vehicle list from DataModel
-    }
-}
-
-struct DriverNameSelection: Equatable {
-    static func ==(lhs: DriverNameSelection, rhs: DriverNameSelection) -> Bool {
-        return lhs.driverName == rhs.driverName && lhs.mobileNumber == rhs.mobileNumber
-    }
-    
-    var driverName: String
-    var mobileNumber: String
-    private static let dataModel = DataModel()  // Instance of DataModel
-    
-    static var all: [DriversList] {
-        return dataModel.getDriverList()  // Fetch driver list from DataModel
-    }
-}
+//struct VehicleNumberSelection: Equatable {
+//    static func ==(lhs: VehicleNumberSelection, rhs: VehicleNumberSelection) -> Bool {
+//        return lhs.vehicleNumber == rhs.vehicleNumber
+//    }
+//    
+//    var vehicleNumber: String
+//    private static let dataModel = DataModel()  // Instance of DataModel
+//    
+//    static var all: [VehicleWiseList] {
+//        return dataModel.getVehicleList()  // Fetch vehicle list from DataModel
+//    }
+//}
+//
+//struct DriverNameSelection: Equatable {
+//    static func ==(lhs: DriverNameSelection, rhs: DriverNameSelection) -> Bool {
+//        return lhs.driverName == rhs.driverName && lhs.mobileNumber == rhs.mobileNumber
+//    }
+//    
+//    var driverName: String
+//    var mobileNumber: String
+//    private static let dataModel = DataModel()  // Instance of DataModel
+//    
+//    static var all: [DriversList] {
+//        return dataModel.getDriverList()  // Fetch driver list from DataModel
+//    }
+//}
 
 class DataModel {
     private var vehicleList: [VehicleWiseList] = []

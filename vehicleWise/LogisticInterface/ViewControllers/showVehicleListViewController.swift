@@ -6,48 +6,49 @@
 //
 
 import UIKit
+protocol SelectVehicleNumberTableViewControllerDelegate {
+    func didSelectVehicle(vehicleNumber: VehicleWiseList)
+}
 
 class showVehicleListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate{
     
     @IBOutlet weak var showVehicleList : UITableView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        showVehicleList.dataSource = self
-        showVehicleList.delegate = self
+    var vehicleName: VehicleWiseList?
+        var delegate: SelectVehicleNumberTableViewControllerDelegate?
         
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataModel.getVehicleList().count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "showVehicleListDisplayCell") as? showVehiclesListTableViewCell else {
-            return UITableViewCell()
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            // Do any additional setup after loading the view.
+            showVehicleList.dataSource = self
+            showVehicleList.delegate = self
         }
-
-        let vehicle = dataModel.getVehicleList()[indexPath.row]
-        // Configure the cell with the vehicle data
-        cell.updateViewOfVehicleWise(vehicleNumber: vehicle)
-
-        return cell
-                
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-                if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                    tableView.deselectRow(at: selectedIndexPath, animated: true)
-                }
-                
-//                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-    }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return dataModel.getVehicleList().count
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "showVehicleListDisplayCell") as? showVehiclesListTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            let vehicle = dataModel.getVehicleList()[indexPath.row]
+            // Configure the cell with the vehicle data
+            cell.updateViewOfVehicleWise(vehicleNumber: vehicle)
+            
+            if vehicle == self.vehicleName {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+            
+            return cell
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             tableView.deselectRow(at: indexPath, animated: true)
+            vehicleName = dataModel.getVehicleList()[indexPath.row]
+            delegate?.didSelectVehicle(vehicleNumber: vehicleName!)
+            tableView.reloadData()
         }
-    
-
 }

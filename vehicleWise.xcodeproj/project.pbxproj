@@ -31,7 +31,6 @@
 		3F7BF2FD2BE3C2C0003973B7 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF2FC2BE3C2C0003973B7 /* Users.swift */; };
 		3F7BF2FF2BE3C2CF003973B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BF2FE2BE3C2CF003973B7 /* GoogleService-Info.plist */; };
 		3F7BF3092BE3C2E7003973B7 /* EndMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3002BE3C2E7003973B7 /* EndMViewController.swift */; };
-		3F7BF30A2BE3C2E7003973B7 /* SoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3012BE3C2E7003973B7 /* SoundViewController.swift */; };
 		3F7BF30B2BE3C2E7003973B7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3022BE3C2E7003973B7 /* LoginViewController.swift */; };
 		3F7BF30C2BE3C2E7003973B7 /* DriverLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3032BE3C2E7003973B7 /* DriverLoginViewController.swift */; };
 		3F7BF30D2BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3042BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift */; };
@@ -46,6 +45,7 @@
 		3F8091D02BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CF2BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift */; };
 		3FACE9512BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACE9502BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift */; };
 		3FACE9532BE37F5A00475536 /* AddVehicleDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACE9522BE37F5A00475536 /* AddVehicleDataTableViewController.swift */; };
+		3FBF287C2BE679230009F799 /* SoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF287B2BE679230009F799 /* SoundsViewController.swift */; };
 		3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */; };
 		3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCC1AB2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift */; };
 		3FCCC1AE2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCC1AD2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift */; };
@@ -81,7 +81,6 @@
 		3F7BF2FC2BE3C2C0003973B7 /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		3F7BF2FE2BE3C2CF003973B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F7BF3002BE3C2E7003973B7 /* EndMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndMViewController.swift; sourceTree = "<group>"; };
-		3F7BF3012BE3C2E7003973B7 /* SoundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundViewController.swift; sourceTree = "<group>"; };
 		3F7BF3022BE3C2E7003973B7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3F7BF3032BE3C2E7003973B7 /* DriverLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverLoginViewController.swift; sourceTree = "<group>"; };
 		3F7BF3042BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileOfDriverTableViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		3F8091CF2BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAlertTableViewCell.swift; sourceTree = "<group>"; };
 		3FACE9502BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileOfVehicleTableViewController.swift; sourceTree = "<group>"; };
 		3FACE9522BE37F5A00475536 /* AddVehicleDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleDataTableViewController.swift; sourceTree = "<group>"; };
+		3FBF287B2BE679230009F799 /* SoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsViewController.swift; sourceTree = "<group>"; };
 		3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		3FCCC1AB2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTimmingsViewController.swift; sourceTree = "<group>"; };
 		3FCCC1AD2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTimmingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				3F7BF3072BE3C2E7003973B7 /* LogisticLoginViewController.swift */,
 				3F7BF3052BE3C2E7003973B7 /* MonitorMeViewController.swift */,
 				3F7BF3082BE3C2E7003973B7 /* SignUpViewController.swift */,
-				3F7BF3012BE3C2E7003973B7 /* SoundViewController.swift */,
+				3FBF287B2BE679230009F799 /* SoundsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -353,7 +353,7 @@
 				3FE391D42BDB696800D002EC /* showDriversListViewController.swift in Sources */,
 				3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */,
 				3FACE9512BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift in Sources */,
-				3F7BF30A2BE3C2E7003973B7 /* SoundViewController.swift in Sources */,
+				3FBF287C2BE679230009F799 /* SoundsViewController.swift in Sources */,
 				3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
 				3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */,

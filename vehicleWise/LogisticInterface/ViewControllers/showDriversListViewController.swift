@@ -6,10 +6,15 @@
 //
 
 import UIKit
-
+protocol SelectDriverNameTableViewControllerDelegate {
+    func didSelectDriver(driverName: DriversList)
+}
 class showDriversListViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var showDriverList: UITableView!
+    var driverName: DriversList?
+        var delegate: SelectDriverNameTableViewControllerDelegate?
+        
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +34,11 @@ class showDriversListViewController: UIViewController , UITableViewDelegate, UIT
         if let cell = tableView.dequeueReusableCell(withIdentifier: "showDriverListDisplayCell") as? ShowDriverListTableViewCell{
             let driver = dataModel.getDriverList()[indexPath.row]
             cell.updateDriversView(driver: driver)
+            if driver == self.driverName {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
             return cell
             
         }
@@ -38,15 +48,11 @@ class showDriversListViewController: UIViewController , UITableViewDelegate, UIT
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-                if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                    tableView.deselectRow(at: selectedIndexPath, animated: true)
-                }
-                
-//                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        driverName = dataModel.getDriverList()[indexPath.row]
+        delegate?.didSelectDriver(driverName: driverName!)
+        tableView.reloadData()
     }
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
+    
     
 
 }
