@@ -38,7 +38,6 @@
 		3F7BF30F2BE3C2E7003973B7 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3062BE3C2E7003973B7 /* cameraViewController.swift */; };
 		3F7BF3102BE3C2E7003973B7 /* LogisticLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3072BE3C2E7003973B7 /* LogisticLoginViewController.swift */; };
 		3F7BF3112BE3C2E7003973B7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF3082BE3C2E7003973B7 /* SignUpViewController.swift */; };
-		3F7C3B5C2BE49BE1004EDB3B /* DDModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3F7C3B5B2BE49BE1004EDB3B /* DDModel.mlmodel */; };
 		3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091C92BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift */; };
 		3F8091CC2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CB2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift */; };
 		3F8091CE2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */; };
@@ -46,6 +45,8 @@
 		3FACE9512BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACE9502BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift */; };
 		3FACE9532BE37F5A00475536 /* AddVehicleDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACE9522BE37F5A00475536 /* AddVehicleDataTableViewController.swift */; };
 		3FBF287C2BE679230009F799 /* SoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF287B2BE679230009F799 /* SoundsViewController.swift */; };
+		3FBF28822BE6E0D10009F799 /* DDModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF28812BE6E0D10009F799 /* DDModel.mlmodel */; };
+		3FBF28842BE6E1920009F799 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FBF28832BE6E1920009F799 /* beep.mp3 */; };
 		3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */; };
 		3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCC1AB2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift */; };
 		3FCCC1AE2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCC1AD2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift */; };
@@ -53,7 +54,6 @@
 		3FD505F02BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505EF2BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift */; };
 		3FD505F72BDAFAC4001A4C35 /* MyDriversListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505F62BDAFAC4001A4C35 /* MyDriversListViewController.swift */; };
 		3FD505F92BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD505F82BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift */; };
-		3FDACC232BE4A5A000C9B9BB /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FDACC222BE4A5A000C9B9BB /* beep.mp3 */; };
 		3FE391D22BDB651200D002EC /* showVehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE391D12BDB651200D002EC /* showVehicleListViewController.swift */; };
 		3FE391D42BDB696800D002EC /* showDriversListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE391D32BDB696800D002EC /* showDriversListViewController.swift */; };
 		3FE52CB52BE1703B0085E044 /* AddDriversDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE52CB42BE1703B0085E044 /* AddDriversDataTableViewController.swift */; };
@@ -88,7 +88,6 @@
 		3F7BF3062BE3C2E7003973B7 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
 		3F7BF3072BE3C2E7003973B7 /* LogisticLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogisticLoginViewController.swift; sourceTree = "<group>"; };
 		3F7BF3082BE3C2E7003973B7 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		3F7C3B5B2BE49BE1004EDB3B /* DDModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = DDModel.mlmodel; path = "../../../../../../Downloads/Those It Guys (Project) 2/vehicleWise/vehicleWise/DDModel.mlmodel"; sourceTree = "<group>"; };
 		3F8091C92BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledAlertsTableViewCell.swift; sourceTree = "<group>"; };
 		3F8091CB2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showVehiclesListTableViewCell.swift; sourceTree = "<group>"; };
 		3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingSafelyTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,6 +95,8 @@
 		3FACE9502BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileOfVehicleTableViewController.swift; sourceTree = "<group>"; };
 		3FACE9522BE37F5A00475536 /* AddVehicleDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleDataTableViewController.swift; sourceTree = "<group>"; };
 		3FBF287B2BE679230009F799 /* SoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsViewController.swift; sourceTree = "<group>"; };
+		3FBF28812BE6E0D10009F799 /* DDModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DDModel.mlmodel; sourceTree = "<group>"; };
+		3FBF28832BE6E1920009F799 /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		3FBF4F9D2BD11F9200AB59FC /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		3FCCC1AB2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTimmingsViewController.swift; sourceTree = "<group>"; };
 		3FCCC1AD2BE0C2B3002C4A60 /* AlertTimmingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTimmingsTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 		3FD505EF2BDADDC0001A4C35 /* vehicleNumberDisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleNumberDisplayCell.swift; sourceTree = "<group>"; };
 		3FD505F62BDAFAC4001A4C35 /* MyDriversListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDriversListViewController.swift; sourceTree = "<group>"; };
 		3FD505F82BDAFB28001A4C35 /* MyDriversDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDriversDisplayTableViewCell.swift; sourceTree = "<group>"; };
-		3FDACC222BE4A5A000C9B9BB /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = beep.mp3; path = ../../../../../../Downloads/beep.mp3; sourceTree = "<group>"; };
 		3FE391D12BDB651200D002EC /* showVehicleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showVehicleListViewController.swift; sourceTree = "<group>"; };
 		3FE391D32BDB696800D002EC /* showDriversListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showDriversListViewController.swift; sourceTree = "<group>"; };
 		3FE52CB42BE1703B0085E044 /* AddDriversDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDriversDataTableViewController.swift; sourceTree = "<group>"; };
@@ -219,11 +219,11 @@
 				3F3B76DB2BCFE43500746745 /* AppDelegate.swift */,
 				3F3B76DD2BCFE43500746745 /* SceneDelegate.swift */,
 				3F3B76E12BCFE43500746745 /* Main.storyboard */,
-				3FDACC222BE4A5A000C9B9BB /* beep.mp3 */,
 				3F3B76E42BCFE43600746745 /* Assets.xcassets */,
+				3FBF28832BE6E1920009F799 /* beep.mp3 */,
 				3F3B76E62BCFE43600746745 /* LaunchScreen.storyboard */,
 				3F3B76E92BCFE43600746745 /* Info.plist */,
-				3F7C3B5B2BE49BE1004EDB3B /* DDModel.mlmodel */,
+				3FBF28812BE6E0D10009F799 /* DDModel.mlmodel */,
 			);
 			path = vehicleWise;
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				3F7BF2F92BE3C28E003973B7 /* giphy.gif in Resources */,
 				3F7BF2FB2BE3C294003973B7 /* output-onlinegiftools.gif in Resources */,
 				3F3B76E32BCFE43500746745 /* Base in Resources */,
-				3FDACC232BE4A5A000C9B9BB /* beep.mp3 in Resources */,
+				3FBF28842BE6E1920009F799 /* beep.mp3 in Resources */,
 				3F7BF2FF2BE3C2CF003973B7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,7 +357,7 @@
 				3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
 				3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */,
-				3F7C3B5C2BE49BE1004EDB3B /* DDModel.mlmodel in Sources */,
+				3FBF28822BE6E0D10009F799 /* DDModel.mlmodel in Sources */,
 				3FE391D22BDB651200D002EC /* showVehicleListViewController.swift in Sources */,
 				3FE52CBB2BE1726C0085E044 /* RescheduleTheTruckOnAlertBoardTableViewController.swift in Sources */,
 				3F3B76DC2BCFE43500746745 /* AppDelegate.swift in Sources */,
