@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import GameplayKit
 
 
 
@@ -54,6 +55,7 @@ struct AlertBoardDataDisplayInformation : Codable {
     var route: String
     var vehicleNumber : String
     var driverName : String
+    
 }
 
 struct AlertTimming {
@@ -252,6 +254,25 @@ class DataModel {
                 print("Error removing file:", error)
             }
         }
+    
+    // Function to generate random pasword
+    private func generatePassKey() -> String {
+        let sourceString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        var sequenceOfCharacters: [Character] = []
+        for character in sourceString {
+            sequenceOfCharacters.append(character)
+        }
+        
+        let passwordLength = 4
+        var myPassword: [Character] = []
+        for _ in 0..<passwordLength {
+            let randomPositionPicker = Int.random(in: 0..<sequenceOfCharacters.count)
+            myPassword.append(sequenceOfCharacters[randomPositionPicker])
+        }
+        
+        let password = String(myPassword)
+        return password
+    }
     
     
     // Alert Board
