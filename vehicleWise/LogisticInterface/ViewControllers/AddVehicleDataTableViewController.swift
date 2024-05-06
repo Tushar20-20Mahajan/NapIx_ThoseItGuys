@@ -14,6 +14,7 @@ protocol AddVehicleDelegate: AnyObject {
 class AddVehicleDataTableViewController: UITableViewController {
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     @IBOutlet weak var vehicleNumberTextFeild: UITextField!
     weak var delegate: AddVehicleDelegate?
     override func viewDidLoad() {
@@ -55,17 +56,7 @@ class AddVehicleDataTableViewController: UITableViewController {
            saveButton.isEnabled = !vehicleNumber.isEmpty
        }
     
-//override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if segue.identifier == "saveUnwindVehicle" {
-//        guard let destinationVC = segue.destination as? VehicleListViewController else { return }
-//        
-//        // Pass the newly added vehicle to VehicleListViewController
-//        if let vehicleNumber = vehicleNumberTextFeild.text, !vehicleNumber.isEmpty {
-//            let newVehicle = VehicleWiseList(vehicleNumber: vehicleNumber, imageNumberPlate: "numbersign")
-//            destinationVC.newVehicle = newVehicle
-//        }
-//    }
-//}
+
 
     // Update save button state when text field value changes
 

@@ -11,8 +11,8 @@
 		3F0F24DF2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F24DE2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift */; };
 		3F0F24E12BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F24E02BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift */; };
 		3F14BB112BE8BB2400377D12 /* DDModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */; };
-		3F14BB132BE8BCA100377D12 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB122BE8BCA100377D12 /* cameraViewController.swift */; };
 		3F14BB152BE8BCD500377D12 /* EndMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB142BE8BCD500377D12 /* EndMViewController.swift */; };
+		3F14BB172BE8F12C00377D12 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB162BE8F12C00377D12 /* cameraViewController.swift */; };
 		3F3B76DC2BCFE43500746745 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76DB2BCFE43500746745 /* AppDelegate.swift */; };
 		3F3B76DE2BCFE43500746745 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76DD2BCFE43500746745 /* SceneDelegate.swift */; };
 		3F3B76E32BCFE43500746745 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3F3B76E22BCFE43500746745 /* Base */; };
@@ -66,8 +66,8 @@
 		3F0F24DE2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingSafelyOnAlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F0F24E02BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledOnAlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DDModel.mlmodel; sourceTree = "<group>"; };
-		3F14BB122BE8BCA100377D12 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
 		3F14BB142BE8BCD500377D12 /* EndMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndMViewController.swift; sourceTree = "<group>"; };
+		3F14BB162BE8F12C00377D12 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
 		3F3B76D82BCFE43500746745 /* vehicleWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vehicleWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3B76DB2BCFE43500746745 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F3B76DD2BCFE43500746745 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		3F124B292BD8BA7000325297 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3F14BB122BE8BCA100377D12 /* cameraViewController.swift */,
+				3F14BB162BE8F12C00377D12 /* cameraViewController.swift */,
 				3F7BF3032BE3C2E7003973B7 /* DriverLoginViewController.swift */,
 				3F7BF3042BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift */,
 				3F14BB142BE8BCD500377D12 /* EndMViewController.swift */,
@@ -356,7 +356,7 @@
 				3FBF287C2BE679230009F799 /* SoundsViewController.swift in Sources */,
 				3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
-				3F14BB132BE8BCA100377D12 /* cameraViewController.swift in Sources */,
+				3F14BB172BE8F12C00377D12 /* cameraViewController.swift in Sources */,
 				3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */,
 				3F14BB112BE8BB2400377D12 /* DDModel.mlmodel in Sources */,
 				3FE391D22BDB651200D002EC /* showVehicleListViewController.swift in Sources */,

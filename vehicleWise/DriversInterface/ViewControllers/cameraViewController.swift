@@ -12,6 +12,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.bringSubviewToFront(gifview)
         gifview.loadGif(name: "giphy")
     }
     

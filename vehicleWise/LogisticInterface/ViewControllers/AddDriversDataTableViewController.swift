@@ -14,6 +14,7 @@ protocol AddDriversDelegate: AnyObject {
 class AddDriversDataTableViewController: UITableViewController {
     
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var driverNameTextFeild: UITextField!
     
     @IBOutlet weak var driverMobileNumberTextFeild: UITextField!
@@ -29,8 +30,14 @@ class AddDriversDataTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        saveButton.isEnabled = false
     }
-    
+    func updateSaveButtonState() {
+           // Enable the save button only if the text field is not empty
+           let driverMobileNumber = driverMobileNumberTextFeild.text ?? ""
+        let driverName = driverNameTextFeild.text ?? ""
+        saveButton.isEnabled = !driverName.isEmpty && !driverMobileNumber.isEmpty
+       }
     
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -46,5 +53,11 @@ class AddDriversDataTableViewController: UITableViewController {
         }
         
     }
-    
+   
+    @IBAction func textDidChangedOfDriverMobileNumber(_ sender: Any) {
+        updateSaveButtonState()
+    }
+    @IBAction func textDidChangedOfDriverName(_ sender: Any) {
+        updateSaveButtonState()
+    }
 }
