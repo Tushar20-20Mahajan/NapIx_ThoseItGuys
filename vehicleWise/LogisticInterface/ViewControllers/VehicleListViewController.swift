@@ -27,8 +27,19 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
             // Assign the delegate of the search bar
                     searchTheTruck.delegate = self
             startReloadTimer() // Start the timer when the view loads
+            // Add a gesture recognizer to dismiss the keyboard when tapping anywhere else on the screen
+                    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+                    view.addGestureRecognizer(tapGesture)
+        }
+    // Method to dismiss the keyboard when tapping anywhere else on the screen
+        @objc func dismissKeyboard() {
+            view.endEditing(true)
         }
         
+        // UISearchBarDelegate method to dismiss the keyboard when search button is clicked
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.resignFirstResponder()
+        }
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             // Refresh the data when the view appears
