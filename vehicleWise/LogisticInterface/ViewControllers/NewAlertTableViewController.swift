@@ -39,6 +39,7 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
         let tapGestureDriver = UITapGestureRecognizer(target: self, action: #selector(driverNameLabelTapped))
         driverNameLabel.addGestureRecognizer(tapGestureDriver)
         driverNameLabel.isUserInteractionEnabled = true
+        saveButton.isEnabled = false
     }
 
     
@@ -144,5 +145,18 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
         driverListVC.delegate = self
         present(navController, animated: true, completion: nil)
     }
+    func updateSaveButtonState() {
+           // Enable the save button only if the text field is not empty
+        let fromLocation = fromTextFeild.text ?? ""
+        let toLocation = toTextFeild.text ?? ""
+        saveButton.isEnabled = !fromLocation.isEmpty && !toLocation.isEmpty && (vehicleNumberLabel.text != "Select") && (driverNameLabel.text != "Select")
+       }
 
+    @IBAction func fromTextDidChanged(_ sender: Any) {
+        updateSaveButtonState()
+    }
+    
+    @IBAction func toTextDidChanged(_ sender: Any) {
+        updateSaveButtonState()
+    }
 }
