@@ -68,7 +68,7 @@
 		3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DDModel.mlmodel; sourceTree = "<group>"; };
 		3F14BB142BE8BCD500377D12 /* EndMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndMViewController.swift; sourceTree = "<group>"; };
 		3F14BB162BE8F12C00377D12 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
-		3F3B76D82BCFE43500746745 /* vehicleWise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vehicleWise.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F3B76D82BCFE43500746745 /* Napix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3B76DB2BCFE43500746745 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F3B76DD2BCFE43500746745 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3F3B76E22BCFE43500746745 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 		3F3B76D92BCFE43500746745 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3F3B76D82BCFE43500746745 /* vehicleWise.app */,
+				3F3B76D82BCFE43500746745 /* Napix.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,9 +265,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3F3B76D72BCFE43500746745 /* vehicleWise */ = {
+		3F3B76D72BCFE43500746745 /* Napix */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3F3B76EC2BCFE43600746745 /* Build configuration list for PBXNativeTarget "vehicleWise" */;
+			buildConfigurationList = 3F3B76EC2BCFE43600746745 /* Build configuration list for PBXNativeTarget "Napix" */;
 			buildPhases = (
 				3F3B76D42BCFE43500746745 /* Sources */,
 				3F3B76D52BCFE43500746745 /* Frameworks */,
@@ -277,7 +277,7 @@
 			);
 			dependencies = (
 			);
-			name = vehicleWise;
+			name = Napix;
 			packageProductDependencies = (
 				3F47C3362BE3C946005B1083 /* FirebaseAuth */,
 				3F47C3382BE3C946005B1083 /* FirebaseAuthCombine-Community */,
@@ -288,7 +288,7 @@
 				3F47C3422BE3C946005B1083 /* FirebaseFirestoreSwift */,
 			);
 			productName = vehicleWise;
-			productReference = 3F3B76D82BCFE43500746745 /* vehicleWise.app */;
+			productReference = 3F3B76D82BCFE43500746745 /* Napix.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -306,7 +306,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3F3B76D32BCFE43500746745 /* Build configuration list for PBXProject "vehicleWise" */;
+			buildConfigurationList = 3F3B76D32BCFE43500746745 /* Build configuration list for PBXProject "Napix" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -322,7 +322,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3F3B76D72BCFE43500746745 /* vehicleWise */,
+				3F3B76D72BCFE43500746745 /* Napix */,
 			);
 		};
 /* End PBXProject section */
@@ -592,7 +592,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3F3B76D32BCFE43500746745 /* Build configuration list for PBXProject "vehicleWise" */ = {
+		3F3B76D32BCFE43500746745 /* Build configuration list for PBXProject "Napix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F3B76EA2BCFE43600746745 /* Debug */,
@@ -601,7 +601,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3F3B76EC2BCFE43600746745 /* Build configuration list for PBXNativeTarget "vehicleWise" */ = {
+		3F3B76EC2BCFE43600746745 /* Build configuration list for PBXNativeTarget "Napix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3F3B76ED2BCFE43600746745 /* Debug */,
