@@ -55,7 +55,12 @@ struct AlertBoardDataDisplayInformation : Codable {
     var route: String
     var vehicleNumber : String
     var driverName : String
-    
+    var departureDetails : String
+}
+
+struct ScheduledTruck : Codable{
+    var passKeyId : String
+    var truckInfo : AlertBoardDataDisplayInformation
 }
 
 struct AlertTimming {
@@ -63,50 +68,18 @@ struct AlertTimming {
     var timeAlert : Date
 }
 
-
-struct ScheduleRoute{
-    var vehicleNumber :String
-    var driverName : String
-    
-    var fromLocation : String
-    var toLocation : String
-    
-    var departureDetails : Date?
+func returnDictionary() -> [String: AlertBoardDataDisplayInformation]{
+    var dict: [String: AlertBoardDataDisplayInformation] = [:]
+    return dict
 }
 
-//struct VehicleNumberSelection: Equatable {
-//    static func ==(lhs: VehicleNumberSelection, rhs: VehicleNumberSelection) -> Bool {
-//        return lhs.vehicleNumber == rhs.vehicleNumber
-//    }
-//    
-//    var vehicleNumber: String
-//    private static let dataModel = DataModel()  // Instance of DataModel
-//    
-//    static var all: [VehicleWiseList] {
-//        return dataModel.getVehicleList()  // Fetch vehicle list from DataModel
-//    }
-//}
-//
-//struct DriverNameSelection: Equatable {
-//    static func ==(lhs: DriverNameSelection, rhs: DriverNameSelection) -> Bool {
-//        return lhs.driverName == rhs.driverName && lhs.mobileNumber == rhs.mobileNumber
-//    }
-//    
-//    var driverName: String
-//    var mobileNumber: String
-//    private static let dataModel = DataModel()  // Instance of DataModel
-//    
-//    static var all: [DriversList] {
-//        return dataModel.getDriverList()  // Fetch driver list from DataModel
-//    }
-//}
 
 class DataModel {
     private var vehicleList: [VehicleWiseList] = []
     private var driverDetailList: [DriversList] = []
     private var activeAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
     private var drivingSafelyAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
-    private var scheduledAlertOnAlertBoard: [AlertBoardDataDisplayInformation] = []
+    private var scheduledAlertOnAlertBoard: [String : AlertBoardDataDisplayInformation] = [:]
     private var activeAlertTimmingsOnAlertBoard : [AlertTimming] = []
     
     init() {
@@ -165,33 +138,7 @@ class DataModel {
             let propertyListDecoder = PropertyListDecoder()
             return try? propertyListDecoder.decode(Array<VehicleWiseList>.self, from: codedVehicles)
         }
-    
-//    static func saveToFileVehicles(vehicleList: [VehicleWiseList]) {
-//        let propertyListEncoder = PropertyListEncoder()
-//        if let codedVehicles = try? propertyListEncoder.encode(vehicleList) {
-//            do {
-//                try codedVehicles.write(to: ArchiveURLForVehicleList, options: .noFileProtection)
-//                print("Vehicle list saved successfully!")
-//            } catch {
-//                print("Error saving vehicle list:", error)
-//            }
-//        } else {
-//            print("Error encoding vehicle list.")
-//        }
-//    }
-//
-//    static func loadFromFileVehicles() -> [VehicleWiseList]? {
-//        do {
-//            let codedVehicles = try Data(contentsOf: ArchiveURLForVehicleList)
-//            let propertyListDecoder = PropertyListDecoder()
-//            let decodedVehicles = try propertyListDecoder.decode([VehicleWiseList].self, from: codedVehicles)
-//            print("Vehicle list loaded successfully!")
-//            return decodedVehicles
-//        } catch {
-//            print("Error loading vehicle list:", error)
-//            return nil
-//        }
-//    }
+
 
     
 
@@ -256,7 +203,7 @@ class DataModel {
         }
     
     // Function to generate random pasword
-    private func generatePassKey() -> String {
+        func generatePassKey() -> String {
         let sourceString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         var sequenceOfCharacters: [Character] = []
         for character in sourceString {
@@ -278,8 +225,8 @@ class DataModel {
     // Alert Board
     private func initializeActiveAlertOnAlertBoard() {
         activeAlertOnAlertBoard = [
-            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: "Ritik Pandey"),
-            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: "Arman Kumar")
+            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: "Ritik Pandey", departureDetails: "dd/MM/yyyy HH:mm"),
+            AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: "Arman Kumar", departureDetails: "dd/MM/yyyy HH:mm")
         ]
     }
     func getActiveAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
@@ -288,8 +235,8 @@ class DataModel {
     
     private func  initializeDrivingSafelyAlertOnAlertBoard() {
         drivingSafelyAlertOnAlertBoard = [
-            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
-            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
+            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar", departureDetails: "dd/MM/yyyy HH:mm"),
+            AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh", departureDetails: "dd/MM/yyyy HH:mm")
         ]
     }
     func getDrivingSafelyAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
@@ -298,42 +245,47 @@ class DataModel {
     
     private func  initializeScheduledAlertOnAlertBoard() {
         scheduledAlertOnAlertBoard = DataModel.loadFromFileScheduledRoute() ?? [
-            AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar"),
-            AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh")
+            "1234": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar", departureDetails: "dd/MM/yyyy HH:mm"),
+            "5678": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh", departureDetails: "dd/MM/yyyy HH:mm")
         ]
     }
-    func getScheduledAlertOnAlertBoard() -> [AlertBoardDataDisplayInformation] {
+
+    func getScheduledAlertOnAlertBoard() -> [String:AlertBoardDataDisplayInformation] {
         return scheduledAlertOnAlertBoard
     }
     
-    func addScheduledAlertOnAlertBoard(newScheduledAlert: AlertBoardDataDisplayInformation) {
-        scheduledAlertOnAlertBoard.insert(newScheduledAlert, at: 0)
+    
+    func addScheduledAlertOnAlertBoard(newScheduledAlert: (String, AlertBoardDataDisplayInformation)) {
+        scheduledAlertOnAlertBoard[newScheduledAlert.0] = newScheduledAlert.1
         DataModel.saveToFileScheduledRoute(scheduledRoute: scheduledAlertOnAlertBoard)
     }
-    func removeScheduledRoute(at index: Int) -> AlertBoardDataDisplayInformation? {
-        guard index >= 0 && index < scheduledAlertOnAlertBoard.count else {
+
+    func removeScheduledRoute(forKey key: String) -> AlertBoardDataDisplayInformation? {
+        guard let removedSchedule = scheduledAlertOnAlertBoard.removeValue(forKey: key) else {
             return nil
         }
-        let removedSchedule = scheduledAlertOnAlertBoard.remove(at: index)
         DataModel.saveToFileScheduledRoute(scheduledRoute: scheduledAlertOnAlertBoard)
         return removedSchedule
     }
+
     
     private static let DocumentDirectoryForScheduledRoute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ?? FileManager.default.temporaryDirectory
-    private static let ArchiveURLForScheduledRoute = DocumentDirectoryForVehicleList.appendingPathComponent("scheduledAlertOnAlertBoard").appendingPathExtension("plist")
     
-    static func saveToFileScheduledRoute(scheduledRoute: [AlertBoardDataDisplayInformation]) {
+    private static let ArchiveURLForScheduledRoute = DocumentDirectoryForScheduledRoute.appendingPathComponent("scheduledAlertOnAlertBoard").appendingPathExtension("plist")
+
+    static func saveToFileScheduledRoute(scheduledRoute: [String: AlertBoardDataDisplayInformation]) {
         let propertyListEncoder = PropertyListEncoder()
         if let codedScheduledRoute = try? propertyListEncoder.encode(scheduledRoute) {
             try? codedScheduledRoute.write(to: ArchiveURLForScheduledRoute, options: .noFileProtection)
         }
     }
-    static func loadFromFileScheduledRoute() -> [AlertBoardDataDisplayInformation]? {
+
+    static func loadFromFileScheduledRoute() -> [String: AlertBoardDataDisplayInformation]? {
         guard let codedScheduledRoute = try? Data(contentsOf: ArchiveURLForScheduledRoute) else {
             return nil
         }
         let propertyListDecoder = PropertyListDecoder()
-        return try? propertyListDecoder.decode(Array<AlertBoardDataDisplayInformation>.self, from: codedScheduledRoute)
+        return try? propertyListDecoder.decode(Dictionary<String, AlertBoardDataDisplayInformation>.self, from: codedScheduledRoute)
     }
 
     

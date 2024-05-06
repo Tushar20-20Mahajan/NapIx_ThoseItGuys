@@ -58,16 +58,19 @@ class ScheduledOnAlertBoardViewController: UIViewController , UITableViewDataSou
         return dataModel.getScheduledAlertOnAlertBoard().count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "scheduledAlertBoard") as? ScheduledAlertsTableViewCell{
-            let alerts = dataModel.getScheduledAlertOnAlertBoard()[indexPath.row]
-            
-            cell.updateViewOfScheduledAlertBoard(alerts: alerts)
-            
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "scheduledAlertBoard") as? ScheduledAlertsTableViewCell {
+            let scheduledAlertKeys = Array(dataModel.getScheduledAlertOnAlertBoard().keys)
+            let keyAtIndex = scheduledAlertKeys[indexPath.row]
+            if let alert = dataModel.getScheduledAlertOnAlertBoard()[keyAtIndex] {
+                cell.updateViewOfScheduledAlertBoard(alerts: alert)
+            }
             return cell
         }
         return ScheduledAlertsTableViewCell()
     }
+
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }

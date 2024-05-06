@@ -1,68 +1,30 @@
 import UIKit
 import AVFoundation
-import CoreML
+import Vision
 
 class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-    
-    var ddModel: DDModel!
-    var audioPlayer: AVAudioPlayer?
     
     @IBOutlet weak var gifview: UIImageView!
     @IBOutlet weak var cameraView: UIView!
     
     var captureSession = AVCaptureSession()
     var previewLayer = AVCaptureVideoPreviewLayer()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gifview.loadGif(name: "giphy")
-        do {
-            ddModel = try DDModel(configuration: MLModelConfiguration())
-        } catch {
-            print("Error initializing Core ML Model \(error)")
-        }
-        prepareBeepSound()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureCamera()
     }
-
-    func prepareBeepSound() {
-        if let soundURL = Bundle.main.url(forResource: "beep", withExtension: "mp3") {
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-                audioPlayer?.prepareToPlay()
-            } catch {
-                print("Error loading beep sound: \(error)")
-            }
-        }
-    }
-
+    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        do {
-            let input = DDModelInput(image: pixelBuffer)
-            let prediction = try ddModel.prediction(input: input)
-            let outputString = prediction.target
-            
-            // Handle the prediction results as needed
-            print("Output String: \(outputString)")
-            if outputString == "Fatigue" {
-                DispatchQueue.main.async { [weak self] in
-                    self?.playBeepSound()
-                }
-            }
-        } catch {
-            print("Error making prediction: \(error)")
-        }
+        // Perform face detection on the captured video frames
+        detectFaces(in: sampleBuffer)
     }
-
-    func playBeepSound() {
-        audioPlayer?.play()
-    }
-
+    
     func configureCamera() {
         guard let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {
             print("Failed to get the front camera device")
@@ -89,5 +51,54 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         previewLayer.frame = cameraView.bounds
         cameraView.layer.addSublayer(previewLayer)
         captureSession.startRunning()
+    }
+    
+    func detectFaces(in sampleBuffer: CMSampleBuffer) {
+        // Perform face detection using Vision Kit
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        
+        let request = VNDetectFaceRectanglesRequest { (request, error) in
+            if let error = error {
+                print("Error detecting faces: \(error)")
+                return
+            }
+            
+            guard let results = request.results as? [VNFaceObservation] else { return }
+            
+            for observation in results {
+                // Process each detected face observation
+                let boundingBox = observation.boundingBox
+                let transformedRect = self.transformRect(boundingBox, viewRect: self.cameraView.bounds)
+                self.highlightFace(rect: transformedRect)
+            }
+        }
+        
+        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
+        do {
+            try handler.perform([request])
+        } catch {
+            print("Failed to perform face detection: \(error)")
+        }
+    }
+    
+    func transformRect(_ faceRect: CGRect, viewRect: CGRect) -> CGRect {
+        let w = viewRect.width
+        let h = viewRect.height
+        
+        let x = w * faceRect.origin.x
+        let y = h * (1 - faceRect.origin.y - faceRect.height)
+        let width = w * faceRect.width
+        let height = h * faceRect.height
+        
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    func highlightFace(rect: CGRect) {
+        // Add visual highlighting for detected face
+        let faceRectLayer = CAShapeLayer()
+        faceRectLayer.frame = rect
+        faceRectLayer.borderColor = UIColor.red.cgColor
+        faceRectLayer.borderWidth = 2
+        cameraView.layer.addSublayer(faceRectLayer)
     }
 }

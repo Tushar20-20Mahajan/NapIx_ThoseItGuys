@@ -64,21 +64,30 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         guard let from = fromTextFeild.text,
-                      let to = toTextFeild.text,
-                      let selectedVehicle = selectedVehicle,
-                      let selectedDriver = selectedDriver else {
-                    // Display an alert or handle the case where data is incomplete
-                    return
-                }
+                  let to = toTextFeild.text,
+                  let selectedVehicle = selectedVehicle,
+                  let selectedDriver = selectedDriver else {
+                // Display an alert or handle the case where data is incomplete
+                return
+            }
 
-                let newAlert = AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg",
-                                                                route: "\(from) - \(to)",
-                                                                vehicleNumber: selectedVehicle.vehicleNumber,
-                                                                driverName: selectedDriver.name)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+            let selectedDateAndTime = dateFormatter.string(from: dateAndTime.date)
+        let passId = dataModel.generatePassKey()
 
-                dataModel.addScheduledAlertOnAlertBoard(newScheduledAlert: newAlert)
-                delegate?.didAddNewScheduleToRoute()
-                dismiss(animated: true, completion: nil)
+            print(from)
+            print(to)
+        print(selectedDriver.name)
+        print(selectedVehicle.vehicleNumber)
+            print(selectedDateAndTime)
+        print(passId)
+
+            // Here you can use `selectedDateAndTime` as a string representation of the selected date and time.
+        dataModel.addScheduledAlertOnAlertBoard(newScheduledAlert: (passId, AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "\(from) - \(to)", vehicleNumber: "\(selectedVehicle.vehicleNumber)", driverName: "\(selectedDriver.name)", departureDetails: selectedDateAndTime)))
+
+            delegate?.didAddNewScheduleToRoute()
+            dismiss(animated: true, completion: nil)
     }
     
     func didSelectVehicle(_ controller: showVehicleListViewController, didSelect vehicleNumber: VehicleWiseList) {

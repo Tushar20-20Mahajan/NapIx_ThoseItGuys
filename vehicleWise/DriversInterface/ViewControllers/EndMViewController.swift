@@ -1,7 +1,8 @@
 import UIKit
 import AVFoundation
+import CoreML
 
-class EndMViewController: UIViewController {
+class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     var timer: Timer?
     @IBOutlet weak var endButton: UIButton!
@@ -9,6 +10,13 @@ class EndMViewController: UIViewController {
     @IBOutlet weak var blackButton: UIBarButtonItem!
     
     var audioPlayer: AVAudioPlayer? // Declare AVAudioPlayer
+    
+    var ddModel: DDModel!
+    var captureSession: AVCaptureSession?
+    var isDrowsy: Bool = false
+    var frameCount: Int = 0
+    var drowsinessStartTime: Date?
+    let drowsinessThreshold: TimeInterval = 4.0 // Duration for drowsiness to trigger an alert
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +29,7 @@ class EndMViewController: UIViewController {
         endButton.addGestureRecognizer(buttonLongPressGesture)
         
         prepareBeepSound() // Prepare the beep sound
+        setupDrowsinessDetection()
     }
     
     func prepareBeepSound() {
@@ -39,7 +48,22 @@ class EndMViewController: UIViewController {
     }
     
     @IBAction func End(_ sender: Any) {
-        // Do nothing here, the segue will be triggered from timerAction()
+        // Stop the timer if it's running
+        timer?.invalidate()
+        // Enable the endButton
+        endButton.isEnabled = true
+        
+        // Stop the AVCaptureSession
+        captureSession?.stopRunning()
+        // Remove the sample buffer delegate
+        captureSession?.outputs.forEach { output in
+            captureSession?.removeOutput(output)
+        }
+        
+        // Perform segue to the next screen
+        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Change "Main" to your storyboard name
+        let destinationViewController = storyboard.instantiateViewController(withIdentifier: "Monitor Me") // Change "Monitor Me" to your destination view controller's identifier
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
 
     @objc func longPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
@@ -89,10 +113,83 @@ class EndMViewController: UIViewController {
         // Toggle the screen state flag
         isScreenBlack = !isScreenBlack
     }
-    @IBAction func unwindSegue(_ sender: UIStoryboardSegue) {
+    
+    func setupDrowsinessDetection() {
+        do {
+            ddModel = try DDModel(configuration: MLModelConfiguration())
+        } catch {
+            print("Error initializing Core ML Model \(error)")
+        }
         
+        // Setup camera session for drowsiness detection
+        captureSession = AVCaptureSession()
+        guard let captureSession = captureSession else {
+            print("Failed to create AVCaptureSession")
+            return
+        }
+        
+        guard let frontCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {
+            print("Failed to get the front camera device")
+            return
+        }
+        
+        do {
+            let input = try AVCaptureDeviceInput(device: frontCamera)
+            captureSession.addInput(input)
+        } catch {
+            print("Error configuring camera input: \(error)")
+            return
+        }
+        
+        let output = AVCaptureVideoDataOutput()
+        output.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)]
+        output.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
+        
+        captureSession.addOutput(output)
+        captureSession.startRunning()
     }
-    @IBAction func nwindSegue(_ sender: UIStoryboardSegue){
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // Process every 3rd frame
+        frameCount += 1
+        guard frameCount % 3 == 0 else { return }
         
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        do {
+            let input = DDModelInput(image: pixelBuffer)
+            let prediction = try ddModel.prediction(input: input)
+            let outputString = prediction.target
+            
+            // Handle the prediction results as needed
+            print("Output String: \(outputString)")
+            if outputString == "Fatigue" {
+                if isDrowsy {
+                    // Drowsiness detected
+                    if let startTime = drowsinessStartTime {
+                        let elapsedTime = Date().timeIntervalSince(startTime)
+                        if elapsedTime >= drowsinessThreshold {
+                            // Drowsiness persisted for the threshold duration, trigger alert
+                            DispatchQueue.main.async { [weak self] in
+                                self?.playBeepSound()
+                                // Trigger an alert or take appropriate action here
+                            }
+                        }
+                    } else {
+                        // Start tracking drowsiness
+                        drowsinessStartTime = Date()
+                    }
+                } else {
+                    // Start tracking drowsiness
+                    isDrowsy = true
+                    drowsinessStartTime = Date()
+                }
+            } else {
+                // Reset drowsiness tracking
+                isDrowsy = false
+                drowsinessStartTime = nil
+            }
+        } catch {
+            print("Error making prediction: \(error)")
+        }
     }
 }
