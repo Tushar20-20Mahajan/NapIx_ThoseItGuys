@@ -197,7 +197,7 @@
 		3F3B76CF2BCFE43500746745 = {
 			isa = PBXGroup;
 			children = (
-				3F3B76DA2BCFE43500746745 /* vehicleWise */,
+				3F3B76DA2BCFE43500746745 /* NapixApp */,
 				3F3B76D92BCFE43500746745 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3F3B76DA2BCFE43500746745 /* vehicleWise */ = {
+		3F3B76DA2BCFE43500746745 /* NapixApp */ = {
 			isa = PBXGroup;
 			children = (
 				3F124B262BD8BA0700325297 /* DataModel */,
@@ -225,7 +225,7 @@
 				3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */,
 				3F3B76E92BCFE43600746745 /* Info.plist */,
 			);
-			path = vehicleWise;
+			path = NapixApp;
 			sourceTree = "<group>";
 		};
 		3F9EE2722BE3C0A90010AB37 /* Gif */ = {
