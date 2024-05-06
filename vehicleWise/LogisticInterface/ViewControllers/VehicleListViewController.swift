@@ -8,9 +8,10 @@
 import UIKit
 import Foundation
 
-class VehicleListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate , AddVehicleDelegate{
+class VehicleListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate , AddVehicleDelegate , UISearchBarDelegate{
     
     
+    @IBOutlet weak var searchTheTruck: UISearchBar!
     
     @IBOutlet weak var vehicleNumberList : UITableView!
     var newVehicle: VehicleWiseList?
@@ -23,6 +24,8 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
             vehicleNumberList.dataSource = self
             vehicleNumberList.delegate = self
             
+            // Assign the delegate of the search bar
+                    searchTheTruck.delegate = self
             startReloadTimer() // Start the timer when the view loads
         }
         
@@ -55,6 +58,17 @@ class VehicleListViewController: UIViewController , UITableViewDataSource , UITa
             // Reload the table view data
             vehicleNumberList.reloadData()
         }
+    // UISearchBarDelegate method to show keyboard when search bar is tapped
+       func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+           // Return true to allow editing and show the keyboard
+           return true
+       }
+       
+       // Method to hide keyboard when user taps anywhere else on the screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return dataModel.getVehicleList().count
