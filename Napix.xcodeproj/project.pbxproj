@@ -28,6 +28,7 @@
 		3F47C33F2BE3C946005B1083 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C33E2BE3C946005B1083 /* FirebaseFirestore */; };
 		3F47C3412BE3C946005B1083 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C3402BE3C946005B1083 /* FirebaseFirestoreCombine-Community */; };
 		3F47C3432BE3C946005B1083 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3F47C3422BE3C946005B1083 /* FirebaseFirestoreSwift */; };
+		3F7836DC2BE9E67A0007DFFD /* FDModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3F7836DB2BE9E67A0007DFFD /* FDModel.mlmodel */; };
 		3F7BF2F72BE3C288003973B7 /* gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF2F62BE3C288003973B7 /* gif.swift */; };
 		3F7BF2F92BE3C28E003973B7 /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BF2F82BE3C28E003973B7 /* giphy.gif */; };
 		3F7BF2FB2BE3C294003973B7 /* output-onlinegiftools.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BF2FA2BE3C294003973B7 /* output-onlinegiftools.gif */; };
@@ -78,6 +79,7 @@
 		3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListViewController.swift; sourceTree = "<group>"; };
 		3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3F7836DB2BE9E67A0007DFFD /* FDModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FDModel.mlmodel; sourceTree = "<group>"; };
 		3F7BF2F62BE3C288003973B7 /* gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gif.swift; sourceTree = "<group>"; };
 		3F7BF2F82BE3C28E003973B7 /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 		3F7BF2FA2BE3C294003973B7 /* output-onlinegiftools.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "output-onlinegiftools.gif"; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				3F3B76E42BCFE43600746745 /* Assets.xcassets */,
 				3FBF28832BE6E1920009F799 /* beep.mp3 */,
 				3F3B76E62BCFE43600746745 /* LaunchScreen.storyboard */,
+				3F7836DB2BE9E67A0007DFFD /* FDModel.mlmodel */,
 				3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */,
 				3F3B76E92BCFE43600746745 /* Info.plist */,
 			);
@@ -357,6 +360,7 @@
 				3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
 				3F14BB172BE8F12C00377D12 /* cameraViewController.swift in Sources */,
+				3F7836DC2BE9E67A0007DFFD /* FDModel.mlmodel in Sources */,
 				3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */,
 				3F14BB112BE8BB2400377D12 /* DDModel.mlmodel in Sources */,
 				3FE391D22BDB651200D002EC /* showVehicleListViewController.swift in Sources */,

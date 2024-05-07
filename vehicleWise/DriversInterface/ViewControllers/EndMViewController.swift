@@ -12,6 +12,7 @@ class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     var audioPlayer: AVAudioPlayer? // Declare AVAudioPlayer
     
     var ddModel: DDModel!
+    var fdModel: FDModel!
     var captureSession: AVCaptureSession?
     var isDrowsy: Bool = false
     var frameCount: Int = 0
@@ -115,10 +116,15 @@ class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     }
     
     func setupDrowsinessDetection() {
-        do {
-            ddModel = try DDModel(configuration: MLModelConfiguration())
-        } catch {
-            print("Error initializing Core ML Model \(error)")
+        do{
+            fdModel = try FDModel(configuration: MLModelConfiguration())
+            do {
+                ddModel = try DDModel(configuration: MLModelConfiguration())
+            } catch {
+                print("Error initializing DD Model \(error)")
+            }
+        } catch{
+            print("Error initializing FD Model \(error)")
         }
         
         // Setup camera session for drowsiness detection
@@ -155,41 +161,58 @@ class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         guard frameCount % 3 == 0 else { return }
         
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        
         do {
-            let input = DDModelInput(image: pixelBuffer)
-            let prediction = try ddModel.prediction(input: input)
-            let outputString = prediction.target
             
-            // Handle the prediction results as needed
-            print("Output String: \(outputString)")
-            if outputString == "Fatigue" {
-                if isDrowsy {
-                    // Drowsiness detected
-                    if let startTime = drowsinessStartTime {
-                        let elapsedTime = Date().timeIntervalSince(startTime)
-                        if elapsedTime >= drowsinessThreshold {
-                            // Drowsiness persisted for the threshold duration, trigger alert
-                            DispatchQueue.main.async { [weak self] in
-                                self?.playBeepSound()
-                                // Trigger an alert or take appropriate action here
+            let input1 = FDModelInput(image: pixelBuffer)
+            let prediction1 = try fdModel.prediction(input: input1)
+            let outputString1 = prediction1.target
+            
+            print("Output String is: \(outputString1)")
+            
+            if outputString1 == "face detected"{
+                do {
+                    let input = DDModelInput(image: pixelBuffer)
+                    let prediction = try ddModel.prediction(input: input)
+                    let outputString = prediction.target
+                    
+                    // Handle the prediction results as needed
+                    print("Output String: \(outputString)")
+                    if outputString == "Fatigue" {
+                        if isDrowsy {
+                            // Drowsiness detected
+                            if let startTime = drowsinessStartTime {
+                                let elapsedTime = Date().timeIntervalSince(startTime)
+                                if elapsedTime >= drowsinessThreshold {
+                                    // Drowsiness persisted for the threshold duration, trigger alert
+                                    DispatchQueue.main.async { [weak self] in
+                                        self?.playBeepSound()
+                                        // Trigger an alert or take appropriate action here
+                                    }
+                                }
+                            } else {
+                                // Start tracking drowsiness
+                                drowsinessStartTime = Date()
                             }
+                        } else {
+                            // Start tracking drowsiness
+                            isDrowsy = true
+                            drowsinessStartTime = Date()
                         }
                     } else {
-                        // Start tracking drowsiness
-                        drowsinessStartTime = Date()
+                        // Reset drowsiness tracking
+                        isDrowsy = false
+                        drowsinessStartTime = nil
                     }
-                } else {
-                    // Start tracking drowsiness
-                    isDrowsy = true
-                    drowsinessStartTime = Date()
+                } catch {
+                    print("Error making drowsiness prediction: \(error)")
                 }
             } else {
-                // Reset drowsiness tracking
-                isDrowsy = false
-                drowsinessStartTime = nil
+                print("No face to detect drowsiness")
             }
-        } catch {
-            print("Error making prediction: \(error)")
+           
+        } catch{
+            print("Error making face prediction \(error)")
         }
     }
 }
