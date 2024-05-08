@@ -21,8 +21,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var gifview: UIImageView!
     @IBOutlet weak var cameraView: UIView!
-    @IBOutlet weak var turnOfCamView: UIBarButtonItem!
-    @IBOutlet weak var turnOnCamView: UIBarButtonItem!
+    @IBOutlet weak var turnOffCamView: UIBarButtonItem!
     
     @IBOutlet weak var emojiPic: UIImageView!
     override func viewDidLoad() {
@@ -33,7 +32,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         setupDrowsinessDetection()
         configureCamera()
         emojiPic.isHidden = true
-        turnOnCamView.isEnabled = false
+      //  turnOnCamView.isEnabled = false
 
         // Add long-press gesture recognizer to the endButton
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(endButtonLongPressed(_:)))
@@ -202,20 +201,32 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     }
     
-    @IBAction func TurnTheCamViewOn(_ sender: Any) {
-        emojiPic.isHidden = true
+    @IBAction func TurnTheCamViewToggle(_ sender: Any) {
+        if turnOffCamView.image == UIImage(systemName: "shareplay") {
+                // Change back to the original image
+                turnOffCamView.image = UIImage(systemName: "shareplay.slash")
+                emojiPic.isHidden = true
                 gifview.isHidden = false
                 cameraView.isHidden = false
-        // Enable turn off button and disable turn on button
-          turnOfCamView.isEnabled = true
-          turnOnCamView.isEnabled = false
+            } else if turnOffCamView.image == UIImage(systemName: "shareplay.slash") {
+                // Change to the new image
+                turnOffCamView.image = UIImage(systemName: "shareplay")
+                emojiPic.isHidden = false
+                gifview.isHidden = true
+                cameraView.isHidden = true
+            }
+            // Toggle button states
+//            turnOfCamView.isEnabled.toggle()
+//            turnOnCamView.isEnabled.toggle()
     }
-    
-    @IBAction func TurnOffTheCamView(_ sender: Any) {
-        emojiPic.isHidden = false
-               gifview.isHidden = true
-               cameraView.isHidden = true
-        turnOfCamView.isEnabled = false
-          turnOnCamView.isEnabled = true
-    }
+//    
+//    @IBAction func TurnOffTheCamView(_ sender: Any) {
+//        emojiPic.isHidden = false
+//               gifview.isHidden = true
+//               cameraView.isHidden = true
+//        turnOfCamView.isEnabled = false
+//          turnOnCamView.isEnabled = true
+//    }
 }
+
+//shareplay.slash
