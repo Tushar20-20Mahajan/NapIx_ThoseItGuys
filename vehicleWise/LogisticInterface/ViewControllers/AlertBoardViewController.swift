@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 16.4, *)
 class AlertBoardViewController: UIViewController/* ,  UISearchBarDelegate*/{
     
     @IBOutlet weak var activeAlerts: UIView!
@@ -20,6 +21,8 @@ class AlertBoardViewController: UIViewController/* ,  UISearchBarDelegate*/{
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
+        // Disable the search bar by default
+                searchBar.isEnabled = false
         // Do any additional setup after loading the view.
         
 //        // Add a gesture recognizer to dismiss the keyboard when tapping anywhere else on the screen
