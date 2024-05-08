@@ -33,6 +33,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         setupDrowsinessDetection()
         configureCamera()
         emojiPic.isHidden = true
+        turnOnCamView.isEnabled = false
 
         // Add long-press gesture recognizer to the endButton
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(endButtonLongPressed(_:)))
@@ -205,11 +206,16 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         emojiPic.isHidden = true
                 gifview.isHidden = false
                 cameraView.isHidden = false
+        // Enable turn off button and disable turn on button
+          turnOfCamView.isEnabled = true
+          turnOnCamView.isEnabled = false
     }
     
     @IBAction func TurnOffTheCamView(_ sender: Any) {
         emojiPic.isHidden = false
                gifview.isHidden = true
                cameraView.isHidden = true
+        turnOfCamView.isEnabled = false
+          turnOnCamView.isEnabled = true
     }
 }
