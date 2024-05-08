@@ -2,6 +2,7 @@ import UIKit
 import AVFoundation
 import CoreML
 
+@available(iOS 17.0, *)
 class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     var timer: Timer?
@@ -9,7 +10,7 @@ class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     var isScreenBlack = false
     @IBOutlet weak var blackButton: UIBarButtonItem!
     
-    var audioPlayer: AVAudioPlayer? // Declare AVAudioPlayer
+    var audioPlayer: AVAudioPlayer?
     
     var ddModel: DDModel!
     var fdModel: FDModel!
@@ -17,7 +18,7 @@ class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     var isDrowsy: Bool = false
     var frameCount: Int = 0
     var drowsinessStartTime: Date?
-    let drowsinessThreshold: TimeInterval = 4.0 // Duration for drowsiness to trigger an alert
+    let drowsinessThreshold: TimeInterval = 3 // Duration for drowsiness to trigger an alert
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,21 +51,25 @@ class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     @IBAction func End(_ sender: Any) {
         // Stop the timer if it's running
-        timer?.invalidate()
-        // Enable the endButton
-        endButton.isEnabled = true
-        
-        // Stop the AVCaptureSession
-        captureSession?.stopRunning()
-        // Remove the sample buffer delegate
-        captureSession?.outputs.forEach { output in
-            captureSession?.removeOutput(output)
-        }
-        
-        // Perform segue to the next screen
-        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Change "Main" to your storyboard name
-        let destinationViewController = storyboard.instantiateViewController(withIdentifier: "Monitor Me") // Change "Monitor Me" to your destination view controller's identifier
-        self.navigationController?.pushViewController(destinationViewController, animated: true)
+            timer?.invalidate()
+            // Enable the endButton
+            endButton.isEnabled = true
+            
+            // Stop the AVCaptureSession
+            captureSession?.stopRunning()
+            // Remove the sample buffer delegate
+            captureSession?.outputs.forEach { output in
+                captureSession?.removeOutput(output)
+            }
+            
+            // Dismiss the current view controller
+            self.dismiss(animated: true) {
+                // Navigate to the next screen
+                let storyboard = UIStoryboard(name: "Main", bundle: nil) // Change "Main" to your storyboard name
+                if let destinationViewController = storyboard.instantiateViewController(withIdentifier: "MonitorMe") as? MonitorMeViewController { // Change "MonitorMe" to your destination view controller's identifier
+                    self.navigationController?.pushViewController(destinationViewController, animated: true)
+                }
+            }
     }
 
     @objc func longPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
@@ -208,7 +213,9 @@ class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
                     print("Error making drowsiness prediction: \(error)")
                 }
             } else {
-                print("No face to detect drowsiness")
+                // No face detected, reset drowsiness tracking
+                isDrowsy = false
+                drowsinessStartTime = nil
             }
            
         } catch{
@@ -216,3 +223,4 @@ class EndMViewController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
         }
     }
 }
+

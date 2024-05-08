@@ -13,6 +13,7 @@
 		3F14BB112BE8BB2400377D12 /* DDModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */; };
 		3F14BB152BE8BCD500377D12 /* EndMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB142BE8BCD500377D12 /* EndMViewController.swift */; };
 		3F14BB172BE8F12C00377D12 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB162BE8F12C00377D12 /* cameraViewController.swift */; };
+		3F1E31B72BEB44700082DF05 /* face.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E31B62BEB44700082DF05 /* face.mp3 */; };
 		3F3B76DC2BCFE43500746745 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76DB2BCFE43500746745 /* AppDelegate.swift */; };
 		3F3B76DE2BCFE43500746745 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76DD2BCFE43500746745 /* SceneDelegate.swift */; };
 		3F3B76E32BCFE43500746745 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3F3B76E22BCFE43500746745 /* Base */; };
@@ -69,6 +70,7 @@
 		3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DDModel.mlmodel; sourceTree = "<group>"; };
 		3F14BB142BE8BCD500377D12 /* EndMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndMViewController.swift; sourceTree = "<group>"; };
 		3F14BB162BE8F12C00377D12 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
+		3F1E31B62BEB44700082DF05 /* face.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = face.mp3; sourceTree = "<group>"; };
 		3F3B76D82BCFE43500746745 /* Napix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3B76DB2BCFE43500746745 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F3B76DD2BCFE43500746745 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				3F3B76E12BCFE43500746745 /* Main.storyboard */,
 				3F3B76E42BCFE43600746745 /* Assets.xcassets */,
 				3FBF28832BE6E1920009F799 /* beep.mp3 */,
+				3F1E31B62BEB44700082DF05 /* face.mp3 */,
 				3F3B76E62BCFE43600746745 /* LaunchScreen.storyboard */,
 				3F7836DB2BE9E67A0007DFFD /* FDModel.mlmodel */,
 				3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */,
@@ -340,6 +343,7 @@
 				3F7BF2F92BE3C28E003973B7 /* giphy.gif in Resources */,
 				3F7BF2FB2BE3C294003973B7 /* output-onlinegiftools.gif in Resources */,
 				3F3B76E32BCFE43500746745 /* Base in Resources */,
+				3F1E31B72BEB44700082DF05 /* face.mp3 in Resources */,
 				3FBF28842BE6E1920009F799 /* beep.mp3 in Resources */,
 				3F7BF2FF2BE3C2CF003973B7 /* GoogleService-Info.plist in Resources */,
 			);
@@ -549,14 +553,14 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Sunidhieii;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tushari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -578,14 +582,14 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Sunidhieii;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Tushari;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
