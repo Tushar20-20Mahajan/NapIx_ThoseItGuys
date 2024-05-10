@@ -1,50 +1,47 @@
-//
-//  DrivingSafelyOnAlertBoardViewController.swift
-//  vehicleWise
-//
-//  Created by student on 28/04/24.
-//
-
 import UIKit
 
-class DrivingSafelyOnAlertBoardViewController: UIViewController  ,UITableViewDelegate, UITableViewDataSource
-{
+class DrivingSafelyOnAlertBoardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var showSafelyDrivingList : UITableView!
-
+    // Outlets
+    @IBOutlet weak var showSafelyDrivingList: UITableView!
+    
+    // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-       showSafelyDrivingList.dataSource = self
+        // Set the delegate and data source for the table view
+        showSafelyDrivingList.dataSource = self
         showSafelyDrivingList.delegate = self
     }
-    
 
+    // MARK: - UITableViewDataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of driving safely alerts in the data model
         return dataModel.getDrivingSafelyAlertOnAlertBoard().count
     }
-   
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "drivingSafelyAlertBoard") as? DrivingSafelyTableViewCell{
-            let alerts = dataModel.getDrivingSafelyAlertOnAlertBoard()[indexPath.row]
-            
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "drivingSafelyAlertBoard") as? DrivingSafelyTableViewCell {
+            // Get the driving safely alert at the current index path
+            let alerts = Array(dataModel.getDrivingSafelyAlertOnAlertBoard().values)[indexPath.row]
+
+            // Update the cell with the driving safely alert information
             cell.updateViewOfScheduledAlertBoard(alerts: alerts)
-            
+
             return cell
         }
-        return ScheduledAlertsTableViewCell()
+        // If no reusable cell is available, return a default cell
+        return UITableViewCell()
     }
+
+    // MARK: - UITableViewDelegate Methods
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Deselect the row when tapped
         tableView.deselectRow(at: indexPath, animated: true)
-                if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                    tableView.deselectRow(at: selectedIndexPath, animated: true)
-                }
-                
-//                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
     }
+
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-    
+        // Deselect the row when tapped
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

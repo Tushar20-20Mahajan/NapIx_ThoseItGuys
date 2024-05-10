@@ -7,61 +7,69 @@
 
 import UIKit
 
+// Protocol to delegate the addition of a new vehicle
 protocol AddVehicleDelegate: AnyObject {
     func didAddNewVehicle()
 }
 
 class AddVehicleDataTableViewController: UITableViewController {
 
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    // MARK: - IBOutlets
     
-    @IBOutlet weak var vehicleNumberTextFeild: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var vehicleNumberTextField: UITextField!
+    
+    // MARK: - Properties
+    
     weak var delegate: AddVehicleDelegate?
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        // Update the state of the save button
         updateSaveButtonState()
     }
 
+    // MARK: - IBActions
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
+        // Dismiss the view controller when cancel button is pressed
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveBtnPressed(_ sender: Any) {
-        guard let vehicleNumber = vehicleNumberTextFeild.text, !vehicleNumber.isEmpty else { return }
-                            
-            // Create a new VehicleWiseList object
-            let newVehicle = VehicleWiseList(vehicleNumber: vehicleNumber, imageNumberPlate: "numbersign")
-                            
-            // Add the new vehicle to the data model
-            dataModel.addVehicleToVehicleList(newVehicle: newVehicle)
-            delegate?.didAddNewVehicle()
+        // Validate and save the new vehicle data
+        
+        guard let vehicleNumber = vehicleNumberTextField.text, !vehicleNumber.isEmpty else { return }
+        
+        // Create a new VehicleWiseList object
+        let newVehicle = VehicleWiseList(vehicleNumber: vehicleNumber, imageNumberPlate: "numbersign")
+        
+        // Add the new vehicle to the data model
+        dataModel.addVehicleToVehicleList(newVehicle: newVehicle)
+        
+        // Notify the delegate that a new vehicle has been added
+        delegate?.didAddNewVehicle()
+        
+        // Dismiss the view controller
         dismiss(animated: true, completion: nil)
-                            
-            // Save the updated vehicle list locally
-           // DataModel.saveToFileVehicles(vehicleList: dataModel.getVehicleList())
-            
-            // Perform unwind segue to return to VehicleListViewController
-           // performSegue(withIdentifier: "saveUnwindVehicle", sender: self)
     }
-    func updateSaveButtonState() {
-           // Enable the save button only if the text field is not empty
-           let vehicleNumber = vehicleNumberTextFeild.text ?? ""
-           saveButton.isEnabled = !vehicleNumber.isEmpty
-       }
     
+    // MARK: - Helper Methods
+    
+    // Update the state of the save button based on text field value
+    func updateSaveButtonState() {
+        // Enable the save button only if the text field is not empty
+        let vehicleNumber = vehicleNumberTextField.text ?? ""
+        saveButton.isEnabled = !vehicleNumber.isEmpty
+    }
 
-
-    // Update save button state when text field value changes
-
+    // MARK: - IBActions
+    
+    // Update the state of the save button when text field value changes
     @IBAction func textFieldDidChange(_ sender: Any) {
         updateSaveButtonState()
     }
-    
 }

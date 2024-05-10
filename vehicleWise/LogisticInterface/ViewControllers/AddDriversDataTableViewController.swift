@@ -7,57 +7,69 @@
 
 import UIKit
 
+// Protocol to notify the delegate when a new driver is added
 protocol AddDriversDelegate: AnyObject {
     func didAddNewDriver()
 }
 
+// View controller for adding new drivers to the list
 class AddDriversDataTableViewController: UITableViewController {
     
+    // MARK: - IBOutlets
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var driverNameTextFeild: UITextField!
+    @IBOutlet weak var driverNameTextField: UITextField!
+    @IBOutlet weak var driverMobileNumberTextField: UITextField!
     
-    @IBOutlet weak var driverMobileNumberTextFeild: UITextField!
-    weak var delegate: AddDriversDelegate?
+    // MARK: - Properties
     
+    weak var delegate: AddDriversDelegate? // Delegate to notify about adding new drivers
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        saveButton.isEnabled = false
+        saveButton.isEnabled = false // Disable save button by default
     }
-    func updateSaveButtonState() {
-           // Enable the save button only if the text field is not empty
-           let driverMobileNumber = driverMobileNumberTextFeild.text ?? ""
-        let driverName = driverNameTextFeild.text ?? ""
-        saveButton.isEnabled = !driverName.isEmpty && !driverMobileNumber.isEmpty
-       }
     
-    @IBAction func cancelBtnWasPressed(_ sender: Any) {
+    // MARK: - Helper Methods
+    
+    // Update the state of the save button based on text field values
+    func updateSaveButtonState() {
+        let driverMobileNumber = driverMobileNumberTextField.text ?? ""
+        let driverName = driverNameTextField.text ?? ""
+        saveButton.isEnabled = !driverName.isEmpty && !driverMobileNumber.isEmpty
+    }
+    
+    // MARK: - IBActions
+    
+    // Action method for cancel button
+    @IBAction func cancelButtonWasPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveDataBtnWasPressed(_ sender: Any) {
-        
-        if let name = driverNameTextFeild.text, let phone = driverMobileNumberTextFeild.text {
-                   let newDriver = DriversList(name: name, mobileNumber: phone, imageDriver: "figure.seated.seatbelt")
-                   dataModel.addDriversToDriverList(newDriver: newDriver)
-                   delegate?.didAddNewDriver()
-                   dismiss(animated: true, completion: nil)
+    // Action method for save button
+    @IBAction func saveDataButtonWasPressed(_ sender: Any) {
+        if let name = driverNameTextField.text, let phone = driverMobileNumberTextField.text {
+            // Create a new driver object
+            let newDriver = DriversList(name: name, mobileNumber: phone, imageDriver: "figure.seated.seatbelt")
+            // Add the new driver to the data model
+            dataModel.addDriversToDriverList(newDriver: newDriver)
+            // Notify the delegate about adding a new driver
+            delegate?.didAddNewDriver()
+            // Dismiss the view controller
+            dismiss(animated: true, completion: nil)
         }
-        
     }
-   
-    @IBAction func textDidChangedOfDriverMobileNumber(_ sender: Any) {
-        updateSaveButtonState()
+    
+    // Action method to handle text changes in the driver mobile number text field
+    @IBAction func driverMobileNumberTextFieldDidChange(_ sender: Any) {
+        updateSaveButtonState() // Update save button state
     }
-    @IBAction func textDidChangedOfDriverName(_ sender: Any) {
-        updateSaveButtonState()
+    
+    // Action method to handle text changes in the driver name text field
+    @IBAction func driverNameTextFieldDidChange(_ sender: Any) {
+        updateSaveButtonState() // Update save button state
     }
 }
+

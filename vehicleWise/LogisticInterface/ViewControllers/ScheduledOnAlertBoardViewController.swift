@@ -7,57 +7,66 @@
 
 import UIKit
 
-class ScheduledOnAlertBoardViewController: UIViewController , UITableViewDataSource , UITableViewDelegate , AddNewScheduleDelegate{
+class ScheduledOnAlertBoardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddNewScheduleDelegate {
     
+    // MARK: - Outlets
     
+    @IBOutlet weak var showScheduledList: UITableView!
     
-
-    @IBOutlet weak var showScheduledList : UITableView!
+    // MARK: - Properties
+    
     var reloadTimer: Timer?
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Set up data source and delegate for the table view
         showScheduledList.dataSource = self
         showScheduledList.delegate = self
         
+        // Start reload timer
         startReloadTimer()
-
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Reload data when the view appears
         showScheduledList.reloadData()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        stopReloadTimer() // Stop the timer when the view disappears
+        // Stop the reload timer when the view disappears
+        stopReloadTimer()
     }
     
+    // MARK: - Timer Methods
     
-    // Method to start the timer
+    // Start the reload timer
     func startReloadTimer() {
         // Timer interval based on whether it's a manual reload or triggered by row deletion
         let timerInterval = reloadTimer == nil ? 15 : 1
         reloadTimer = Timer.scheduledTimer(timeInterval: TimeInterval(timerInterval), target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
     
-    // Method to stop the timer
+    // Stop the reload timer
     func stopReloadTimer() {
         reloadTimer?.invalidate()
         reloadTimer = nil
     }
     
-    // Timer action method
+    // Timer action method to reload table view data
     @objc func timerAction() {
-        // Reload the table view data
         showScheduledList.reloadData()
     }
     
-
+    // MARK: - UITableViewDataSource
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataModel.getScheduledAlertOnAlertBoard().count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "scheduledAlertBoard") as? ScheduledAlertsTableViewCell {
@@ -70,14 +79,18 @@ class ScheduledOnAlertBoardViewController: UIViewController , UITableViewDataSou
         }
         return ScheduledAlertsTableViewCell()
     }
-
+    
+    // MARK: - UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let deletedScheduledRoute = dataModel.removeVehicle(at: indexPath.row) {
+            let scheduledAlertKeys = Array(dataModel.getScheduledAlertOnAlertBoard().keys)
+            let keyAtIndex = scheduledAlertKeys[indexPath.row]
+            if let deletedScheduledRoute = dataModel.removeScheduledRoute(forKey: keyAtIndex) {
                 print("Deleted Schedule:", deletedScheduledRoute)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 
@@ -85,20 +98,21 @@ class ScheduledOnAlertBoardViewController: UIViewController , UITableViewDataSou
                 stopReloadTimer()
                 startReloadTimer()
             } else {
-                print("Failed to delete vehicle at index:", indexPath.row)
+                print("Failed to delete scheduled route at index:", indexPath.row)
             }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-                if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                    tableView.deselectRow(at: selectedIndexPath, animated: true)
-                }
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
     }
+    
+    // MARK: - AddNewScheduleDelegate
+    
     func didAddNewScheduleToRoute() {
         showScheduledList.reloadData()
     }
-   
-    
 }

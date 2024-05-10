@@ -6,32 +6,36 @@
 //
 
 import UIKit
+
+// Protocol to communicate adding new schedule to the route
 protocol AddNewScheduleDelegate: AnyObject {
     func didAddNewScheduleToRoute()
 }
 
+// View controller for adding a new alert/schedule
 class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTableViewControllerDelegate , SelectDriverNameTableViewControllerDelegate{
    
+    // MARK: - IBOutlets
     
-    @IBOutlet weak var vehicleNumberLabel: UILabel!
+    @IBOutlet weak var vehicleNumberLabel: UILabel! // Label to display selected vehicle number
+    @IBOutlet weak var driverNameLabel: UILabel! // Label to display selected driver name
+    @IBOutlet weak var fromTextFeild: UITextField! // Text field for inputting departure location
+    @IBOutlet weak var toTextFeild: UITextField! // Text field for inputting destination location
+    @IBOutlet weak var dateAndTime: UIDatePicker! // Date picker for selecting date and time
+    @IBOutlet weak var saveButton: UIBarButtonItem! // Button to save the new schedule
     
-    @IBOutlet weak var driverNameLabel: UILabel!
+    // MARK: - Properties
     
-    
-    @IBOutlet weak var fromTextFeild: UITextField!
-    
-    @IBOutlet weak var toTextFeild: UITextField!
-    
-    @IBOutlet weak var dateAndTime: UIDatePicker!
-    
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     weak var delegate: AddNewScheduleDelegate?
-        var selectedVehicle: VehicleWiseList?
-        var selectedDriver: DriversList?
-
+    var selectedVehicle: VehicleWiseList? // Selected vehicle
+    var selectedDriver: DriversList? // Selected driver
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set up tap gestures for selecting vehicle and driver
         let tapGestureVehicle = UITapGestureRecognizer(target: self, action: #selector(vehicleNumberLabelTapped))
         vehicleNumberLabel.addGestureRecognizer(tapGestureVehicle)
         vehicleNumberLabel.isUserInteractionEnabled = true
@@ -39,24 +43,26 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
         let tapGestureDriver = UITapGestureRecognizer(target: self, action: #selector(driverNameLabelTapped))
         driverNameLabel.addGestureRecognizer(tapGestureDriver)
         driverNameLabel.isUserInteractionEnabled = true
+        
+        // Disable save button by default
         saveButton.isEnabled = false
     }
 
+    // MARK: - Actions
     
-        
-@objc func vehicleNumberLabelTapped() {
-            presentVehicleList()
-        }
-@objc func driverNameLabelTapped() {
-                presentDriverList()
-        }
+    @objc func vehicleNumberLabelTapped() {
+        presentVehicleList()
+    }
     
+    @objc func driverNameLabelTapped() {
+        presentDriverList()
+    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-                if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                    tableView.deselectRow(at: selectedIndexPath, animated: true)
-                }
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
     }
 
     @IBAction func cancelBtnWasPressed(_ sender: Any) {
@@ -64,80 +70,81 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
+        // Validate inputs and save the new schedule
         guard let from = fromTextFeild.text,
-                  let to = toTextFeild.text,
-                  let selectedVehicle = selectedVehicle,
-                  let selectedDriver = selectedDriver else {
-                // Display an alert or handle the case where data is incomplete
-                return
-            }
+              let to = toTextFeild.text,
+              let selectedVehicle = selectedVehicle,
+              let selectedDriver = selectedDriver else {
+            return
+        }
 
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-            let selectedDateAndTime = dateFormatter.string(from: dateAndTime.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+        let selectedDateAndTime = dateFormatter.string(from: dateAndTime.date)
         let passId = dataModel.generatePassKey()
 
-            print(from)
-            print(to)
+        // Print selected details (for testing)
+        print(from)
+        print(to)
         print(selectedDriver.name)
         print(selectedVehicle.vehicleNumber)
-            print(selectedDateAndTime)
+        print(selectedDateAndTime)
         print(passId)
 
-            // Here you can use `selectedDateAndTime` as a string representation of the selected date and time.
+        // Add the new scheduled alert to the data model
         dataModel.addScheduledAlertOnAlertBoard(newScheduledAlert: (passId, AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "\(from) - \(to)", vehicleNumber: "\(selectedVehicle.vehicleNumber)", driverName: "\(selectedDriver.name)", departureDetails: selectedDateAndTime)))
 
-            delegate?.didAddNewScheduleToRoute()
-            dismiss(animated: true, completion: nil)
+        // Inform delegate about the new schedule addition
+        delegate?.didAddNewScheduleToRoute()
+        dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Delegate Methods
+    
     func didSelectVehicle(_ controller: showVehicleListViewController, didSelect vehicleNumber: VehicleWiseList) {
-        print("Did select Vehicle")
+        // Update selected vehicle and label
         self.selectedVehicle = vehicleNumber
         updateVehicleName()
     }
-//    func didSelectVehicle(vehicleNumber: VehicleWiseList) {
-//        print("Did select Vehicle")
-//            selectedVehicle = vehicleNumber
-//            vehicleNumberLabel.text = vehicleNumber.vehicleNumber
-//        updateVehicleName()
-//        }
- 
-        func didSelectDriver(driverName: DriversList) {
-            print("Did select Driver")
-            selectedDriver = driverName
-            driverNameLabel.text = driverName.name
-            updateDriverName()
-        }
+    
+    func didSelectDriver(driverName: DriversList) {
+        // Update selected driver and label
+        selectedDriver = driverName
+        driverNameLabel.text = driverName.name
+        updateDriverName()
+    }
 
-        func updateVehicleName() {
-            print("Update the vehicle Name ")
-
-            if let selectedVehicle = selectedVehicle {
-                vehicleNumberLabel.text = selectedVehicle.vehicleNumber
-            } else {
-                vehicleNumberLabel.text = "Select"
-            }
-            
+    // MARK: - Helper Methods
+    
+    func updateVehicleName() {
+        // Update vehicle label with selected vehicle number
+        if let selectedVehicle = selectedVehicle {
+            vehicleNumberLabel.text = selectedVehicle.vehicleNumber
+        } else {
+            vehicleNumberLabel.text = "Select"
         }
+    }
 
-        func updateDriverName() {
-            print("Update the driver name")
-            if let selectedDriver = selectedDriver {
-                driverNameLabel.text = selectedDriver.name
-            } else {
-                driverNameLabel.text = "Select"
-            }
+    func updateDriverName() {
+        // Update driver label with selected driver name
+        if let selectedDriver = selectedDriver {
+            driverNameLabel.text = selectedDriver.name
+        } else {
+            driverNameLabel.text = "Select"
         }
+    }
     
     func presentVehicleList() {
+        // Present vehicle list to select a vehicle
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vehicleListVC = storyboard.instantiateViewController(withIdentifier: "selectTheVehicle") as! showVehicleListViewController
         let navController = UINavigationController(rootViewController: vehicleListVC)
         vehicleListVC.delegate = self
         present(navController, animated: true, completion: nil)
     }
+    
     func  presentDriverList() {
+        // Present driver list to select a driver
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let driverListVC = storyBoard.instantiateViewController(withIdentifier: "selectTheDriver") as! showDriversListViewController
         let navController = UINavigationController(rootViewController: driverListVC)
@@ -145,12 +152,13 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
         driverListVC.delegate = self
         present(navController, animated: true, completion: nil)
     }
+    
     func updateSaveButtonState() {
-           // Enable the save button only if the text field is not empty
+        // Enable save button only if all required fields are filled
         let fromLocation = fromTextFeild.text ?? ""
         let toLocation = toTextFeild.text ?? ""
         saveButton.isEnabled = !fromLocation.isEmpty && !toLocation.isEmpty && (vehicleNumberLabel.text != "Select") && (driverNameLabel.text != "Select")
-       }
+    }
 
     @IBAction func fromTextDidChanged(_ sender: Any) {
         updateSaveButtonState()
@@ -160,3 +168,4 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
         updateSaveButtonState()
     }
 }
+
