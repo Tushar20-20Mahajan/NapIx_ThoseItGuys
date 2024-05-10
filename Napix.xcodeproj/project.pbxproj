@@ -65,6 +65,7 @@
 		3F8091CC2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CB2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift */; };
 		3F8091CE2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */; };
 		3F8091D02BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8091CF2BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift */; };
+		3F80AD2C2BEDFA950062A919 /* BlackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80AD2B2BEDFA940062A919 /* BlackViewController.swift */; };
 		3FACE9512BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACE9502BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift */; };
 		3FACE9532BE37F5A00475536 /* AddVehicleDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACE9522BE37F5A00475536 /* AddVehicleDataTableViewController.swift */; };
 		3FBF287C2BE679230009F799 /* SoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBF287B2BE679230009F799 /* SoundsViewController.swift */; };
@@ -117,6 +118,7 @@
 		3F8091CB2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showVehiclesListTableViewCell.swift; sourceTree = "<group>"; };
 		3F8091CD2BDFA828007FE0DF /* DrivingSafelyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingSafelyTableViewCell.swift; sourceTree = "<group>"; };
 		3F8091CF2BDFA9C8007FE0DF /* ActiveAlertTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveAlertTableViewCell.swift; sourceTree = "<group>"; };
+		3F80AD2B2BEDFA940062A919 /* BlackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackViewController.swift; sourceTree = "<group>"; };
 		3FACE9502BE3618C00475536 /* EditProfileOfVehicleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileOfVehicleTableViewController.swift; sourceTree = "<group>"; };
 		3FACE9522BE37F5A00475536 /* AddVehicleDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVehicleDataTableViewController.swift; sourceTree = "<group>"; };
 		3FBF287B2BE679230009F799 /* SoundsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundsViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				3F7BF3052BE3C2E7003973B7 /* MonitorMeViewController.swift */,
 				3F7BF3082BE3C2E7003973B7 /* SignUpViewController.swift */,
 				3FBF287B2BE679230009F799 /* SoundsViewController.swift */,
+				3F80AD2B2BEDFA940062A919 /* BlackViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				3F8091CA2BDF6C36007FE0DF /* ScheduledAlertsTableViewCell.swift in Sources */,
 				3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */,
 				3F14BB172BE8F12C00377D12 /* cameraViewController.swift in Sources */,
+				3F80AD2C2BEDFA950062A919 /* BlackViewController.swift in Sources */,
 				3F7836DC2BE9E67A0007DFFD /* FDModel.mlmodel in Sources */,
 				3FCCC1AC2BE0C2A0002C4A60 /* AlertTimmingsViewController.swift in Sources */,
 				3F14BB112BE8BB2400377D12 /* DDModel.mlmodel in Sources */,

@@ -2,11 +2,11 @@ import UIKit
 
 class MonitorMeViewController: UIViewController {
 
-    @IBOutlet weak var Gifview: UIImageView!
+//    @IBOutlet weak var Gifview: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Gifview.loadGif(name: "output-onlinegiftools")
+        //Gifview.loadGif(name: "output-onlinegiftools")
     }
     
     override func viewWillAppear(_ animated: Bool) {

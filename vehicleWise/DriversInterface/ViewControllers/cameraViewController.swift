@@ -24,6 +24,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var turnOffCamView: UIBarButtonItem!
     
     @IBOutlet weak var emojiPic: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.bringSubviewToFront(gifview)
@@ -32,6 +33,8 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         setupDrowsinessDetection()
         configureCamera()
         emojiPic.isHidden = true
+        emojiPic.image = UIImage(named: "Green")
+
       //  turnOnCamView.isEnabled = false
 
         // Add long-press gesture recognizer to the endButton
@@ -113,6 +116,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         do {
             if #available(iOS 17.0, *) {
                 fdModel = try FDModel(configuration: MLModelConfiguration())
+             
             } else {
                 // Fallback on earlier versions
             }
@@ -144,6 +148,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
             if outputString1 == "face detected" {
                 do {
+                    emojiPic.image = UIImage(named: "Green")
                     let input = DDModelInput(image: pixelBuffer)
                     let prediction = try ddModel.prediction(input: input)
                     let outputString = prediction.target
@@ -179,6 +184,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 isDrowsy = false
                 drowsinessStartTime = nil
                 print("No face detected")
+                emojiPic.image = UIImage(named: "RedImageNotFound")
                 playFaceSound()
             }
 
@@ -215,18 +221,16 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 gifview.isHidden = true
                 cameraView.isHidden = true
             }
-            // Toggle button states
-//            turnOfCamView.isEnabled.toggle()
-//            turnOnCamView.isEnabled.toggle()
+       
     }
-//    
-//    @IBAction func TurnOffTheCamView(_ sender: Any) {
-//        emojiPic.isHidden = false
-//               gifview.isHidden = true
-//               cameraView.isHidden = true
-//        turnOfCamView.isEnabled = false
-//          turnOnCamView.isEnabled = true
-//    }
+    @IBAction func black(_ sender: Any) {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let destinationViewController = storyboard.instantiateViewController(withIdentifier: "black") as? UIViewController {
+                self.navigationController?.pushViewController(destinationViewController, animated: true)
+                
+            }
+        }
 }
 
-//shareplay.slash
+
