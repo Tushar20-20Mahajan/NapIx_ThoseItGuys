@@ -43,7 +43,7 @@ struct AlertBoardDataDisplayInformation: Codable {
     var imageAlert: String
     var route: String
     var vehicleNumber: String
-    var driverName: String
+    var driverName: DriversList
     var departureDetails: String
 }
 
@@ -274,8 +274,8 @@ class DataModel {
     // Initialize active alerts on the alert board with sample data
     private func initializeActiveAlertOnAlertBoard() {
         activeAlertOnAlertBoard = [
-            "d4e5": AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: "Ritik Pandey", departureDetails: "dd/MM/yyyy HH:mm"),
-            "i9h8": AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: "Arman Kumar", departureDetails: "dd/MM/yyyy HH:mm")
+            "d4e5": AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: DriversList(name: "Arman Malik",mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm"),
+            "i9h8": AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: DriversList(name: "Crolis Nep", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm")
         ]
     }
 
@@ -287,8 +287,8 @@ class DataModel {
     // Initialize driving safely alerts on the alert board with sample data
     private func initializeDrivingSafelyAlertOnAlertBoard() {
         drivingSafelyAlertOnAlertBoard = [
-            "LMNO": AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar", departureDetails: "dd/MM/yyyy HH:mm"),
-            "1A2B": AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh", departureDetails: "dd/MM/yyyy HH:mm")
+            "LMNO": AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: DriversList(name: "James", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm"),
+            "1A2B": AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: DriversList(name: "RamLal", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm")
         ]
     }
 
@@ -300,8 +300,8 @@ class DataModel {
     // Initialize scheduled alerts on the alert board with sample data loaded from file or default values
     private func initializeScheduledAlertOnAlertBoard() {
         scheduledAlertOnAlertBoard = DataModel.loadFromFileScheduledRoute() ?? [
-            "1234": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: "Vishal Kumar", departureDetails: "dd/MM/yyyy HH:mm"),
-            "5678": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: "Prince Singh", departureDetails: "dd/MM/yyyy HH:mm")
+            "1234": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: DriversList(name: "Amit", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm"),
+            "5678": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: DriversList(name: "Prab Singh",  mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm")
         ]
     }
 

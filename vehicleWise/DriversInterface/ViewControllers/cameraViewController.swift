@@ -233,4 +233,3 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
 }
 
-

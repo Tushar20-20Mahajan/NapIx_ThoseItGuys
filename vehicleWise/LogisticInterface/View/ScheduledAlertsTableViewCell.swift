@@ -34,6 +34,6 @@ class ScheduledAlertsTableViewCell: UITableViewCell {
         truckNumber.text = alerts.vehicleNumber
         
         // Set the text of the driver name label to the driver name associated with the alert
-        driverName.text = alerts.driverName
+        driverName.text = alerts.driverName.name
     }
 }

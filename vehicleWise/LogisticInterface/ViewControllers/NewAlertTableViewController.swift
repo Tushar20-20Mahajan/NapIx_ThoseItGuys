@@ -92,7 +92,7 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
         print(passId)
 
         // Add the new scheduled alert to the data model
-        dataModel.addScheduledAlertOnAlertBoard(newScheduledAlert: (passId, AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "\(from) - \(to)", vehicleNumber: "\(selectedVehicle.vehicleNumber)", driverName: "\(selectedDriver.name)", departureDetails: selectedDateAndTime)))
+        dataModel.addScheduledAlertOnAlertBoard(newScheduledAlert: (passId, AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "\(from) - \(to)", vehicleNumber: "\(selectedVehicle.vehicleNumber)", driverName: DriversList(name: selectedDriver.name, mobileNumber: selectedDriver.mobileNumber, imageDriver: "figure.seated.seatbelt"), departureDetails: selectedDateAndTime)))
 
         // Inform delegate about the new schedule addition
         delegate?.didAddNewScheduleToRoute()

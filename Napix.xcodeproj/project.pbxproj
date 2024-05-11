@@ -614,7 +614,7 @@
 				DEVELOPMENT_TEAM = 2B4QLP2UQ6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vehicleWise/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Give access to camera";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -645,7 +645,7 @@
 				DEVELOPMENT_TEAM = 2B4QLP2UQ6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vehicleWise/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Give access to camera";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
