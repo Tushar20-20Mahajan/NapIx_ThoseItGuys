@@ -17,7 +17,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var drowsinessStartTime: Date?
     var lastAlertTime: Date?
     let drowsinessAlertThreshold: TimeInterval = 3 // Threshold for drowsiness alert (3 seconds)
-    var alertArray : [String] = []
+    var alertArray : [String?] = []
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var gifview: UIImageView!
     @IBOutlet weak var cameraView: UIView!
@@ -208,20 +208,43 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
         }
     @IBAction func end(_ sender: Any) {
-        timer?.invalidate()
-        captureSession?.stopRunning()
-        captureSession?.outputs.forEach { output in
-            captureSession?.removeOutput(output)
+        let alertController = UIAlertController(title: "Stop Monitoring", message: "Do you want to end monitoring?", preferredStyle: .alert)
+        
+        // Add action for continuing monitoring
+        let continueAction = UIAlertAction(title: "Continue", style: .default) { _ in
+            // Dismiss the alert controller
         }
-        self.dismiss(animated: true) {
+        alertController.addAction(continueAction)
+        
+        // Add action for stopping monitoring
+        let stopAction = UIAlertAction(title: "Stop", style: .destructive) { _ in
+            // Navigate to the desired destination
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if let destinationViewController = storyboard.instantiateViewController(withIdentifier: "Monitor Me") as? MonitorMeViewController {
-                self.navigationController?.pushViewController(destinationViewController, animated: true)
+            if let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabbar") as? UITabBarController {
+                // Set modal presentation style to full screen
+                tabBarController.modalPresentationStyle = .fullScreen
+                
+                // Present the tab bar controller modally
+                self.present(tabBarController, animated: true, completion: nil)
+            }
+            
+            // Print the alertArray
+            print(self.alertArray)
+            
+            // Stop the timer and remove capture session outputs
+            self.timer?.invalidate()
+            self.captureSession?.stopRunning()
+            self.captureSession?.outputs.forEach { output in
+                self.captureSession?.removeOutput(output)
             }
         }
-        print(self.alertArray)
+        alertController.addAction(stopAction)
+        
+        // Present the alert controller
+        self.present(alertController, animated: true, completion: nil)
     }
-    
+
+
     @IBAction func TurnTheCamViewToggle(_ sender: Any) {
         if turnOffCamView.image == UIImage(systemName: "shareplay") {
                 // Change back to the original image
@@ -246,5 +269,6 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 
             }
         }
+    
 }
 
