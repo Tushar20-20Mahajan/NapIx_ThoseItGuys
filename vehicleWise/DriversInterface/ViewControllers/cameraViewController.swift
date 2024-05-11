@@ -17,7 +17,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var drowsinessStartTime: Date?
     var lastAlertTime: Date?
     let drowsinessAlertThreshold: TimeInterval = 3 // Threshold for drowsiness alert (3 seconds)
-    var alertArray : [String?] = []
+    var alertArray : [String] = []
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var gifview: UIImageView!
     @IBOutlet weak var cameraView: UIView!
@@ -136,69 +136,77 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
         captureSession = AVCaptureSession()
     }
+    // Define a date formatter
+        let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            return formatter
+        }()
 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        DispatchQueue.main.async {
-            do {
-                let input1 = FDModelInput(image: pixelBuffer)
-                let prediction1 = try self.fdModel.prediction(input: input1)
-                let outputString1 = prediction1.target
-
-                print("Output String is: \(outputString1)")
-
-                if outputString1 == "face detected" {
-                    do {
-                        self.emojiPic.image = UIImage(named: "Green")
-                        let input = DDModelInput(image: pixelBuffer)
-                        let prediction = try self.ddModel.prediction(input: input)
-                        let outputString = prediction.target
-                        self.alertArray.append("Face Detcted \(Date())")
-
-                        print("Output String: \(outputString)")
-                        if outputString == "Fatigue" {
-                            if !self.isDrowsy {
-                                self.isDrowsy = true
-                                self.drowsinessStartTime = Date()
-                            } else {
-                                // Check if drowsiness duration exceeds the threshold
-                                if let startTime = self.drowsinessStartTime, Date().timeIntervalSince(startTime) >= self.drowsinessAlertThreshold {
-                                    // Check if an alert has been sent recently
-                                    if let lastAlertTime = self.lastAlertTime, Date().timeIntervalSince(lastAlertTime) < self.drowsinessAlertThreshold {
-                                        return // Avoid sending multiple alerts within the threshold
+            guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+            DispatchQueue.main.async {
+                do {
+                    let input1 = FDModelInput(image: pixelBuffer)
+                    let prediction1 = try self.fdModel.prediction(input: input1)
+                    let outputString1 = prediction1.target
+                    
+                    print("Output String is: \(outputString1)")
+                    
+                    if outputString1 == "face detected" {
+                        do {
+                            self.emojiPic.image = UIImage(named: "Green")
+                            let input = DDModelInput(image: pixelBuffer)
+                            let prediction = try self.ddModel.prediction(input: input)
+                            let outputString = prediction.target
+                            
+                            // Append detection output with formatted timestamp to the array
+                            //self.alertArray.append("\(self.dateFormatter.string(from: Date())): \(outputString)")
+                            
+                            print("Output String: \(outputString)")
+                            if outputString == "Fatigue" {
+                                if !self.isDrowsy {
+                                    self.isDrowsy = true
+                                    self.drowsinessStartTime = Date()
+                                } else {
+                                    // Check if drowsiness duration exceeds the threshold
+                                    if let startTime = self.drowsinessStartTime, Date().timeIntervalSince(startTime) >= self.drowsinessAlertThreshold {
+                                        // Check if an alert has been sent recently
+                                        if let lastAlertTime = self.lastAlertTime, Date().timeIntervalSince(lastAlertTime) < self.drowsinessAlertThreshold {
+                                            return // Avoid sending multiple alerts within the threshold
+                                        }
+                                        // Play alert sound
+                                        self.playBeepSound()
+                                        // Update last alert time
+                                        self.alertArray.append("\(self.dateFormatter.string(from: Date())): Drowsiness detection output: Fatigue")
+                                        self.lastAlertTime = Date()
                                     }
-                                    // Play alert sound
-                                    self.playBeepSound()
-                                    // Update last alert time
-                                    self.alertArray.append("Drowsiness Detcted at \(Data())")
-                                    self.lastAlertTime = Date()
                                 }
+                            } else {
+                                // Reset drowsiness tracking if fatigue is not detected
+                                self.isDrowsy = false
+                                self.drowsinessStartTime = nil
                             }
-                        } else {
-                            // Reset drowsiness tracking if fatigue is not detected
-                            self.isDrowsy = false
-                            self.drowsinessStartTime = nil
+                        } catch {
+                            print("Error making drowsiness prediction: \(error)")
                         }
-                    } catch {
-                        print("Error making drowsiness prediction: \(error)")
+                    } else {
+                        // Reset drowsiness tracking if face is not detected
+                        self.isDrowsy = false
+                        self.drowsinessStartTime = nil
+                        print("No face detected")
+                        
+                        // Append detection output with formatted timestamp to the array
+                        //self.alertArray.append("\(self.dateFormatter.string(from: Date())): Face detection output: face not detected")
+                        
+                        self.emojiPic.image = UIImage(named: "RedImageNotFound")
+                        self.playFaceSound()
                     }
-                } else {
-                    // Reset drowsiness tracking if face is not detected
-                    self.isDrowsy = false
-                    self.drowsinessStartTime = nil
-                    print("No face detected")
-                    self.alertArray.append("Face Not Detcted")
-                    self.emojiPic.image = UIImage(named: "RedImageNotFound")
-                    self.playFaceSound()
+                } catch {
+                    print("Error making face prediction \(error)")
                 }
-
-            } catch {
-                print("Error making face prediction \(error)")
             }
         }
-        
-    }
-
     @IBAction func end(_ sender: Any) {
         timer?.invalidate()
         captureSession?.stopRunning()
@@ -211,6 +219,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 self.navigationController?.pushViewController(destinationViewController, animated: true)
             }
         }
+        print(self.alertArray)
     }
     
     @IBAction func TurnTheCamViewToggle(_ sender: Any) {
