@@ -86,7 +86,7 @@ class NewAlertTableViewController: UITableViewController , SelectVehicleNumberTa
         // Print selected details (for testing)
         print(from)
         print(to)
-        print(selectedDriver.name)
+        print(selectedDriver)
         print(selectedVehicle.vehicleNumber)
         print(selectedDateAndTime)
         print(passId)
