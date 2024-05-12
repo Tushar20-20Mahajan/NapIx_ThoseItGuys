@@ -45,6 +45,7 @@ struct AlertBoardDataDisplayInformation: Codable {
     var vehicleNumber: String
     var driverName: DriversList
     var departureDetails: String
+    var alertTimmings : [AlertTimming]
 }
 
 // Struct representing a scheduled truck
@@ -54,10 +55,13 @@ struct ScheduledTruck: Codable {
 }
 
 // Struct representing alert timings
-struct AlertTimming {
+struct AlertTimming : Codable {
     var iconImage: String
-    var timeAlert: Date
+    var timeAlert: String
+    var alertMessage : String
 }
+
+
 
 
 
@@ -70,6 +74,8 @@ class DataModel {
     private var drivingSafelyAlertOnAlertBoard: [String:AlertBoardDataDisplayInformation] = [:]
     private var scheduledAlertOnAlertBoard: [String : AlertBoardDataDisplayInformation] = [:]
     private var activeAlertTimmingsOnAlertBoard : [AlertTimming] = []
+    private var vehicleRouteIdS : Set<String> = []
+   
     
     // Initialize data when the class is instantiated
     init() {
@@ -80,6 +86,15 @@ class DataModel {
         initializeScheduledAlertOnAlertBoard()
         initializeActiveAlertTimmingsOnAlertBoard()
     }
+    func getVehicleRoutePassIDS() -> [String] {
+        return Array(vehicleRouteIdS)
+    }
+    
+    func addNewPassIDRoute(newPasID: String) {
+        vehicleRouteIdS.insert(newPasID)
+    }
+
+
     
     // Vehicle-related operations
        
@@ -274,8 +289,8 @@ class DataModel {
     // Initialize active alerts on the alert board with sample data
     private func initializeActiveAlertOnAlertBoard() {
         activeAlertOnAlertBoard = [
-            "d4e5": AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: DriversList(name: "Arman Malik",mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm"),
-            "i9h8": AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: DriversList(name: "Crolis Nep", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm")
+            "d4e5": AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "New York - Toronto", vehicleNumber: "AZM 1718", driverName: DriversList(name: "Arman Malik",mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm", alertTimmings: []),
+            "i9h8": AlertBoardDataDisplayInformation(imageAlert: "RedAlert.jpeg", route: "Los Angeles - Frenos", vehicleNumber: "NYC 1988", driverName: DriversList(name: "Crolis Nep", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm", alertTimmings: [])
         ]
     }
 
@@ -287,8 +302,8 @@ class DataModel {
     // Initialize driving safely alerts on the alert board with sample data
     private func initializeDrivingSafelyAlertOnAlertBoard() {
         drivingSafelyAlertOnAlertBoard = [
-            "LMNO": AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: DriversList(name: "James", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm"),
-            "1A2B": AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: DriversList(name: "RamLal", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm")
+            "LMNO": AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: DriversList(name: "James", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm", alertTimmings: []),
+            "1A2B": AlertBoardDataDisplayInformation(imageAlert: "BlueAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: DriversList(name: "RamLal", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm", alertTimmings: [])
         ]
     }
 
@@ -300,8 +315,8 @@ class DataModel {
     // Initialize scheduled alerts on the alert board with sample data loaded from file or default values
     private func initializeScheduledAlertOnAlertBoard() {
         scheduledAlertOnAlertBoard = DataModel.loadFromFileScheduledRoute() ?? [
-            "1234": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: DriversList(name: "Amit", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm"),
-            "5678": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: DriversList(name: "Prab Singh",  mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm")
+            "1234": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "London - Hamberg", vehicleNumber: "WAS 1718", driverName: DriversList(name: "Amit", mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm", alertTimmings: []),
+            "5678": AlertBoardDataDisplayInformation(imageAlert: "GreyAlert.jpeg", route: "Paris - Geneva", vehicleNumber: "SAM 2222", driverName: DriversList(name: "Prab Singh",  mobileNumber: "+1(654) 559-5290", imageDriver: "figure.seated.seatbelt"), departureDetails: "dd/MM/yyyy HH:mm", alertTimmings: [])
         ]
     }
 
@@ -350,31 +365,23 @@ class DataModel {
 
     // Initialize active alert timings on the alert board with sample data
     private func initializeActiveAlertTimmingsOnAlertBoard() {
-        // Define the time strings
-        let timeStrings = ["9:20 AM", "9:18 AM", "9:15 AM", "9:12 AM"]
-        
-        // Create a DateFormatter to parse the time strings
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
+       
         
         // Initialize the alert timings array with Date objects
-        activeAlertTimmingsOnAlertBoard = timeStrings.compactMap { timeString in
-            guard let timeDate = dateFormatter.date(from: timeString) else {
-                fatalError("Failed to parse time string: \(timeString)")
-            }
-            return AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: timeDate)
+        activeAlertTimmingsOnAlertBoard = []
+        
         }
-    }
+    
 
     // Retrieve active alert timings on the alert board
-    func getAlertTimmingsOnAlertBoard() -> [AlertTimming] {
-        return activeAlertTimmingsOnAlertBoard
-    }
+        func getAlertTimmingsOnAlertBoard() -> [AlertTimming] {
+            return activeAlertTimmingsOnAlertBoard
+        }
 
-    // Add a new alert timing to the alert board
-    func addNewAlertonAlertBoard(newAlert: AlertTimming) {
-        activeAlertTimmingsOnAlertBoard.insert(newAlert, at: 0)
-    }
+        // Add a new alert timing to the alert board
+        func addNewAlertOnAlertBoard(newAlert: AlertTimming) {
+            activeAlertTimmingsOnAlertBoard.insert(newAlert, at: 0)
+        }
 
 }
 

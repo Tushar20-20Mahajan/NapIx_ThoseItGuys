@@ -140,11 +140,12 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         captureSession = AVCaptureSession()
     }
     // Define a date formatter
-        let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm:ss"
-            return formatter
-        }()
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h:mm a" // Use 'h' for 12-hour clock, 'a' for AM/PM designator
+        formatter.locale = Locale(identifier: "en_US") // Set locale to a region that uses AM/PM time notation
+        return formatter
+    }()
     
     // Function to log messages with IST timestampIs
         func logWithISTDate(_ message: String) {
@@ -156,73 +157,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             print("\(dateString): \(message)")
         }
 
-//    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-//            guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-//            DispatchQueue.main.async {
-//                do {
-//                    let input1 = FDModelInput(image: pixelBuffer)
-//                    let prediction1 = try self.fdModel.prediction(input: input1)
-//                    let outputString1 = prediction1.target
-//                    
-//                    print("Output String is: \(outputString1)")
-//                    
-//                    if outputString1 == "face detected" {
-//                        do {
-//                            if(self.alertArray.count != 0 && self.alertArray[self.alertArray.count-1] == "\(self.dateFormatter.string(from: Date())): Face detection output: face not detected"){
-//                                self.alertArray.append("\(self.dateFormatter.string(from: Date())): Face detection output: face detected")
-//                            }
-//                            self.emojiPic.image = UIImage(named: "Green")
-//                            let input = DDModelInput(image: pixelBuffer)
-//                            let prediction = try self.ddModel.prediction(input: input)
-//                            let outputString = prediction.target
-//                            
-//                            // Append detection output with formatted timestamp to the array
-//                            //self.alertArray.append("\(self.dateFormatter.string(from: Date())): \(outputString)")
-//                            
-//                            print("Output String: \(outputString)")
-//                            if outputString == "Fatigue" {
-//                                if !self.isDrowsy {
-//                                    self.isDrowsy = true
-//                                    self.drowsinessStartTime = Date()
-//                                } else {
-//                                    // Check if drowsiness duration exceeds the threshold
-//                                    if let startTime = self.drowsinessStartTime, Date().timeIntervalSince(startTime) >= self.drowsinessAlertThreshold {
-//                                        // Check if an alert has been sent recently
-//                                        if let lastAlertTime = self.lastAlertTime, Date().timeIntervalSince(lastAlertTime) < self.drowsinessAlertThreshold {
-//                                            return // Avoid sending multiple alerts within the threshold
-//                                        }
-//                                        // Play alert sound
-//                                        self.playBeepSound()
-//                                        // Update last alert time
-//                                        self.alertArray.append("\(self.dateFormatter.string(from: Date())): Drowsiness detection output: Fatigue")
-//                                        self.lastAlertTime = Date()
-//                                    }
-//                                }
-//                            } else {
-//                                // Reset drowsiness tracking if fatigue is not detected
-//                                self.isDrowsy = false
-//                                self.drowsinessStartTime = nil
-//                            }
-//                        } catch {
-//                            print("Error making drowsiness prediction: \(error)")
-//                        }
-//                    } else {
-//                        // Reset drowsiness tracking if face is not detected
-//                        self.isDrowsy = false
-//                        self.drowsinessStartTime = nil
-//                        print("No face detected")
-//                        
-//                        // Append detection output with formatted timestamp to the array
-//                        self.alertArray.append("\(self.dateFormatter.string(from: Date())): Face detection output: face not detected")
-//                        
-//                        self.emojiPic.image = UIImage(named: "RedImageNotFound")
-//                        self.playFaceSound()
-//                    }
-//                } catch {
-//                    print("Error making face prediction \(error)")
-//                }
-//            }
-//        }
+
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
@@ -244,6 +179,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                     if self.faceVisible == false  && outputString1 == "face detected"{
                         self.faceVisible = true
                         self.alertArray.append("\(self.dateFormatter.string(from: Date())): Face detection output: face detected")
+                        dataModel.addNewAlertOnAlertBoard(newAlert: AlertTimming(iconImage: "person.crop.circle.badge.checkmark", timeAlert: "\(self.dateFormatter.string(from: Date()))", alertMessage: "Face Detected"))
                     }
 
 
@@ -263,6 +199,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                                 self.playBeepSound()
                                 // Update last alert time
                                 self.alertArray.append("\(self.dateFormatter.string(from: Date())): Drowsiness detection output: Fatigue")
+                                dataModel.addNewAlertOnAlertBoard(newAlert: AlertTimming(iconImage: "eye.trianglebadge.exclamationmark.fill", timeAlert: "\(self.dateFormatter.string(from: Date()))", alertMessage: "Drowsiness Detcted"))
                                 self.lastAlertTime = Date()
                             }
                         }
@@ -281,6 +218,8 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                     if self.faceVisible == true && outputString1 == "face Not detected" {
                         self.faceVisible = false
                         self.alertArray.append("\(self.dateFormatter.string(from: Date())): Face detection output: face not detected")
+                        dataModel.addNewAlertOnAlertBoard(newAlert: AlertTimming(iconImage: "person.crop.circle.badge.xmark", timeAlert: "\(self.dateFormatter.string(from: Date()))", alertMessage: "Face Not Detcted"))
+                        
                     }
 
                     self.emojiPic.image = UIImage(named: "RedImageNotFound")
