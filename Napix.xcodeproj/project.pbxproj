@@ -11,7 +11,6 @@
 		3F0F24DF2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F24DE2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift */; };
 		3F0F24E12BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F24E02BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift */; };
 		3F14BB112BE8BB2400377D12 /* DDModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */; };
-		3F14BB152BE8BCD500377D12 /* EndMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB142BE8BCD500377D12 /* EndMViewController.swift */; };
 		3F14BB172BE8F12C00377D12 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F14BB162BE8F12C00377D12 /* cameraViewController.swift */; };
 		3F1CDF7C2BEBA8540020F5D9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3F1CDF7B2BEBA8540020F5D9 /* FirebaseAnalytics */; };
 		3F1CDF7E2BEBA8540020F5D9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3F1CDF7D2BEBA8540020F5D9 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -49,6 +48,11 @@
 		3F3B76F42BCFEDEF00746745 /* AlertBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */; };
 		3F3B76F62BCFEE0600746745 /* VehicleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */; };
 		3F3B76F82BCFEE1200746745 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */; };
+		3F57B8542BF1CE330017F6C3 /* Pinball.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F57B8532BF1CE330017F6C3 /* Pinball.mp3 */; };
+		3F57B8562BF1CE3A0017F6C3 /* Piano Riff.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F57B8552BF1CE3A0017F6C3 /* Piano Riff.mp3 */; };
+		3F57B8582BF1CE3E0017F6C3 /* Old Phone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F57B8572BF1CE3E0017F6C3 /* Old Phone.mp3 */; };
+		3F57B85A2BF1CE430017F6C3 /* Canopy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F57B8592BF1CE430017F6C3 /* Canopy.mp3 */; };
+		3F57B85D2BF1DD1F0017F6C3 /* MonitorActivity.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3F57B85C2BF1DD1E0017F6C3 /* MonitorActivity.gif */; };
 		3F7836DC2BE9E67A0007DFFD /* FDModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3F7836DB2BE9E67A0007DFFD /* FDModel.mlmodel */; };
 		3F7BF2F72BE3C288003973B7 /* gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7BF2F62BE3C288003973B7 /* gif.swift */; };
 		3F7BF2F92BE3C28E003973B7 /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3F7BF2F82BE3C28E003973B7 /* giphy.gif */; };
@@ -89,7 +93,6 @@
 		3F0F24DE2BDDA6230033F5D5 /* DrivingSafelyOnAlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingSafelyOnAlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F0F24E02BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledOnAlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = DDModel.mlmodel; sourceTree = "<group>"; };
-		3F14BB142BE8BCD500377D12 /* EndMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndMViewController.swift; sourceTree = "<group>"; };
 		3F14BB162BE8F12C00377D12 /* cameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
 		3F1E31B62BEB44700082DF05 /* face.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = face.mp3; sourceTree = "<group>"; };
 		3F3B76D82BCFE43500746745 /* Napix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Napix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +105,11 @@
 		3F3B76F32BCFEDEF00746745 /* AlertBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBoardViewController.swift; sourceTree = "<group>"; };
 		3F3B76F52BCFEE0600746745 /* VehicleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleListViewController.swift; sourceTree = "<group>"; };
 		3F3B76F72BCFEE1200746745 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3F57B8532BF1CE330017F6C3 /* Pinball.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pinball.mp3; sourceTree = "<group>"; };
+		3F57B8552BF1CE3A0017F6C3 /* Piano Riff.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Piano Riff.mp3"; sourceTree = "<group>"; };
+		3F57B8572BF1CE3E0017F6C3 /* Old Phone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Old Phone.mp3"; sourceTree = "<group>"; };
+		3F57B8592BF1CE430017F6C3 /* Canopy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Canopy.mp3; sourceTree = "<group>"; };
+		3F57B85C2BF1DD1E0017F6C3 /* MonitorActivity.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MonitorActivity.gif; sourceTree = "<group>"; };
 		3F7836DB2BE9E67A0007DFFD /* FDModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FDModel.mlmodel; sourceTree = "<group>"; };
 		3F7BF2F62BE3C288003973B7 /* gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gif.swift; sourceTree = "<group>"; };
 		3F7BF2F82BE3C28E003973B7 /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
@@ -230,7 +238,6 @@
 				3F14BB162BE8F12C00377D12 /* cameraViewController.swift */,
 				3F7BF3032BE3C2E7003973B7 /* DriverLoginViewController.swift */,
 				3F7BF3042BE3C2E7003973B7 /* EditProfileOfDriverTableViewController.swift */,
-				3F14BB142BE8BCD500377D12 /* EndMViewController.swift */,
 				3F7BF3022BE3C2E7003973B7 /* LoginViewController.swift */,
 				3F7BF3072BE3C2E7003973B7 /* LogisticLoginViewController.swift */,
 				3F7BF3052BE3C2E7003973B7 /* MonitorMeViewController.swift */,
@@ -260,6 +267,7 @@
 		3F3B76DA2BCFE43500746745 /* vehicleWise */ = {
 			isa = PBXGroup;
 			children = (
+				3F57B85F2BF1E32A0017F6C3 /* Sounds */,
 				3F124B262BD8BA0700325297 /* DataModel */,
 				3F124B242BD8B9DC00325297 /* LogisticInterface */,
 				3F124B232BD8B9C000325297 /* DriversInterface */,
@@ -267,8 +275,6 @@
 				3F3B76DD2BCFE43500746745 /* SceneDelegate.swift */,
 				3F3B76E12BCFE43500746745 /* Main.storyboard */,
 				3F3B76E42BCFE43600746745 /* Assets.xcassets */,
-				3FBF28832BE6E1920009F799 /* beep.mp3 */,
-				3F1E31B62BEB44700082DF05 /* face.mp3 */,
 				3F3B76E62BCFE43600746745 /* LaunchScreen.storyboard */,
 				3F7836DB2BE9E67A0007DFFD /* FDModel.mlmodel */,
 				3F14BB102BE8BB2400377D12 /* DDModel.mlmodel */,
@@ -277,9 +283,23 @@
 			path = vehicleWise;
 			sourceTree = "<group>";
 		};
+		3F57B85F2BF1E32A0017F6C3 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3FBF28832BE6E1920009F799 /* beep.mp3 */,
+				3F57B8592BF1CE430017F6C3 /* Canopy.mp3 */,
+				3F57B8552BF1CE3A0017F6C3 /* Piano Riff.mp3 */,
+				3F57B8572BF1CE3E0017F6C3 /* Old Phone.mp3 */,
+				3F57B8532BF1CE330017F6C3 /* Pinball.mp3 */,
+				3F1E31B62BEB44700082DF05 /* face.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		3F9EE2722BE3C0A90010AB37 /* Gif */ = {
 			isa = PBXGroup;
 			children = (
+				3F57B85C2BF1DD1E0017F6C3 /* MonitorActivity.gif */,
 				3F7BF2F62BE3C288003973B7 /* gif.swift */,
 				3F7BF2FA2BE3C294003973B7 /* output-onlinegiftools.gif */,
 				3F7BF2F82BE3C28E003973B7 /* giphy.gif */,
@@ -403,11 +423,16 @@
 			files = (
 				3F3B76E52BCFE43600746745 /* Assets.xcassets in Resources */,
 				3F3B76E82BCFE43600746745 /* Base in Resources */,
+				3F57B85A2BF1CE430017F6C3 /* Canopy.mp3 in Resources */,
 				3F7BF2F92BE3C28E003973B7 /* giphy.gif in Resources */,
 				3F7BF2FB2BE3C294003973B7 /* output-onlinegiftools.gif in Resources */,
 				3F3B76E32BCFE43500746745 /* Base in Resources */,
+				3F57B8582BF1CE3E0017F6C3 /* Old Phone.mp3 in Resources */,
+				3F57B8542BF1CE330017F6C3 /* Pinball.mp3 in Resources */,
+				3F57B8562BF1CE3A0017F6C3 /* Piano Riff.mp3 in Resources */,
 				3F1E31B72BEB44700082DF05 /* face.mp3 in Resources */,
 				3FBF28842BE6E1920009F799 /* beep.mp3 in Resources */,
+				3F57B85D2BF1DD1F0017F6C3 /* MonitorActivity.gif in Resources */,
 				3F7BF2FF2BE3C2CF003973B7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,7 +470,6 @@
 				3F8091CC2BDFA277007FE0DF /* showVehiclesListTableViewCell.swift in Sources */,
 				3FE52CB92BE171D50085E044 /* NewAlertTableViewController.swift in Sources */,
 				3FBF4F9E2BD11F9200AB59FC /* DataModel.swift in Sources */,
-				3F14BB152BE8BCD500377D12 /* EndMViewController.swift in Sources */,
 				3F0F24E12BDDA6370033F5D5 /* ScheduledOnAlertBoardViewController.swift in Sources */,
 				3F7BF2FD2BE3C2C0003973B7 /* Users.swift in Sources */,
 				3FCCC1B62BE0E249002C4A60 /* ShowDriverListTableViewCell.swift in Sources */,

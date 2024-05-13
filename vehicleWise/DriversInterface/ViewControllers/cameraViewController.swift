@@ -6,19 +6,34 @@ import Vision
 @available(iOS 17.0, *)
 class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
+    // Timer to track drowsiness
     var timer: Timer?
+    // Flag to track if the screen is black
     var isScreenBlack = false
+    // Audio player for beep sound
     var audioPlayer: AVAudioPlayer?
+    // Image view to display monitoring GIF
 
+    @IBOutlet weak var MoniterMeGif: UIImageView!
+    // CoreML models for face and drowsiness detection
     var ddModel: DDModel!
     var fdModel: FDModel!
+    // Capture session for camera
     var captureSession: AVCaptureSession?
+    // Flag to track drowsiness
+
     var isDrowsy: Bool = false
+    // Timestamp for drowsiness start
+
     var drowsinessStartTime: Date?
+    // Timestamp for last alert
     var lastAlertTime: Date?
     let drowsinessAlertThreshold: TimeInterval = 3 // Threshold for drowsiness alert (3 seconds)
     var alertArray : [String] = []
+    // Flag to track if face is visible
+
     var faceVisible = false
+    // Image view to display emoji
     @IBOutlet weak var endButton: UIButton!
     @IBOutlet weak var gifview: UIImageView!
     @IBOutlet weak var cameraView: UIView!
@@ -31,16 +46,24 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Bring GIF view to front
+
         view.bringSubviewToFront(gifview)
+        // Load monitoring GIF
         gifview.loadGif(name: "giphy")
+        MoniterMeGif.loadGif(name: "MonitorActivity")
+        // Hide monitoring GIF
+        MoniterMeGif.isHidden = true
+        // Prepare beep sound
         prepareBeepSound()
+        // Setup drowsiness detection
         setupDrowsinessDetection()
+        // Configure camera
         configureCamera()
+        // Hide emoji initially
         emojiPic.isHidden = true
+        // Set emoji image
         emojiPic.image = UIImage(named: "Green")
-
-      //  turnOnCamView.isEnabled = false
-
         // Add long-press gesture recognizer to the endButton
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(endButtonLongPressed(_:)))
         endButton.addGestureRecognizer(longPressRecognizer)
@@ -53,7 +76,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             end(sender)
         }
     }
-
+    // Prepare beep sound
     func prepareBeepSound() {
         if let soundURL = Bundle.main.url(forResource: "beep", withExtension: "mp3") {
             do {
@@ -64,11 +87,12 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
         }
     }
+    // Play beep sound
 
     func playBeepSound() {
         audioPlayer?.play()
     }
-
+    // Play face detection sound
     func playFaceSound() {
         if let soundURL = Bundle.main.url(forResource: "face", withExtension: "mp3") {
             do {
@@ -80,7 +104,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
         }
     }
-
+    // Configure camera
     func configureCamera() {
         guard let captureSession = captureSession else {
             print("Capture session is nil")
@@ -115,7 +139,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
         captureSession.startRunning()
     }
-
+    // Setup drowsiness detection
     func setupDrowsinessDetection() {
         do {
             if #available(iOS 17.0, *) {
@@ -158,7 +182,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
 
 
-    
+    // AVCaptureVideoDataOutputSampleBufferDelegate method
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         DispatchQueue.main.async {
@@ -173,6 +197,12 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                     // If the face was not detected previously, append the detection output
                     
                     self.emojiPic.image = UIImage(named: "Green")
+                    if self.gifview.isHidden == false && self.cameraView.isHidden == false {
+                        self.MoniterMeGif.isHidden = true
+                    }else{
+                        self.MoniterMeGif.isHidden = false
+                    }
+                    
                     let input = DDModelInput(image: pixelBuffer)
                     let prediction = try self.ddModel.prediction(input: input)
                     let outputString = prediction.target
@@ -223,6 +253,7 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                     }
 
                     self.emojiPic.image = UIImage(named: "RedImageNotFound")
+                    self.MoniterMeGif.isHidden = true
                     self.playFaceSound()
                 }
             } catch {
@@ -276,12 +307,14 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 emojiPic.isHidden = true
                 gifview.isHidden = false
                 cameraView.isHidden = false
+            MoniterMeGif.isHidden = true
             } else if turnOffCamView.image == UIImage(systemName: "shareplay.slash") {
                 // Change to the new image
                 turnOffCamView.image = UIImage(systemName: "shareplay")
                 emojiPic.isHidden = false
                 gifview.isHidden = true
                 cameraView.isHidden = true
+                MoniterMeGif.isHidden = false
             }
        
     }
@@ -295,4 +328,3 @@ class cameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
     
 }
-
